@@ -42,8 +42,7 @@ export const Header1 = (props: Header1Props) => {
           <div className="grid grid-cols-1 gap-x-20 gap-y-12 md:gap-y-16 lg:grid-cols-2 lg:items-center">
             <div className="text-white">
               <h1 className="mb-5 text-6xl font-bold text-white md:mb-6 md:text-9xl lg:text-7xl">
-                Die <span className="text-red-500">Enigma</span>{" "}
-                Chiffriermaschine
+                The <span className="text-red-500">Enigma</span> Cipher Machine
               </h1>
               <DecryptedText
                 text={description}
