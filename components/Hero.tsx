@@ -128,10 +128,10 @@ export const Header1 = (props: Header1Props) => {
 };
 
 export const Header1Defaults: Props = {
-  heading: "Die Enigma Chiffriermaschine",
+  heading: "The Enigma Cipher Machine",
   description:
-    "Ein faszinierendes Rätsel, das die Geheimnisse der Vergangenheit entschlüsselt. Entdecke die Magie der Enigma und ihre Rolle in der Geschichte.",
-  buttons: [{ title: "Button" }, { title: "Button", variant: "secondary" }],
+    "A fascinating puzzle that decodes the secrets of the past. Discover the magic of the Enigma and its role in history.",
+  buttons: [{ title: "Learning Path" }],
   image: {
     src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg",
     alt: "Relume placeholder image",
