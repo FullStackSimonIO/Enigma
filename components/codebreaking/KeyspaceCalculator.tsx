@@ -68,7 +68,7 @@ export const KeyspaceCalculator = () => {
   const yearsToBreak = timeToBreak / (60 * 60 * 24 * 365);
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-red-950 to-gray-900">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#101828]">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -80,7 +80,7 @@ export const KeyspaceCalculator = () => {
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
             Schlüsselraum{" "}
-            <span className="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">
               Rechner
             </span>
           </h2>
@@ -102,7 +102,7 @@ export const KeyspaceCalculator = () => {
           >
             <div className="flex items-center justify-between mb-8">
               <h3 className="text-2xl font-bold text-white flex items-center">
-                <BiCalculator className="mr-3 text-red-400" />
+                <BiCalculator className="mr-3 text-blue-400" />
                 Konfigurations-Einstellungen
               </h3>
               <motion.button
@@ -119,7 +119,7 @@ export const KeyspaceCalculator = () => {
             <div className="space-y-8">
               {/* Rotor Settings */}
               <div className="space-y-6">
-                <h4 className="text-lg font-semibold text-red-400">
+                <h4 className="text-lg font-semibold text-blue-400">
                   Rotor Konfiguration
                 </h4>
 
@@ -278,7 +278,7 @@ export const KeyspaceCalculator = () => {
               </motion.div>
 
               <motion.div
-                className="bg-orange-900/30 rounded-xl p-4 border border-orange-500/30"
+                className="bg-red-900/30 rounded-xl p-4 border border-red-500/30"
                 animate={animationStep === 1 ? { scale: [1, 1.02, 1] } : {}}
                 transition={{ duration: 0.5 }}
               >
@@ -296,13 +296,13 @@ export const KeyspaceCalculator = () => {
               </motion.div>
 
               <motion.div
-                className="bg-yellow-900/30 rounded-xl p-4 border border-yellow-500/30"
+                className="bg-red-900/30 rounded-xl p-4 border border-red-500/30"
                 animate={animationStep === 2 ? { scale: [1, 1.02, 1] } : {}}
                 transition={{ duration: 0.5 }}
               >
                 <div className="flex justify-between items-center">
                   <span className="text-white font-medium">Steckerbrett</span>
-                  <span className="text-yellow-400 font-bold">
+                  <span className="text-red-400 font-bold">
                     {formatNumber(plugboardSpace)}
                   </span>
                 </div>
@@ -314,7 +314,7 @@ export const KeyspaceCalculator = () => {
 
             {/* Total Keyspace */}
             <motion.div
-              className="bg-gradient-to-br from-red-900/50 to-orange-900/50 rounded-2xl p-6 border-2 border-red-500/50 mb-8"
+              className="bg-gradient-to-br from-red-900/50 to-red-800/50 rounded-2xl p-6 border-2 border-red-500/50 mb-8"
               animate={
                 animationStep === 3
                   ? {
@@ -334,7 +334,7 @@ export const KeyspaceCalculator = () => {
                   Gesamt Schlüsselraum
                 </h4>
                 <motion.div
-                  className="text-4xl font-bold bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent mb-2"
+                  className="text-4xl font-bold bg-gradient-to-r from-red-400 to-red-500 bg-clip-text text-transparent mb-2"
                   key={totalKeyspace}
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}

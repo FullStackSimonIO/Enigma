@@ -119,7 +119,7 @@ export const SpeedComparison = () => {
   };
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-purple-950 to-gray-900">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#101828]">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -131,7 +131,7 @@ export const SpeedComparison = () => {
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
             Entschlüsselungs{" "}
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">
               Geschwindigkeit
             </span>{" "}
             Analyse
@@ -154,7 +154,7 @@ export const SpeedComparison = () => {
           <div className="flex items-center space-x-4">
             <motion.button
               onClick={() => setIsAnimating(!isAnimating)}
-              className="flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-medium transition-colors"
+              className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-medium transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -180,7 +180,7 @@ export const SpeedComparison = () => {
                 onClick={() => setTimeUnit("seconds")}
                 className={`px-4 py-2 rounded-md transition-colors ${
                   timeUnit === "seconds"
-                    ? "bg-purple-600 text-white"
+                    ? "bg-red-600 text-white"
                     : "text-gray-400 hover:text-white"
                 }`}
               >
@@ -190,7 +190,7 @@ export const SpeedComparison = () => {
                 onClick={() => setTimeUnit("years")}
                 className={`px-4 py-2 rounded-md transition-colors ${
                   timeUnit === "years"
-                    ? "bg-purple-600 text-white"
+                    ? "bg-red-600 text-white"
                     : "text-gray-400 hover:text-white"
                 }`}
               >
@@ -373,7 +373,7 @@ export const SpeedComparison = () => {
 
         {/* Reality Check */}
         <motion.div
-          className="bg-gradient-to-r from-red-900/30 to-orange-900/30 rounded-2xl p-8 border border-red-500/30"
+          className="bg-gradient-to-r from-red-900/30 to-red-800/30 rounded-2xl p-8 border border-red-500/30"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

@@ -191,17 +191,6 @@ export const ENIGMA_SECTIONS: SectionProgress[] = [
         explanation:
           "Der Rückweg durch die Umkehrwalze verändert den Signalpfad und verhindert eine Selbstverschlüsselung.",
       },
-    ],
-    requiredScore: 80,
-  },
-  {
-    id: "cryptography",
-    title: "Kryptographie",
-    url: "/learning-path/cryptography",
-    icon: "BiShield",
-    isUnlocked: false,
-    isCompleted: false,
-    quiz: [
       {
         id: "crypto-1",
         question:
@@ -277,24 +266,66 @@ export const ENIGMA_SECTIONS: SectionProgress[] = [
   },
   {
     id: "legacy",
-    title: "Vermächtnis",
+    title: "Verbesserungen",
     url: "/learning-path/legacy",
     icon: "BiBook",
     isUnlocked: false,
     isCompleted: false,
     quiz: [
       {
-        id: "legacy-1",
-        question: "How did breaking Enigma impact the war?",
+        id: "improvements-1",
+        question:
+          "Was war der fundamentale Schwachpunkt der Enigma, der ihre Entschlüsselung ermöglichte?",
         options: [
-          "No impact",
-          "Shortened the war by 2-4 years",
-          "Made it longer",
-          "Only helped with logistics",
+          "Zu wenige Rotoren",
+          "Die Unfähigkeit, Buchstaben auf sich selbst zu verschlüsseln",
+          "Schwache Steckerbrett-Verbindungen",
+          "Vorhersagbare Rotor-Bewegungen",
         ],
         correctAnswer: 1,
         explanation:
-          "Breaking Enigma is estimated to have shortened WWII by 2-4 years and saved countless lives.",
+          "Die Unfähigkeit der Enigma, Buchstaben auf sich selbst zu verschlüsseln, ermöglichte Known-Plaintext-Angriffe und die Entwicklung der Turing-Bombe.",
+      },
+      {
+        id: "improvements-2",
+        question:
+          "Wie korrigierte die britische Typex-Maschine den Hauptfehler der Enigma?",
+        options: [
+          "Durch eine modifizierte Umkehrwalze, die Selbstverschlüsselung erlaubte",
+          "Durch ein völlig neues Steckerbrett-System",
+          "Durch elektronische statt mechanische Rotoren",
+          "Durch eine andere Verkabelung der Tastatur",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Die Typex-Maschine verwendete eine modifizierte Umkehrwalze, die es jedem Buchstaben erlaubte, auch auf sich selbst abgebildet zu werden.",
+      },
+      {
+        id: "improvements-3",
+        question:
+          "Welche zusätzlichen Verbesserungen führte die Typex-Maschine ein?",
+        options: [
+          "Nur elektronische Komponenten",
+          "Fünf Rotoren und unregelmäßige Walzenfortschaltung",
+          "Vollständig digitale Verschlüsselung",
+          "Drahtlose Übertragung",
+        ],
+        correctAnswer: 1,
+        explanation:
+          "Die Typex-Maschine hatte fünf Rotoren (statt drei) und unregelmäßige Walzenfortschaltung, was sie kryptographisch überlegen machte.",
+      },
+      {
+        id: "improvements-4",
+        question: "Was markierte 1962 das Ende der Rotor-Chiffriergeräte-Ära?",
+        options: [
+          "Die Erfindung des Computers",
+          "Der Übergang zur Combined Cipher Machine (CCM)",
+          "Das Ende des Kalten Krieges",
+          "Die Entwicklung des Internets",
+        ],
+        correctAnswer: 1,
+        explanation:
+          "1962 erfolgte der Übergang zur Combined Cipher Machine (CCM), die einen einheitlichen Verschlüsselungsstandard etablierte und das Ende der Rotor-Chiffriergeräte-Ära markierte.",
       },
     ],
     requiredScore: 80,

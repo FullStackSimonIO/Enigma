@@ -4,7 +4,9 @@ import { QuizComponent } from "@/components/QuizComponent";
 import { DesignHero } from "@/components/design/DesignHero";
 import { ExplosionView } from "@/components/design/ExplosionView";
 import { RotorNotchDisplay } from "@/components/design/RotorNotchDisplay";
-import SelfEncryptionChallenge from "@/components/design/SelfEncryptionChallenge";
+import { CryptographyDescription } from "@/components/cryptography/CryptographyDescription";
+import { AlgorithmVisualization } from "@/components/cryptography/AlgorithmVisualization";
+import { InteractiveEncryption } from "@/components/cryptography/InteractiveEncryption";
 import { getProgress } from "@/lib/progress";
 
 const DesignPage = () => {
@@ -25,16 +27,23 @@ Nach Passieren der Rotoren trifft der Strom auf die Umkehrwalze (UKW), die ihn a
       <ExplosionView />
       {/* Rotor and Notch Display */}
       <RotorNotchDisplay />
+
+      {/* Cryptography Section */}
+      <CryptographyDescription />
+      <AlgorithmVisualization />
+      <InteractiveEncryption />
+
       {/* Quiz Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Teste dein Wissen zum<span className="text-red-400"> Aufbau</span>
+              Teste dein Wissen zu
+              <span className="text-red-400"> Aufbau & Kryptographie</span>
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Teste dein Verständnis der genialen Konstruktionsprinzipien der
-              Enigma-Maschine
+              Teste dein Verständnis der genialen Konstruktionsprinzipien und
+              kryptographischen Algorithmen der Enigma-Maschine
             </p>
           </div>
 
@@ -42,7 +51,7 @@ Nach Passieren der Rotoren trifft der Strom auf die Umkehrwalze (UKW), die ihn a
             <QuizComponent
               sectionId="design"
               questions={designSection.quiz}
-              requiredScore={designSection.requiredScore || 80}
+              requiredScore={80}
             />
           )}
         </div>

@@ -16,7 +16,7 @@ export const HistoryHero = ({
   return (
     <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-red-900/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-950 to-black" />
       {backgroundImage && (
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
@@ -30,17 +30,74 @@ export const HistoryHero = ({
           {Array.from({ length: 12 }).map((_, i) => (
             <motion.div
               key={i}
-              className="border-r border-red-500/20"
+              className="border-r border-blue-500/20"
               initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.3, 0] }}
+              animate={{ opacity: [0, 0.5, 0] }}
               transition={{
-                duration: 2,
-                delay: i * 0.1,
+                duration: 3,
+                delay: i * 0.15,
                 repeat: Infinity,
-                repeatDelay: 3,
+                repeatDelay: 2,
               }}
             />
           ))}
+        </div>
+      </div>
+
+      {/* Futuristic Animated Elements */}
+      <div className="absolute inset-0">
+        {/* Floating particles */}
+        {Array.from({ length: 20 }).map((_, i) => (
+          <motion.div
+            key={`particle-${i}`}
+            className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [-20, -100],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+            }}
+          />
+        ))}
+
+        {/* Scanning lines */}
+        <motion.div
+          className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-red-400/50 to-transparent"
+          animate={{
+            y: [0, 600],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+
+        {/* Circuit-like patterns */}
+        <div className="absolute inset-0 opacity-5">
+          <svg
+            className="w-full h-full"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
+            <motion.path
+              d="M10,10 L90,10 L90,90 L10,90 Z M30,30 L70,30 L70,70 L30,70 Z"
+              stroke="currentColor"
+              strokeWidth="0.5"
+              fill="none"
+              className="text-blue-400"
+              pathLength={0}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 5, repeat: Infinity }}
+            />
+          </svg>
         </div>
       </div>
 
@@ -57,7 +114,7 @@ export const HistoryHero = ({
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="bg-gradient-to-r from-red-500 to-red-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-red-400 bg-clip-text text-transparent">
               {title}
             </span>
           </motion.h1>
@@ -80,7 +137,7 @@ export const HistoryHero = ({
           transition={{ delay: 1.5 }}
         >
           <motion.div
-            className="w-6 h-10 border-2 border-red-500/50 rounded-full flex justify-center"
+            className="w-6 h-10 border-2 border-blue-500/50 rounded-full flex justify-center"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           >

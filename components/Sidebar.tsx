@@ -92,8 +92,8 @@ export const Sidebar9 = ({ children }: { children: React.ReactNode }) => {
       {/* Sidebar */}
       <div
         className={`
-          fixed top-0 left-0 z-50 h-screen w-64 transform bg-gray-900 border-r border-gray-800 transition-transform duration-300 ease-in-out
-          lg:static lg:translate-x-0
+          fixed top-0 left-0 z-50 h-screen w-64 bg-gray-900 border-r border-gray-800 transition-transform duration-300 ease-in-out
+          lg:sticky lg:translate-x-0 lg:h-screen
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >

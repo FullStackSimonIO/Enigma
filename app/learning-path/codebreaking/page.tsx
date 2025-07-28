@@ -79,17 +79,18 @@ export default function CodebreakingPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-red-950 to-gray-900">
+    <main className="min-h-screen bg-[#101828]">
       <CodebreakingHero
         title="Knacken des Enigma-Codes"
-        description="Das Knacken der Enigma zählt zu den größten Errungenschaften der Kryptographiegeschichte. Die enorme Komplexität der Maschine, die durch Millionen von Einstellungsmöglichkeiten praktisch unknackbar schien, stellte jahrzehntelang selbst erfahrene Kryptoanalytiker vor große Herausforderungen. Doch mit Beharrlichkeit, mathematischem Genie und technischer Innovation gelang es, diese scheinbar unüberwindbare Verschlüsselung zu brechen – zuerst mit klassischen Methoden, später mithilfe moderner Computer.
+        description="Das Knacken der Enigma zählt zu den größten Errungenschaften der Kryptographiegeschichte.
 
-In den frühen Tagen des Zweiten Weltkriegs stützten sich die Codebreaker zunächst auf traditionelle Techniken: Sie sammelten und analysierten abgefangene Funksprüche, suchten nach wiederkehrenden Mustern und nutzten menschliche Fehler bei der Bedienung der Enigma aus. Polnische Mathematiker wie Marian Rejewski legten mit der Analyse der frühen Enigma-Modelle den Grundstein für den späteren Erfolg der Alliierten. Eine der wichtigsten Entwicklungen war die sogenannte „Bombe“, eine elektromechanische Maschine, die von Alan Turing und seinem Team in Bletchley Park weiterentwickelt wurde. Die Bombe automatisierte die Suche nach dem richtigen Enigma-Schlüssel und beschleunigte das Knacken der Codes entscheidend – eine detaillierte Beschreibung folgt später.
+Die enorme Komplexität der Maschine stellte jahrzehntelang selbst erfahrene Kryptoanalytiker vor große Herausforderungen. Doch mit Beharrlichkeit, mathematischem Genie und technischer Innovation gelang es, diese scheinbar unüberwindbare Verschlüsselung zu brechen.
 
-Heutzutage sind Enigma-Verschlüsselungen mit modernen Computern und Algorithmen vergleichsweise leicht zu knacken. Was früher Tage oder Wochen dauern konnte, ist nun oft eine Sache von Sekunden. Die enorme Rechenleistung ermöglicht es, alle möglichen Kombinationen systematisch zu überprüfen und so den Schlüssel zu finden.
+In den frühen Tagen des Zweiten Weltkriegs stützten sich die Codebreaker auf traditionelle Techniken: Sie analysierten abgefangene Funksprüche, suchten nach wiederkehrenden Mustern und nutzten menschliche Fehler aus.
 
-Das Knacken der Enigma steht somit exemplarisch für den Fortschritt in der Kryptographie: von mühsamer Handarbeit über frühe Rechenmaschinen bis hin zu hochmodernen Computern, die selbst die komplexesten Codes entschlüsseln können.
-"
+Eine der wichtigsten Entwicklungen war die sogenannte 'Bombe' - eine elektromechanische Maschine von Alan Turing und seinem Team in Bletchley Park. Die Bombe automatisierte die Suche nach dem richtigen Enigma-Schlüssel.
+
+Heutzutage sind Enigma-Verschlüsselungen mit modernen Computern vergleichsweise leicht zu knacken. Was früher Tage oder Wochen dauerte, ist nun oft eine Sache von Sekunden."
       />
       <KeyspaceCalculator />
       <BruteForceFormula />
