@@ -14,7 +14,7 @@ const DesignPage = () => {
   const designSection = progress.find((s) => s.id === "design");
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white">
+    <div className="min-h-screen bg-[#101828] text-white">
       {/* Futuristic Hero Section */}
       <DesignHero
         title="Der Aufbau der Enigma"

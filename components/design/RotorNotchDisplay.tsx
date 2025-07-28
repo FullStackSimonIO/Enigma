@@ -29,7 +29,7 @@ const Rotor = ({
     <div className="relative">
       {/* Rotor Body */}
       <motion.div
-        className="relative w-32 h-32 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full border-4 border-gray-600 shadow-2xl cursor-pointer"
+        className="relative w-32 h-32 bg-[#101828] rounded-full border-4 border-gray-600 shadow-2xl cursor-pointer"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={onRotate}

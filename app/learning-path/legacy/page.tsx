@@ -143,7 +143,7 @@ const ImprovementsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white">
+    <div className="min-h-screen bg-[#101828] text-white">
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -258,7 +258,7 @@ const ImprovementsPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="bg-gray-900/50 rounded-2xl p-6 border border-gray-700 hover:border-gray-600 transition-all duration-300"
+                className="bg-[#101828] rounded-2xl p-6 border border-gray-700 hover:border-gray-600 transition-all duration-300"
               >
                 <div className="mb-6">
                   <div

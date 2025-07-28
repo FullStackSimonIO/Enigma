@@ -78,7 +78,7 @@ export const CryptographyDescription = () => {
   }, [isClient, steps.length]);
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-indigo-950 to-gray-900">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#101828]">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div

@@ -12,7 +12,7 @@ const HistoryPage = () => {
   const historySection = progress.find((s) => s.id === "history");
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[#101828] text-white">
       {/* Hero Section */}
       <HistoryHero
         title="Die Geschichte der Enigma"
