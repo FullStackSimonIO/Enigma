@@ -57,7 +57,7 @@ const chainOfCommand: ChainMember[] = [
       "Einleitung von Notfallmaßnahmen bei Sicherheitsverletzungen",
     ],
     icon: <BiKey className="text-2xl" />,
-    color: "from-red-500 to-pink-500",
+    color: "from-[#145dfb] to-blue-500",
   },
 ];
 
@@ -127,7 +127,7 @@ export const ChainOfCommand = () => {
             </motion.div>
             <motion.button
               onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
-              className="mt-3 text-red-400 hover:text-red-300 font-medium flex items-center space-x-1 transition-colors duration-200"
+              className="mt-3 text-[#145dfb] hover:text-blue-300 font-medium flex items-center space-x-1 transition-colors duration-200"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -163,14 +163,14 @@ export const ChainOfCommand = () => {
                       onMouseLeave={() => setHoveredConnection(null)}
                     >
                       <motion.div
-                        className={`absolute inset-0 bg-gradient-to-r from-red-500 to-red-400 ${
+                        className={`absolute inset-0 bg-gradient-to-r from-[#145dfb] to-blue-400 ${
                           hoveredConnection === index
                             ? "opacity-100"
                             : "opacity-0"
                         } transition-opacity duration-300`}
                       />
                       <motion.div
-                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-red-500 rounded-full"
+                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-[#145dfb] rounded-full"
                         animate={{
                           scale: hoveredConnection === index ? [1, 1.5, 1] : 1,
                         }}
@@ -219,7 +219,7 @@ export const ChainOfCommand = () => {
                 {index < chainOfCommand.length - 1 && (
                   <div className="flex justify-center my-4">
                     <motion.div
-                      className="w-1 h-8 bg-gradient-to-b from-red-500 to-red-400"
+                      className="w-1 h-8 bg-gradient-to-b from-[#145dfb] to-blue-400"
                       initial={{ scaleY: 0 }}
                       whileInView={{ scaleY: 1 }}
                       viewport={{ once: true }}
@@ -296,7 +296,7 @@ const ChainMemberCard = ({
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <div className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 bg-[#145dfb] rounded-full mt-2 flex-shrink-0" />
                     <span className="text-gray-400 text-sm">
                       {responsibility}
                     </span>

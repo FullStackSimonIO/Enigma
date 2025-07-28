@@ -112,7 +112,7 @@ export const InteractiveEncryption = () => {
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
             Interactive{" "}
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#145dfb] to-blue-400 bg-clip-text text-transparent">
               Encryption
             </span>
           </h2>
@@ -156,7 +156,7 @@ export const InteractiveEncryption = () => {
                   onClick={() => setIsEncrypting(false)}
                   className={`flex-1 py-3 px-4 rounded-lg font-semibold transition-all flex items-center justify-center space-x-2 ${
                     !isEncrypting
-                      ? "bg-blue-600 text-white"
+                      ? "bg-[#145dfb] text-white"
                       : "text-gray-400 hover:text-white"
                   }`}
                 >
@@ -193,7 +193,7 @@ export const InteractiveEncryption = () => {
                         disabled={isAnimating}
                       />
                       <div className="mt-2 text-center">
-                        <span className="flex w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full items-center justify-center text-white font-bold">
+                        <span className="flex w-10 h-10 bg-gradient-to-br from-[#145dfb] to-blue-500 rounded-full items-center justify-center text-white font-bold">
                           {alphabet[position]}
                         </span>
                       </div>
@@ -216,7 +216,7 @@ export const InteractiveEncryption = () => {
                   )
                 }
                 placeholder="Enter your message..."
-                className="w-full h-24 bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none resize-none font-mono"
+                className="w-full h-24 bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-[#145dfb] focus:outline-none resize-none font-mono"
                 disabled={isAnimating}
               />
             </div>
@@ -226,7 +226,7 @@ export const InteractiveEncryption = () => {
               <motion.button
                 onClick={handleProcessText}
                 disabled={isAnimating || !inputText.trim()}
-                className="flex-1 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 disabled:from-gray-600 disabled:to-gray-700 text-white py-3 px-6 rounded-lg font-semibold transition-all flex items-center justify-center space-x-2"
+                className="flex-1 bg-gradient-to-r from-[#145dfb] to-blue-600 hover:from-[#145dfb]/80 hover:to-blue-500 disabled:from-gray-600 disabled:to-gray-700 text-white py-3 px-6 rounded-lg font-semibold transition-all flex items-center justify-center space-x-2"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -276,7 +276,7 @@ export const InteractiveEncryption = () => {
                     key={index}
                     className={`inline-block mr-1 p-1 rounded ${
                       index === currentLetterIndex
-                        ? "bg-cyan-500 text-white"
+                        ? "bg-[#145dfb] text-white"
                         : index < (outputText.length || 0)
                           ? "bg-green-600 text-white"
                           : "text-gray-400"
@@ -306,7 +306,7 @@ export const InteractiveEncryption = () => {
                 {outputText && (
                   <motion.button
                     onClick={copyToClipboard}
-                    className="text-cyan-400 hover:text-cyan-300 flex items-center space-x-1"
+                    className="text-[#145dfb] hover:text-blue-300 flex items-center space-x-1"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -322,7 +322,7 @@ export const InteractiveEncryption = () => {
                       key={index}
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="text-cyan-400 text-lg"
+                      className="text-[#145dfb] text-lg"
                     >
                       {char}
                     </motion.span>
@@ -334,7 +334,7 @@ export const InteractiveEncryption = () => {
             {/* Statistics */}
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-gray-800 rounded-lg p-4 text-center">
-                <div className="text-2xl font-bold text-cyan-400">
+                <div className="text-2xl font-bold text-[#145dfb]">
                   {inputText.replace(/[^A-Z]/g, "").length}
                 </div>
                 <div className="text-sm text-gray-400">Input Length</div>
@@ -351,7 +351,7 @@ export const InteractiveEncryption = () => {
 
         {/* Information Panel */}
         <motion.div
-          className="mt-12 bg-gradient-to-r from-cyan-900/30 to-blue-900/30 rounded-2xl p-8 border border-cyan-500/30"
+          className="mt-12 bg-gradient-to-r from-blue-900/30 to-blue-800/30 rounded-2xl p-8 border border-[#145dfb]/30"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -360,7 +360,7 @@ export const InteractiveEncryption = () => {
           <h4 className="text-2xl font-bold text-white mb-4">How It Works</h4>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-300">
             <div>
-              <h5 className="font-semibold text-cyan-400 mb-2">
+              <h5 className="font-semibold text-[#145dfb] mb-2">
                 1. Rotor Stepping
               </h5>
               <p className="text-sm">
@@ -369,7 +369,7 @@ export const InteractiveEncryption = () => {
               </p>
             </div>
             <div>
-              <h5 className="font-semibold text-cyan-400 mb-2">
+              <h5 className="font-semibold text-[#145dfb] mb-2">
                 2. Multiple Substitutions
               </h5>
               <p className="text-sm">
@@ -378,7 +378,7 @@ export const InteractiveEncryption = () => {
               </p>
             </div>
             <div>
-              <h5 className="font-semibold text-cyan-400 mb-2">
+              <h5 className="font-semibold text-[#145dfb] mb-2">
                 3. Self-Reciprocal
               </h5>
               <p className="text-sm">

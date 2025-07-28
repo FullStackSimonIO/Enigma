@@ -94,7 +94,7 @@ export const ENIGMA_SECTIONS: SectionProgress[] = [
           "Der Offizier, bevor er sie an den Funker weitergab",
           "C) Der Funker, auf Anweisung des Offiziers",
         ],
-        correctAnswer: 1,
+        correctAnswer: 2,
         explanation:
           "Die Enigma-Maschine wurde typischerweise vom Offizier bedient, der die Nachricht an den Funker weitergab, der sie dann sendete.",
       },
@@ -125,7 +125,7 @@ export const ENIGMA_SECTIONS: SectionProgress[] = [
       {
         id: "design-1",
         question:
-          "Welche Komponente der Enigma war fest montiert und veränderte sich nicht bei jedem Tastendruck?",
+          "Welche Komponente der Enigma war fest montiert und veränderte sich nie?",
         options: [
           "Die Eintrittswalze (ETW)",
           "Die rechte Rotorwalze",

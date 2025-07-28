@@ -215,7 +215,7 @@ export const AlgorithmVisualization = () => {
               className={`px-4 py-2 rounded-lg font-semibold transition-all ${
                 isEncrypting
                   ? "bg-green-600 text-white"
-                  : "bg-red-600 text-white"
+                  : "bg-[#145dfb] text-white"
               }`}
             >
               {isEncrypting ? "Verschlüsseln" : "Entschlüsseln"}

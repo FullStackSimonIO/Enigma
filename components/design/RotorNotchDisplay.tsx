@@ -51,7 +51,7 @@ const Rotor = ({
             <motion.div
               key={letter}
               className={`absolute w-6 h-6 flex items-center justify-center text-xs font-mono ${
-                isNotch ? "text-red-400 font-bold" : "text-gray-300"
+                isNotch ? "text-[#145dfb] font-bold" : "text-gray-300"
               }`}
               style={{
                 transform: `rotate(${angle}deg) translateY(-50px)`,
@@ -70,7 +70,7 @@ const Rotor = ({
 
         {/* Notch Indicator */}
         <motion.div
-          className="absolute w-2 h-4 bg-red-500 rounded-sm"
+          className="absolute w-2 h-4 bg-[#145dfb] rounded-sm"
           style={{
             top: "8px",
             left: "50%",
@@ -320,7 +320,7 @@ export const RotorNotchDisplay = () => {
                 <p>
                   • Linke Walze dreht sich wenn mittlere Walze Kerbe erreicht
                 </p>
-                <p className="text-red-400">
+                <p className="text-[#145dfb]">
                   • Doppelschritt tritt bei mittlerer Walzen-Kerbe auf
                 </p>
               </div>
@@ -361,7 +361,7 @@ export const RotorNotchDisplay = () => {
                       {/* Notch Warning */}
                       {rotorPositions[index] === rotor.notch && (
                         <motion.div
-                          className="mt-2 text-xs text-red-400 font-semibold"
+                          className="mt-2 text-xs text-[#145dfb] font-semibold"
                           animate={{ opacity: [0.5, 1, 0.5] }}
                           transition={{ duration: 1, repeat: Infinity }}
                         >

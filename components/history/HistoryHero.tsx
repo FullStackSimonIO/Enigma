@@ -142,7 +142,7 @@ export const HistoryHero = ({
             transition={{ duration: 2, repeat: Infinity }}
           >
             <motion.div
-              className="w-1 h-3 bg-red-500 rounded-full mt-2"
+              className="w-1 h-3 bg-[#145dfb] rounded-full mt-2"
               animate={{ opacity: [0.3, 1, 0.3] }}
               transition={{ duration: 2, repeat: Infinity }}
             />

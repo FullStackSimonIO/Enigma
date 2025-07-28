@@ -136,7 +136,7 @@ export const EnigmaGallery = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Modelle der <span className="text-red-500">Enigma</span>
+            Modelle der <span className="text-[#145dfb]">Enigma</span>
           </h2>
           <div>
             <p
@@ -199,7 +199,7 @@ export const EnigmaGallery = () => {
             </p>
             <motion.button
               onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
-              className="mt-4 flex items-center justify-center space-x-2 text-red-400 hover:text-red-300 transition-colors mx-auto"
+              className="mt-4 flex items-center justify-center space-x-2 text-[#145dfb] hover:text-blue-300 transition-colors mx-auto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -235,7 +235,7 @@ export const EnigmaGallery = () => {
               >
                 {/* Model Image Placeholder */}
                 <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl mb-6 flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#145dfb]/10 to-transparent" />
 
                   {/* Actual Enigma Image */}
                   <Image
@@ -248,7 +248,7 @@ export const EnigmaGallery = () => {
 
                   {/* Fallback gear icon (hidden by default) */}
                   <motion.div
-                    className="absolute inset-0 flex items-center justify-center text-6xl text-red-500/30"
+                    className="absolute inset-0 flex items-center justify-center text-6xl text-[#145dfb]/30"
                     style={{ display: "none" }}
                     animate={{ rotate: [0, 5, -5, 0] }}
                     transition={{ duration: 4, repeat: Infinity }}
@@ -257,7 +257,7 @@ export const EnigmaGallery = () => {
                   </motion.div>
 
                   <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-sm rounded-lg px-3 py-1">
-                    <span className="text-red-400 text-sm font-semibold">
+                    <span className="text-[#145dfb] text-sm font-semibold">
                       {currentModel.year}
                     </span>
                   </div>
@@ -271,7 +271,7 @@ export const EnigmaGallery = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <BiChevronLeft className="text-red-500 text-xl" />
+                    <BiChevronLeft className="text-[#145dfb] text-xl" />
                   </motion.button>
 
                   <div className="flex space-x-2">
@@ -280,7 +280,9 @@ export const EnigmaGallery = () => {
                         key={index}
                         onClick={() => setSelectedModel(index)}
                         className={`w-3 h-3 rounded-full transition-colors ${
-                          index === selectedModel ? "bg-red-500" : "bg-gray-600"
+                          index === selectedModel
+                            ? "bg-[#145dfb]"
+                            : "bg-gray-600"
                         }`}
                         whileHover={{ scale: 1.2 }}
                       />
@@ -293,7 +295,7 @@ export const EnigmaGallery = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <BiChevronRight className="text-red-500 text-xl" />
+                    <BiChevronRight className="text-[#145dfb] text-xl" />
                   </motion.button>
                 </div>
               </motion.div>
@@ -317,7 +319,7 @@ export const EnigmaGallery = () => {
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
                   {currentModel.name}
                 </h3>
-                <p className="text-red-400 text-lg mb-4">
+                <p className="text-[#145dfb] text-lg mb-4">
                   Eingeführt im Jahr {currentModel.year}
                 </p>
                 <p className="text-gray-300 text-lg leading-relaxed mb-6">
@@ -338,7 +340,7 @@ export const EnigmaGallery = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
                       >
-                        <div className="w-2 h-2 bg-red-500 rounded-full" />
+                        <div className="w-2 h-2 bg-[#145dfb] rounded-full" />
                         <span className="text-gray-300">{feature}</span>
                       </motion.div>
                     ))}
@@ -348,12 +350,12 @@ export const EnigmaGallery = () => {
                 {/* Specifications Toggle */}
                 <motion.button
                   onClick={() => setShowDetails(!showDetails)}
-                  className="flex items-center space-x-2 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 rounded-lg px-4 py-2 transition-colors"
+                  className="flex items-center space-x-2 bg-[#145dfb]/10 hover:bg-[#145dfb]/20 border border-[#145dfb]/30 rounded-lg px-4 py-2 transition-colors"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <BiInfoCircle className="text-red-500" />
-                  <span className="text-red-400">
+                  <BiInfoCircle className="text-[#145dfb]" />
+                  <span className="text-[#145dfb]">
                     {showDetails ? "Verstecke" : "Zeige"} Spezifikationen
                   </span>
                 </motion.button>

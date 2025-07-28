@@ -42,7 +42,7 @@ export const CryptographyDescription = () => {
       description:
         "Signal wird reflektiert, stellt sicher dass Verschlüsselung ≠ Entschlüsselung",
       icon: "🪞",
-      color: "from-orange-500 to-red-500",
+      color: "from-orange-500 to-[#145dfb]",
     },
     {
       id: 5,
@@ -320,8 +320,8 @@ export const CryptographyDescription = () => {
               <div className="text-2xl font-bold text-green-400">10¹⁰</div>
               <div className="text-sm text-gray-300">Steckerbrett</div>
             </div>
-            <div className="bg-gradient-to-br from-red-900/50 to-red-800/30 p-4 rounded-xl text-center">
-              <div className="text-2xl font-bold text-red-400">150T</div>
+            <div className="bg-gradient-to-br from-blue-900/50 to-blue-800/30 p-4 rounded-xl text-center">
+              <div className="text-2xl font-bold text-[#145dfb]">150T</div>
               <div className="text-sm text-gray-300">Gesamt Schlüssel</div>
             </div>
           </div>

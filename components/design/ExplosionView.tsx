@@ -153,7 +153,7 @@ export const ExplosionView = () => {
                     }}
                     className={`aspect-square rounded-lg border font-mono text-sm transition-all ${
                       selectedLetter === letter
-                        ? "border-red-500 bg-red-500/10 text-red-400"
+                        ? "border-[#145dfb] bg-[#145dfb]/10 text-[#145dfb]"
                         : "border-gray-600 bg-gray-800 text-gray-300 hover:border-gray-500"
                     }`}
                     whileHover={{ scale: 1.1 }}
@@ -191,7 +191,7 @@ export const ExplosionView = () => {
                   <span
                     className={`font-mono px-2 py-1 rounded transition-all duration-300 ${
                       isAnimating
-                        ? "text-red-400 bg-red-900/30 animate-pulse"
+                        ? "text-[#145dfb] bg-blue-900/30 animate-pulse"
                         : "text-cyan-400 bg-cyan-900/30"
                     }`}
                   >

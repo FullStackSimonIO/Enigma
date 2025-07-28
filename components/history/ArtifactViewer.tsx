@@ -102,7 +102,7 @@ export const ArtifactViewer = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Tägliche <span className="text-red-500">Einstellungen</span>
+            Tägliche <span className="text-[#145dfb]">Einstellungen</span>
           </h2>
           <div className="max-w-2xl mx-auto">
             <motion.div
@@ -167,7 +167,7 @@ export const ArtifactViewer = () => {
             </motion.div>
             <motion.button
               onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
-              className="mt-3 text-red-400 hover:text-red-300 font-medium flex items-center space-x-1 transition-colors duration-200"
+              className="mt-3 text-[#145dfb] hover:text-blue-300 font-medium flex items-center space-x-1 transition-colors duration-200"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -201,7 +201,7 @@ export const ArtifactViewer = () => {
                   }}
                   className={`w-full text-left p-4 rounded-lg border transition-all ${
                     selectedKey === index
-                      ? "border-red-500 bg-red-500/10"
+                      ? "border-[#145dfb] bg-[#145dfb]/10"
                       : "border-gray-700 bg-gray-900/50 hover:border-gray-600"
                   }`}
                   whileHover={{ scale: 1.02 }}
@@ -358,7 +358,7 @@ export const ArtifactViewer = () => {
                         <h5 className="font-semibold text-gray-800 mb-1">
                           Umkehrwalze:
                         </h5>
-                        <div className="bg-red-600 text-white px-4 py-2 rounded-full inline-block font-bold">
+                        <div className="bg-[#145dfb] text-white px-4 py-2 rounded-full inline-block font-bold">
                           {currentKey.reflector}
                         </div>
                       </div>
@@ -426,7 +426,8 @@ export const ArtifactViewer = () => {
         >
           <div className="text-center mb-8">
             <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-              Authentisches <span className="text-red-500">Schlüsselblatt</span>
+              Authentisches{" "}
+              <span className="text-[#145dfb]">Schlüsselblatt</span>
             </h3>
             <p className="text-gray-400 text-lg max-w-3xl mx-auto">
               Ein originalgetreues Schlüsselblatt aus dem Zweiten Weltkrieg

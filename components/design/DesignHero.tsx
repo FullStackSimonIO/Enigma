@@ -66,7 +66,7 @@ export const DesignHero = ({ title, description }: DesignHeroProps) => {
               }}
             >
               <div
-                className={`w-2 h-2 ${i % 3 === 0 ? "bg-cyan-400" : i % 3 === 1 ? "bg-red-500" : "bg-purple-500"} opacity-30`}
+                className={`w-2 h-2 ${i % 3 === 0 ? "bg-cyan-400" : i % 3 === 1 ? "bg-[#145dfb]" : "bg-purple-500"} opacity-30`}
                 style={{
                   clipPath:
                     i % 4 === 0
@@ -161,7 +161,7 @@ export const DesignHero = ({ title, description }: DesignHeroProps) => {
                 </span>
                 {/* Glitch overlay */}
                 <motion.span
-                  className="absolute top-0 left-0 bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent"
+                  className="absolute top-0 left-0 bg-gradient-to-r from-[#145dfb] to-blue-500 bg-clip-text text-transparent"
                   animate={{
                     x: [0, 2, -2, 0],
                     opacity: [0, 0.7, 0, 0],
