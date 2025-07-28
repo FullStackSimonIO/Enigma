@@ -1,6 +1,7 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { BiChevronDown } from "react-icons/bi";
 
 interface DesignHeroProps {
   title: string;
@@ -8,6 +9,8 @@ interface DesignHeroProps {
 }
 
 export const DesignHero = ({ title, description }: DesignHeroProps) => {
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Futuristic Background Elements */}
@@ -174,14 +177,42 @@ export const DesignHero = ({ title, description }: DesignHeroProps) => {
               </span>
             </motion.h1>
 
-            <motion.p
-              className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto"
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.9 }}
+              className="max-w-3xl mx-auto"
             >
-              {description}
-            </motion.p>
+              <motion.div
+                className={`text-lg sm:text-xl text-gray-300 leading-relaxed transition-all duration-300 ${
+                  !isDescriptionExpanded ? "line-clamp-3" : ""
+                }`}
+                style={{
+                  display: "-webkit-box",
+                  WebkitLineClamp: !isDescriptionExpanded ? 3 : "none",
+                  WebkitBoxOrient: "vertical",
+                  overflow: !isDescriptionExpanded ? "hidden" : "visible",
+                }}
+              >
+                {description}
+              </motion.div>
+              <motion.button
+                onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+                className="mt-3 text-cyan-400 hover:text-cyan-300 font-medium flex items-center space-x-1 transition-colors duration-200 mx-auto"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span>
+                  {isDescriptionExpanded ? "Weniger anzeigen" : "Mehr anzeigen"}
+                </span>
+                <motion.div
+                  animate={{ rotate: isDescriptionExpanded ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <BiChevronDown className="text-sm" />
+                </motion.div>
+              </motion.button>
+            </motion.div>
           </motion.div>
 
           {/* Futuristic Status Indicators */}
@@ -191,57 +222,31 @@ export const DesignHero = ({ title, description }: DesignHeroProps) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
           >
-            {["ROTORS", "REFLECTOR", "PLUGBOARD"].map((component, index) => (
-              <motion.div
-                key={component}
-                className="flex items-center space-x-2"
-                animate={{
-                  opacity: [0.5, 1, 0.5],
-                }}
-                transition={{
-                  duration: 2,
-                  delay: index * 0.3,
-                  repeat: Infinity,
-                }}
-              >
-                <div className="w-2 h-2 bg-green-400 rounded-full" />
-                <span className="text-xs text-cyan-400 font-mono uppercase tracking-wider">
-                  {component}
-                </span>
-              </motion.div>
-            ))}
+            {["ROTOREN", "REFLEKTOREN", "STECKERBRETT"].map(
+              (component, index) => (
+                <motion.div
+                  key={component}
+                  className="flex items-center space-x-2"
+                  animate={{
+                    opacity: [0.5, 1, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    delay: index * 0.3,
+                    repeat: Infinity,
+                  }}
+                >
+                  <div className="w-2 h-2 bg-green-400 rounded-full" />
+                  <span className="text-xs text-cyan-400 font-mono uppercase tracking-wider">
+                    {component}
+                  </span>
+                </motion.div>
+              )
+            )}
           </motion.div>
         </motion.div>
 
         {/* Holographic Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-        >
-          <motion.div
-            className="relative"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <div className="w-8 h-12 border-2 border-cyan-400/50 rounded-full flex justify-center relative">
-              <motion.div
-                className="w-1 h-4 bg-cyan-400 rounded-full mt-2"
-                animate={{
-                  opacity: [0.3, 1, 0.3],
-                  y: [0, 4, 0],
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-              {/* Glow effect */}
-              <div className="absolute inset-0 border-2 border-cyan-400/20 rounded-full animate-pulse" />
-            </div>
-            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-cyan-400 font-mono">
-              EXPLORE
-            </div>
-          </motion.div>
-        </motion.div>
       </div>
 
       {/* Ambient Particles */}

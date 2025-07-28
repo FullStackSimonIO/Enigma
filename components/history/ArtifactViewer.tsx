@@ -7,7 +7,9 @@ import {
   BiRotateLeft,
   BiRotateRight,
   BiInfoCircle,
+  BiChevronDown,
 } from "react-icons/bi";
+import Image from "next/image";
 
 interface MachineKey {
   id: string;
@@ -22,7 +24,7 @@ interface MachineKey {
 const historicalKeys: MachineKey[] = [
   {
     id: "1942-05-15",
-    date: "May 15, 1942",
+    date: "15. Mai 1942",
     rotorSettings: ["III", "VI", "VIII"],
     plugboardConnections: {
       A: "M",
@@ -33,13 +35,14 @@ const historicalKeys: MachineKey[] = [
       P: "U",
     },
     reflector: "B",
-    description: "Key used during the Battle of the Coral Sea",
+    description:
+      "Schlüssel, der während der Schlacht im Korallenmeer verwendet wurde",
     significance:
-      "This key configuration was used for critical naval communications during one of the first major carrier battles.",
+      "Diese Schlüsselkonfiguration wurde für kritische Marinekommunikationen während einer der ersten großen Trägerschlachten verwendet.",
   },
   {
     id: "1943-07-20",
-    date: "July 20, 1943",
+    date: "20. Juli 1943",
     rotorSettings: ["I", "IV", "V"],
     plugboardConnections: {
       B: "R",
@@ -50,13 +53,13 @@ const historicalKeys: MachineKey[] = [
       W: "X",
     },
     reflector: "C",
-    description: "Atlantic U-boat operations key",
+    description: "Atlantik-U-Boot-Operationsschlüssel",
     significance:
-      "Used by U-boat wolfpacks during intense Atlantic convoy battles.",
+      "Wurde von U-Boot-Wolfpacken während intensiver Atlantik-Konvoikämpfe verwendet.",
   },
   {
     id: "1944-06-06",
-    date: "June 6, 1944",
+    date: "6. Juni 1944",
     rotorSettings: ["V", "II", "VIII"],
     plugboardConnections: {
       C: "Y",
@@ -67,9 +70,9 @@ const historicalKeys: MachineKey[] = [
       Q: "V",
     },
     reflector: "B",
-    description: "D-Day invasion communications",
+    description: "D-Day-Invasionskommunikation",
     significance:
-      "Critical key used during the Normandy landings - one of the most important days in WWII.",
+      "Kritischer Schlüssel, der während der Landungen in der Normandie verwendet wurde - einer der wichtigsten Tage im Zweiten Weltkrieg.",
   },
 ];
 
@@ -78,6 +81,7 @@ export const ArtifactViewer = () => {
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
   const [showDetails, setShowDetails] = useState(false);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   const currentKey = historicalKeys[selectedKey];
 
@@ -98,12 +102,86 @@ export const ArtifactViewer = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Artifact <span className="text-red-500">Viewer</span>
+            Tägliche <span className="text-red-500">Einstellungen</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Examine historical Enigma machine keys and their wartime
-            significance
-          </p>
+          <div className="max-w-2xl mx-auto">
+            <motion.div
+              className={`text-gray-400 text-lg transition-all duration-300 ${
+                !isDescriptionExpanded ? "line-clamp-3" : ""
+              }`}
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: !isDescriptionExpanded ? 3 : "none",
+                WebkitBoxOrient: "vertical",
+                overflow: !isDescriptionExpanded ? "hidden" : "visible",
+              }}
+            >
+              Die täglichen Einstellungen der Enigma-Maschine wurden durch
+              spezielle Schlüsselblätter geregelt, die in der Praxis als
+              zentrale Komponente der Verschlüsselung dienten. Diese sogenannten
+              Schlüsselhefte oder Schlüsselzettel wurden meist monatlich im
+              Voraus ausgegeben und enthielten für jeden Kalendertag eine
+              vollständige Übersicht über die für diesen Tag gültigen
+              Enigma-Einstellungen. Sie waren streng geheim, wurden nur in
+              versiegelter Form weitergegeben und durften ausschließlich von
+              autorisiertem Personal – meist Offizieren – eingesehen und
+              verwendet werden. Ein typisches Blatt eines solchen Schlüsselhefts
+              war in mehrere Zeilen unterteilt, wobei jede Zeile die
+              vollständige Schlüsselkonfiguration für einen bestimmten Tag
+              enthielt. Dazu zählten unter anderem die Auswahl und Reihenfolge
+              der Rotoren, die Anfangsstellung (Grundstellung) der Walzen, die
+              Steckerverbindungen auf dem Steckerbrett sowie gegebenenfalls
+              Sonderinformationen wie die verwendete Umkehrwalze (UKW). Diese
+              Parameter mussten exakt mit den Einstellungen auf der Enigma
+              übereinstimmen, um eine korrekte Ver- und Entschlüsselung der
+              Nachrichten zu ermöglichen. Jeden Morgen, meist zu einem
+              festgelegten Zeitpunkt, wurde die jeweils unterste Zeile des
+              Blattes – also die Einstellung für den aktuellen Tag – verwendet.
+              Um die Verwechslungsgefahr mit vorherigen Tagen zu minimieren und
+              gleichzeitig die Geheimhaltung zu erhöhen, wurde die benutzte
+              Zeile nach dem Eintragen in die Maschine sofort abgetrennt. Dies
+              erfolgte oft buchstäblich mit einem Lineal oder Messer, sodass der
+              Abschnitt für den aktuellen Tag vom restlichen Schlüsselblatt
+              getrennt und anschließend vernichtet werden konnte. Diese Praxis
+              sollte sicherstellen, dass bei einer Gefangennahme oder einem
+              Verlust der Unterlagen möglichst wenig kompromittiert wurde –
+              idealerweise nur der Schlüssel eines einzelnen Tages. Die Blätter
+              selbst waren meist im Voraus für einen Monat vorbereitet. Sie
+              wurden versiegelt und durften jeweils erst zum Monatsbeginn
+              geöffnet werden. In besonders sicherheitsrelevanten Bereichen, wie
+              etwa auf U-Booten der Kriegsmarine, war die Handhabung noch
+              strikter: Dort wurden die Schlüsselhefte meist doppelt geführt –
+              einmal für die normalen Tagesmeldungen und zusätzlich für
+              Kurzsignale wie Wetterberichte oder Angriffspositionen. Auch die
+              Gültigkeit einzelner Schlüssel konnte bei Bedarf kurzfristig
+              geändert werden, etwa wenn ein Verdacht auf Kompromittierung
+              bestand. Diese Schlüsselblätter waren das eigentliche Herzstück
+              der Enigma-Verschlüsselung: Ohne die exakte Kenntnis der
+              jeweiligen Tagesparameter war die Maschine praktisch nutzlos.
+              Deshalb waren sie auch militärisch betrachtet von höchstem Wert –
+              und ihr Verlust galt als extrem sicherheitsgefährdend. Der
+              legendäre Erfolg der Alliierten beim Knacken der Enigma beruhte
+              daher nicht nur auf der Analyse der Maschine selbst, sondern auch
+              auf der gelegentlichen Eroberung solcher Schlüsselunterlagen, etwa
+              durch die Kaperung deutscher U-Boote oder Versorgungsschiffe.
+            </motion.div>
+            <motion.button
+              onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+              className="mt-3 text-red-400 hover:text-red-300 font-medium flex items-center space-x-1 transition-colors duration-200"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span>
+                {isDescriptionExpanded ? "Weniger anzeigen" : "Mehr anzeigen"}
+              </span>
+              <motion.div
+                animate={{ rotate: isDescriptionExpanded ? 180 : 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <BiChevronDown className="text-sm" />
+              </motion.div>
+            </motion.button>
+          </div>
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -140,7 +218,7 @@ export const ArtifactViewer = () => {
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.2 }}
                     >
-                      Currently viewing
+                      Aktuell
                     </motion.div>
                   )}
                 </motion.button>
@@ -155,7 +233,7 @@ export const ArtifactViewer = () => {
               <div className="bg-gray-800 p-4 border-b border-gray-700">
                 <div className="flex items-center justify-between">
                   <h3 className="text-lg font-semibold text-white">
-                    Machine Key - {currentKey.date}
+                    Maschinenschlüssel - {currentKey.date}
                   </h3>
                   <div className="flex items-center space-x-2">
                     {/* Zoom Controls */}
@@ -306,7 +384,7 @@ export const ArtifactViewer = () => {
                   >
                     <div className="p-6">
                       <h4 className="text-lg font-semibold text-white mb-3">
-                        Historical Significance
+                        Historische Bedeutung
                       </h4>
                       <p className="text-gray-300 leading-relaxed">
                         {currentKey.significance}
@@ -315,18 +393,18 @@ export const ArtifactViewer = () => {
                       <div className="mt-4 grid sm:grid-cols-2 gap-4">
                         <div className="bg-gray-800 rounded-lg p-3">
                           <h5 className="font-semibold text-red-400 mb-1">
-                            Encryption Strength
+                            Verschlüsselungsstärke
                           </h5>
                           <p className="text-sm text-gray-400">
-                            ~159 quintillion possible combinations
+                            ~159 Quintillion mögliche Kombinationen
                           </p>
                         </div>
                         <div className="bg-gray-800 rounded-lg p-3">
                           <h5 className="font-semibold text-red-400 mb-1">
-                            Key Distribution
+                            Schlüsselverteilung
                           </h5>
                           <p className="text-sm text-gray-400">
-                            Changed daily at midnight
+                            Täglich um Mitternacht geändert
                           </p>
                         </div>
                       </div>
@@ -337,6 +415,49 @@ export const ArtifactViewer = () => {
             </div>
           </div>
         </div>
+
+        {/* Historical Settings Plan Image */}
+        <motion.div
+          className="mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <div className="text-center mb-8">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+              Authentisches <span className="text-red-500">Schlüsselblatt</span>
+            </h3>
+            <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+              Ein originalgetreues Schlüsselblatt aus dem Zweiten Weltkrieg
+              zeigt die strenge Organisation und Systematik der deutschen
+              Enigma-Verschlüsselung.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            {/* Optional: Add actual image if you have one */}
+
+            <motion.div
+              className="mt-8"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <Image
+                src="/maschinenschluessel.png"
+                width={800}
+                height={600}
+                alt="Authentic Enigma settings plan from WWII"
+                className="w-full rounded-xl shadow-2xl border border-gray-700"
+              />
+              <p className="text-center text-sm text-gray-500 mt-4">
+                Authentisches Enigma-Schlüsselblatt aus dem Bundesarchiv
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

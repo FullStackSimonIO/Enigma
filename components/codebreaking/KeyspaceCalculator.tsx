@@ -79,14 +79,15 @@ export const KeyspaceCalculator = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Keyspace{" "}
+            Schlüsselraum{" "}
             <span className="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
-              Calculator
+              Rechner
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Explore the astronomical number of possible Enigma configurations
-            and understand why brute force was impossible
+            Erforschen Sie die astronomische Anzahl möglicher
+            Enigma-Konfigurationen und verstehen Sie, warum Brute-Force
+            unmöglich war
           </p>
         </motion.div>
 
@@ -102,7 +103,7 @@ export const KeyspaceCalculator = () => {
             <div className="flex items-center justify-between mb-8">
               <h3 className="text-2xl font-bold text-white flex items-center">
                 <BiCalculator className="mr-3 text-red-400" />
-                Configuration Settings
+                Konfigurations-Einstellungen
               </h3>
               <motion.button
                 onClick={resetToDefaults}
@@ -111,7 +112,7 @@ export const KeyspaceCalculator = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <BiRefresh />
-                <span>Reset</span>
+                <span>Zurücksetzen</span>
               </motion.button>
             </div>
 
@@ -119,12 +120,12 @@ export const KeyspaceCalculator = () => {
               {/* Rotor Settings */}
               <div className="space-y-6">
                 <h4 className="text-lg font-semibold text-red-400">
-                  Rotor Configuration
+                  Rotor Konfiguration
                 </h4>
 
                 <div>
                   <label className="block text-white font-medium mb-3">
-                    Number of Rotors:{" "}
+                    Anzahl der Rotoren:{" "}
                     <span className="text-red-400">{rotorCount}</span>
                   </label>
                   <input
@@ -143,7 +144,7 @@ export const KeyspaceCalculator = () => {
 
                 <div>
                   <label className="block text-white font-medium mb-3">
-                    Positions per Rotor:{" "}
+                    Positionen pro Rotor:{" "}
                     <span className="text-red-400">{rotorPositions}</span>
                   </label>
                   <input
@@ -164,7 +165,7 @@ export const KeyspaceCalculator = () => {
 
                 <div>
                   <label className="block text-white font-medium mb-3">
-                    Available Rotors:{" "}
+                    Verfügbare Rotoren:{" "}
                     <span className="text-red-400">{rotorSelection}</span>
                   </label>
                   <input
@@ -192,7 +193,7 @@ export const KeyspaceCalculator = () => {
                     className="w-4 h-4 text-red-600 bg-gray-700 border-gray-600 rounded focus:ring-red-500"
                   />
                   <label htmlFor="rotorOrder" className="text-white">
-                    Include rotor order permutations
+                    Rotor-Reihenfolge Permutationen einbeziehen
                   </label>
                 </div>
               </div>
@@ -200,7 +201,7 @@ export const KeyspaceCalculator = () => {
               {/* Plugboard Settings */}
               <div className="space-y-6 pt-6 border-t border-gray-700">
                 <h4 className="text-lg font-semibold text-orange-400">
-                  Plugboard Configuration
+                  Steckerbrett Konfiguration
                 </h4>
 
                 <div className="flex items-center space-x-3">
@@ -212,14 +213,14 @@ export const KeyspaceCalculator = () => {
                     className="w-4 h-4 text-orange-600 bg-gray-700 border-gray-600 rounded focus:ring-orange-500"
                   />
                   <label htmlFor="plugboard" className="text-white">
-                    Enable plugboard
+                    Steckerbrett aktivieren
                   </label>
                 </div>
 
                 {includePlugboard && (
                   <div>
                     <label className="block text-white font-medium mb-3">
-                      Plugboard Pairs:{" "}
+                      Steckerbrett Paare:{" "}
                       <span className="text-orange-400">{plugboardPairs}</span>
                     </label>
                     <input
@@ -252,7 +253,7 @@ export const KeyspaceCalculator = () => {
           >
             <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
               <BiCog className="mr-3 text-orange-400" />
-              Keyspace Analysis
+              Schlüsselraum Analyse
             </h3>
 
             {/* Component Breakdown */}
@@ -264,7 +265,7 @@ export const KeyspaceCalculator = () => {
               >
                 <div className="flex justify-between items-center">
                   <span className="text-white font-medium">
-                    Rotor Positions
+                    Rotor Positionen
                   </span>
                   <span className="text-red-400 font-bold">
                     {formatNumber(rotorPositionSpace)}
@@ -282,9 +283,7 @@ export const KeyspaceCalculator = () => {
                 transition={{ duration: 0.5 }}
               >
                 <div className="flex justify-between items-center">
-                  <span className="text-white font-medium">
-                    Rotor Selection
-                  </span>
+                  <span className="text-white font-medium">Rotor Auswahl</span>
                   <span className="text-orange-400 font-bold">
                     {formatNumber(rotorOrderSpace)}
                   </span>
@@ -292,7 +291,7 @@ export const KeyspaceCalculator = () => {
                 <div className="text-sm text-gray-400 mt-1">
                   {includeRotorOrder
                     ? `P(${rotorSelection}, ${rotorCount})`
-                    : "Fixed order"}
+                    : "Feste Reihenfolge"}
                 </div>
               </motion.div>
 
@@ -302,13 +301,13 @@ export const KeyspaceCalculator = () => {
                 transition={{ duration: 0.5 }}
               >
                 <div className="flex justify-between items-center">
-                  <span className="text-white font-medium">Plugboard</span>
+                  <span className="text-white font-medium">Steckerbrett</span>
                   <span className="text-yellow-400 font-bold">
                     {formatNumber(plugboardSpace)}
                   </span>
                 </div>
                 <div className="text-sm text-gray-400 mt-1">
-                  {includePlugboard ? `${plugboardPairs} pairs` : "Disabled"}
+                  {includePlugboard ? `${plugboardPairs} Paare` : "Deaktiviert"}
                 </div>
               </motion.div>
             </div>
@@ -332,7 +331,7 @@ export const KeyspaceCalculator = () => {
             >
               <div className="text-center">
                 <h4 className="text-xl font-bold text-white mb-4">
-                  Total Keyspace
+                  Gesamt Schlüsselraum
                 </h4>
                 <motion.div
                   className="text-4xl font-bold bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent mb-2"
@@ -344,7 +343,7 @@ export const KeyspaceCalculator = () => {
                   {formatNumber(totalKeyspace)}
                 </motion.div>
                 <div className="text-gray-300 text-sm">
-                  {totalKeyspace.toExponential(2)} possible configurations
+                  {totalKeyspace.toExponential(2)} mögliche Konfigurationen
                 </div>
               </div>
             </motion.div>
@@ -352,7 +351,7 @@ export const KeyspaceCalculator = () => {
             {/* Breaking Time Estimates */}
             <div className="space-y-4">
               <h4 className="text-lg font-bold text-white">
-                Brute Force Analysis
+                Brute-Force Analyse
               </h4>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -360,22 +359,26 @@ export const KeyspaceCalculator = () => {
                   <div className="text-2xl font-bold text-cyan-400">
                     {formatNumber(timeToBreak / 2)}
                   </div>
-                  <div className="text-sm text-gray-400">Seconds (Average)</div>
+                  <div className="text-sm text-gray-400">
+                    Sekunden (Durchschnitt)
+                  </div>
                 </div>
                 <div className="bg-gray-800 rounded-lg p-4 text-center">
                   <div className="text-2xl font-bold text-green-400">
                     {yearsToBreak > 1e6 ? "∞" : formatNumber(yearsToBreak / 2)}
                   </div>
-                  <div className="text-sm text-gray-400">Years (Average)</div>
+                  <div className="text-sm text-gray-400">
+                    Jahre (Durchschnitt)
+                  </div>
                 </div>
               </div>
 
               <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
                 <p className="text-red-300 text-sm">
-                  <strong>Note:</strong> These calculations assume 1 million key
-                  tests per second. In reality, 1940s technology could test only
-                  hundreds of keys per second, making brute force completely
-                  impractical.
+                  <strong>Hinweis:</strong> Diese Berechnungen gehen von 1
+                  Million Schlüssel- tests pro Sekunde aus. In Wirklichkeit
+                  konnte die 1940er-Technologie nur Hunderte von Schlüsseln pro
+                  Sekunde testen, was Brute-Force völlig unpraktikabel machte.
                 </p>
               </div>
             </div>
@@ -391,15 +394,15 @@ export const KeyspaceCalculator = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <h4 className="text-2xl font-bold text-white mb-6 text-center">
-            Keyspace Formula
+            Schlüsselraum Formel
           </h4>
           <div className="text-center space-y-4">
             <div className="text-2xl font-mono text-cyan-400">
               K = R<sup>n</sup> × P(r,n) × C(26,2p)
             </div>
             <div className="text-sm text-gray-400 max-w-2xl mx-auto">
-              Where: R = rotor positions, n = number of rotors, r = available
-              rotors, p = plugboard pairs
+              Wobei: R = Rotor Positionen, n = Anzahl der Rotoren, r =
+              verfügbare Rotoren, p = Steckerbrett Paare
             </div>
             <div className="text-lg font-mono text-orange-400">
               K = {rotorPositions}

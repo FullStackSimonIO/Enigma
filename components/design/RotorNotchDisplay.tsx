@@ -1,7 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { BiRotateRight, BiZoomIn, BiZoomOut } from "react-icons/bi";
+import {
+  BiRotateRight,
+  BiZoomIn,
+  BiZoomOut,
+  BiChevronDown,
+} from "react-icons/bi";
 
 interface RotorProps {
   rotorNumber: number;
@@ -86,7 +91,7 @@ const Rotor = ({
 
       {/* Wiring Display */}
       <div className="mt-4 text-center">
-        <div className="text-xs text-gray-400 mb-1">Wiring</div>
+        <div className="text-xs text-gray-400 mb-1">Verdrahtung</div>
         <div className="font-mono text-xs text-cyan-400 bg-gray-900 rounded px-2 py-1">
           {wiring.slice(0, 8)}...
         </div>
@@ -99,6 +104,7 @@ export const RotorNotchDisplay = () => {
   const [rotorPositions, setRotorPositions] = useState([0, 5, 12]);
   const [zoom, setZoom] = useState(1);
   const [selectedRotor, setSelectedRotor] = useState<number | null>(null);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   const rotors = [
     { number: 1, wiring: "EKMFLGDQVZNTOWYHXUSPAIBRCJ", notch: 16 }, // Q
@@ -138,12 +144,86 @@ export const RotorNotchDisplay = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Rotor <span className="text-cyan-400">Mechanism</span>
+            Walzen <span className="text-cyan-400">Mechanismus</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Explore the intricate rotor system and understand how notches
-            control the stepping mechanism
-          </p>
+          <div>
+            <p
+              className={`text-gray-400 text-lg max-w-2xl mx-auto transition-all duration-300 ${
+                !isDescriptionExpanded ? "line-clamp-3 overflow-hidden" : ""
+              }`}
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: !isDescriptionExpanded ? 3 : "unset",
+                WebkitBoxOrient: "vertical" as const,
+                overflow: !isDescriptionExpanded ? "hidden" : "visible",
+              }}
+            >
+              Die täglichen Einstellungen der Enigma-Maschine wurden durch
+              spezielle Schlüsselblätter geregelt, die in der Praxis als
+              zentrale Komponente der Verschlüsselung dienten. Diese sogenannten
+              Schlüsselhefte oder Schlüsselzettel wurden meist monatlich im
+              Voraus ausgegeben und enthielten für jeden Kalendertag eine
+              vollständige Übersicht über die für diesen Tag gültigen
+              Enigma-Einstellungen. Sie waren streng geheim, wurden nur in
+              versiegelter Form weitergegeben und durften ausschließlich von
+              autorisiertem Personal – meist Offizieren – eingesehen und
+              verwendet werden. Ein typisches Blatt eines solchen Schlüsselhefts
+              war in mehrere Zeilen unterteilt, wobei jede Zeile die
+              vollständige Schlüsselkonfiguration für einen bestimmten Tag
+              enthielt. Dazu zählten unter anderem die Auswahl und Reihenfolge
+              der Rotoren, die Anfangsstellung (Grundstellung) der Walzen, die
+              Steckerverbindungen auf dem Steckerbrett sowie gegebenenfalls
+              Sonderinformationen wie die verwendete Umkehrwalze (UKW). Diese
+              Parameter mussten exakt mit den Einstellungen auf der Enigma
+              übereinstimmen, um eine korrekte Ver- und Entschlüsselung der
+              Nachrichten zu ermöglichen. Jeden Morgen, meist zu einem
+              festgelegten Zeitpunkt, wurde die jeweils unterste Zeile des
+              Blattes – also die Einstellung für den aktuellen Tag – verwendet.
+              Um die Verwechslungsgefahr mit vorherigen Tagen zu minimieren und
+              gleichzeitig die Geheimhaltung zu erhöhen, wurde die benutzte
+              Zeile nach dem Eintragen in die Maschine sofort abgetrennt. Dies
+              erfolgte oft buchstäblich mit einem Lineal oder Messer, sodass der
+              Abschnitt für den aktuellen Tag vom restlichen Schlüsselblatt
+              getrennt und anschließend vernichtet werden konnte. Diese Praxis
+              sollte sicherstellen, dass bei einer Gefangennahme oder einem
+              Verlust der Unterlagen möglichst wenig kompromittiert wurde –
+              idealerweise nur der Schlüssel eines einzelnen Tages. Die Blätter
+              selbst waren meist im Voraus für einen Monat vorbereitet. Sie
+              wurden versiegelt und durften jeweils erst zum Monatsbeginn
+              geöffnet werden. In besonders sicherheitsrelevanten Bereichen, wie
+              etwa auf U-Booten der Kriegsmarine, war die Handhabung noch
+              strikter: Dort wurden die Schlüsselhefte meist doppelt geführt –
+              einmal für die normalen Tagesmeldungen und zusätzlich für
+              Kurzsignale wie Wetterberichte oder Angriffspositionen. Auch die
+              Gültigkeit einzelner Schlüssel konnte bei Bedarf kurzfristig
+              geändert werden, etwa wenn ein Verdacht auf Kompromittierung
+              bestand. Diese Schlüsselblätter waren das eigentliche Herzstück
+              der Enigma-Verschlüsselung: Ohne die exakte Kenntnis der
+              jeweiligen Tagesparameter war die Maschine praktisch nutzlos.
+              Deshalb waren sie auch militärisch betrachtet von höchstem Wert –
+              und ihr Verlust galt als extrem sicherheitsgefährdend. Der
+              legendäre Erfolg der Alliierten beim Knacken der Enigma beruhte
+              daher nicht nur auf der Analyse der Maschine selbst, sondern auch
+              auf der gelegentlichen Eroberung solcher Schlüsselunterlagen, etwa
+              durch die Kaperung deutscher U-Boote oder Versorgungsschiffe.
+            </p>
+            <motion.button
+              onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+              className="mt-4 flex items-center justify-center space-x-2 text-cyan-400 hover:text-cyan-300 transition-colors mx-auto"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="text-sm">
+                {isDescriptionExpanded ? "Weniger anzeigen" : "Mehr anzeigen"}
+              </span>
+              <motion.div
+                animate={{ rotate: isDescriptionExpanded ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <BiChevronDown />
+              </motion.div>
+            </motion.button>
+          </div>
         </motion.div>
 
         <div className="grid lg:grid-cols-4 gap-8">
@@ -152,7 +232,7 @@ export const RotorNotchDisplay = () => {
             {/* View Controls */}
             <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
               <h3 className="text-lg font-bold text-white mb-4">
-                View Controls
+                Ansichtssteuerung
               </h3>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -184,7 +264,7 @@ export const RotorNotchDisplay = () => {
 
             {/* Rotor Information */}
             <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-              <h3 className="text-lg font-bold text-white mb-4">Rotor Info</h3>
+              <h3 className="text-lg font-bold text-white mb-4">Walzen Info</h3>
               <div className="space-y-3">
                 {rotors.map((rotor, index) => (
                   <motion.div
@@ -201,14 +281,14 @@ export const RotorNotchDisplay = () => {
                   >
                     <div className="flex justify-between items-center">
                       <span className="text-white font-semibold">
-                        Rotor {rotor.number}
+                        Walze {rotor.number}
                       </span>
                       <span className="text-sm text-gray-400">
                         Pos: {String.fromCharCode(65 + rotorPositions[index])}
                       </span>
                     </div>
                     <div className="text-xs text-gray-400 mt-1">
-                      Notch: {String.fromCharCode(65 + rotor.notch)}
+                      Kerbe: {String.fromCharCode(65 + rotor.notch)}
                     </div>
                     {selectedRotor === index && (
                       <motion.div
@@ -230,14 +310,18 @@ export const RotorNotchDisplay = () => {
             {/* Stepping Explanation */}
             <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
               <h3 className="text-lg font-bold text-white mb-4">
-                Stepping Mechanism
+                Schaltmechanismus
               </h3>
               <div className="space-y-2 text-sm text-gray-400">
-                <p>• Right rotor steps with each keypress</p>
-                <p>• Middle rotor steps when right rotor reaches notch</p>
-                <p>• Left rotor steps when middle rotor reaches notch</p>
+                <p>• Rechte Walze dreht sich bei jedem Tastendruck</p>
+                <p>
+                  • Mittlere Walze dreht sich wenn rechte Walze Kerbe erreicht
+                </p>
+                <p>
+                  • Linke Walze dreht sich wenn mittlere Walze Kerbe erreicht
+                </p>
                 <p className="text-red-400">
-                  • Double stepping occurs at middle rotor notch
+                  • Doppelschritt tritt bei mittlerer Walzen-Kerbe auf
                 </p>
               </div>
             </div>
@@ -281,7 +365,7 @@ export const RotorNotchDisplay = () => {
                           animate={{ opacity: [0.5, 1, 0.5] }}
                           transition={{ duration: 1, repeat: Infinity }}
                         >
-                          AT NOTCH!
+                          BEI KERBE!
                         </motion.div>
                       )}
                     </div>
@@ -298,7 +382,7 @@ export const RotorNotchDisplay = () => {
                   whileTap={{ scale: 0.98 }}
                 >
                   <BiRotateRight />
-                  <span>Step Rotors</span>
+                  <span>Walzen drehen</span>
                 </motion.button>
 
                 <motion.button
@@ -307,20 +391,20 @@ export const RotorNotchDisplay = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Reset
+                  Zurücksetzen
                 </motion.button>
               </div>
 
               {/* Educational Info */}
               <div className="mt-8 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
                 <h4 className="text-white font-semibold mb-2">
-                  Understanding Notches
+                  Kerben verstehen
                 </h4>
                 <p className="text-gray-400 text-sm">
-                  The red indicator shows the notch position. When a rotor
-                  reaches its notch, it causes the next rotor to step. This
-                  mechanism was crucial for Enigma&apos;s security but also
-                  provided patterns that helped codebreakers.
+                  Der rote Indikator zeigt die Kerbenposition. Wenn eine Walze
+                  ihre Kerbe erreicht, veranlasst sie die nächste Walze zum
+                  Drehen. Dieser Mechanismus war entscheidend für Enigmas
+                  Sicherheit, bot aber auch Muster, die Codeknackern halfen.
                 </p>
               </div>
             </div>

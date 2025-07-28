@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { BiChevronDown } from "react-icons/bi";
 
 interface CryptographyHeroProps {
   title: string;
@@ -12,6 +13,7 @@ export const CryptographyHero = ({
   description,
 }: CryptographyHeroProps) => {
   const [isClient, setIsClient] = useState(false);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -135,14 +137,42 @@ export const CryptographyHero = ({
             {title}
           </motion.h1>
 
-          <motion.p
-            className="text-xl sm:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
+            className="max-w-3xl mx-auto"
           >
-            {description}
-          </motion.p>
+            <p
+              className={`text-xl sm:text-2xl text-gray-300 mb-4 leading-relaxed transition-all duration-300 ${
+                !isDescriptionExpanded ? "line-clamp-3 overflow-hidden" : ""
+              }`}
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: !isDescriptionExpanded ? 3 : "unset",
+                WebkitBoxOrient: "vertical" as const,
+                overflow: !isDescriptionExpanded ? "hidden" : "visible",
+              }}
+            >
+              {description}
+            </p>
+            <motion.button
+              onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+              className="mt-4 flex items-center justify-center space-x-2 text-purple-400 hover:text-purple-300 transition-colors mx-auto"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="text-sm">
+                {isDescriptionExpanded ? "Weniger anzeigen" : "Mehr anzeigen"}
+              </span>
+              <motion.div
+                animate={{ rotate: isDescriptionExpanded ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <BiChevronDown />
+              </motion.div>
+            </motion.button>
+          </motion.div>
 
           {/* Complexity Indicator */}
           <motion.div
@@ -169,7 +199,7 @@ export const CryptographyHero = ({
               >
                 26³
               </motion.div>
-              <div className="text-gray-300">Rotor Positions</div>
+              <div className="text-gray-300">Rotor Positionen</div>
             </div>
 
             <div className="bg-gradient-to-br from-cyan-900/50 to-cyan-800/30 p-6 rounded-2xl border border-cyan-500/30">
@@ -190,7 +220,7 @@ export const CryptographyHero = ({
               >
                 10¹⁰
               </motion.div>
-              <div className="text-gray-300">Plugboard Settings</div>
+              <div className="text-gray-300">Steckerbrett Einstellungen</div>
             </div>
 
             <div className="bg-gradient-to-br from-blue-900/50 to-blue-800/30 p-6 rounded-2xl border border-blue-500/30">
@@ -211,7 +241,7 @@ export const CryptographyHero = ({
               >
                 150T
               </motion.div>
-              <div className="text-gray-300">Total Combinations</div>
+              <div className="text-gray-300">Mögliche Kombinationen</div>
             </div>
           </motion.div>
         </motion.div>
@@ -255,40 +285,6 @@ export const CryptographyHero = ({
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={
-          isClient
-            ? {
-                y: [0, 10, 0],
-              }
-            : {}
-        }
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-        }}
-      >
-        <div className="flex flex-col items-center space-y-2">
-          <div className="w-6 h-10 border-2 border-purple-400 rounded-full flex justify-center">
-            <motion.div
-              className="w-1 h-3 bg-purple-400 rounded-full mt-2"
-              animate={
-                isClient
-                  ? {
-                      y: [0, 12, 0],
-                    }
-                  : {}
-              }
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-              }}
-            />
-          </div>
-          <div className="text-sm text-purple-400 font-mono">SCROLL</div>
-        </div>
-      </motion.div>
     </section>
   );
 };

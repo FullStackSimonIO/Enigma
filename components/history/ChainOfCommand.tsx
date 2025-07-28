@@ -16,45 +16,45 @@ interface ChainMember {
 const chainOfCommand: ChainMember[] = [
   {
     id: "officer",
-    title: "Commanding Officer",
-    role: "Strategic Command",
+    title: "Kommandooffizier",
+    role: "Strategisches Kommando",
     description:
-      "Responsible for overall mission planning and high-level strategic communications.",
+      "Verantwortlich für die gesamte Einsatzplanung und die übergeordneten strategischen Kommunikationsabläufe.",
     responsibilities: [
-      "Mission planning and objectives",
-      "Strategic communication approval",
-      "Security protocol oversight",
-      "Personnel management",
+      "Planung von Missionen und Festlegung der Einsatzziele",
+      "Freigabe und Überwachung der strategischen Kommunikation",
+      "Kontrolle von Sicherheitsprotokollen",
+      "Personalführung und -koordination",
     ],
     icon: <BiShield className="text-2xl" />,
     color: "from-yellow-500 to-orange-500",
   },
   {
     id: "operator",
-    title: "Radio Operator",
-    role: "Communication Specialist",
+    title: "Funker",
+    role: "Kommunikationsspezialist",
     description:
-      "Trained specialist responsible for encoding and transmitting messages using Enigma.",
+      "Ausgebildeter Spezialist für das Verschlüsseln und Übermitteln von Nachrichten mit der Enigma-Maschine.",
     responsibilities: [
-      "Daily key setting configuration",
-      "Message encoding and decoding",
-      "Equipment maintenance",
-      "Communication protocols",
+      "Tägliche Konfiguration der Schlüssel- und Walzeneinstellungen",
+      "Ver- und Entschlüsselung von Nachrichten",
+      "Wartung und Funktionsprüfung der Kommunikationsgeräte",
+      "Einhaltung der Funk- und Kommunikationsprotokolle",
     ],
     icon: <BiRadio className="text-2xl" />,
     color: "from-blue-500 to-cyan-500",
   },
   {
     id: "key-keeper",
-    title: "Key Position Officer",
-    role: "Security Specialist",
+    title: "Schlüsseloffizier",
+    role: "Sicherheitsspezialist",
     description:
-      "Responsible for managing encryption keys and maintaining communication security.",
+      "Verantwortlich für die Verwaltung der Verschlüsselungsschlüssel und die Aufrechterhaltung der Kommunikationssicherheit.",
     responsibilities: [
-      "Daily key distribution",
-      "Security protocol enforcement",
-      "Equipment security",
-      "Emergency procedures",
+      "Tägliche Ausgabe und Verwaltung der Schlüsselunterlagen",
+      "Durchsetzung und Kontrolle der Sicherheitsprotokolle",
+      "Sicherung und Schutz der Geräte",
+      "Einleitung von Notfallmaßnahmen bei Sicherheitsverletzungen",
     ],
     icon: <BiKey className="text-2xl" />,
     color: "from-red-500 to-pink-500",
@@ -66,6 +66,7 @@ export const ChainOfCommand = () => {
   const [hoveredConnection, setHoveredConnection] = useState<number | null>(
     null
   );
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
 
   const toggleExpanded = (memberId: string) => {
     setExpandedMember(expandedMember === memberId ? null : memberId);
@@ -83,12 +84,64 @@ export const ChainOfCommand = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Chain of <span className="text-red-500">Command</span>
+            Die Befehlskette
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Understanding the hierarchy and responsibilities in Enigma
-            operations
-          </p>
+          <div className="max-w-2xl mx-auto">
+            <motion.div
+              className={`text-gray-400 text-lg transition-all duration-300 ${
+                !isDescriptionExpanded ? "line-clamp-3" : ""
+              }`}
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: !isDescriptionExpanded ? 3 : "none",
+                WebkitBoxOrient: "vertical",
+                overflow: !isDescriptionExpanded ? "hidden" : "visible",
+              }}
+            >
+              Die Befehlskette bei der Nutzung der Enigma-Maschine im deutschen
+              Militär war streng hierarchisch aufgebaut und trennte klar
+              zwischen der Verantwortung für die Verschlüsselung und der reinen
+              Nachrichtenübertragung. Die eigentliche Verschlüsselung der
+              Nachricht erfolgte nicht durch den Funker, sondern durch einen
+              Offizier – in der Regel ein speziell ausgebildeter Nachrichten-
+              oder Schlüsseloffizier. Dieser Offizier verfasste die Nachricht im
+              Klartext, stellte die Enigma gemäß den täglich vorgeschriebenen
+              Schlüsselvorgaben ein und verschlüsselte den Text eigenhändig mit
+              der Maschine. Erst der verschlüsselte Text wurde anschließend an
+              den Funker übergeben. Der Funker hatte also keinerlei Einblick in
+              den Inhalt der Nachricht. Seine Aufgabe beschränkte sich darauf,
+              die bereits verschlüsselte Nachricht aufzunehmen und sie per
+              Morsecode über Funk zu übermitteln. Auf der Empfängerseite
+              wiederholte sich dieses Verfahren spiegelbildlich: Der Funker dort
+              nahm die verschlüsselte Nachricht entgegen und übergab sie – ohne
+              sie zu entschlüsseln – an den zuständigen Offizier. Erst dieser
+              hatte wiederum Zugang zur Enigma-Maschine sowie zu den notwendigen
+              Schlüsselunterlagen und konnte den Text entschlüsseln. Diese klare
+              Aufgabentrennung war bewusst so gestaltet, um die Sicherheit der
+              Kommunikation zu gewährleisten. Indem der Funker weder Klartext
+              noch die Schlüssel kannte, wurde das Risiko minimiert, dass
+              sensible Informationen durch Fahrlässigkeit, Spionage oder
+              Gefangennahme kompromittiert wurden. Die Enigma war also nicht nur
+              technisch, sondern auch organisatorisch durch ein striktes System
+              abgesichert.
+            </motion.div>
+            <motion.button
+              onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+              className="mt-3 text-red-400 hover:text-red-300 font-medium flex items-center space-x-1 transition-colors duration-200"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span>
+                {isDescriptionExpanded ? "Weniger anzeigen" : "Mehr anzeigen"}
+              </span>
+              <motion.div
+                animate={{ rotate: isDescriptionExpanded ? 180 : 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <BiChevronDown className="text-sm" />
+              </motion.div>
+            </motion.button>
+          </div>
         </motion.div>
 
         {/* Chain Visualization */}
@@ -232,7 +285,7 @@ const ChainMemberCard = ({
               transition={{ duration: 0.3 }}
             >
               <h4 className="text-white font-semibold mb-2">
-                Key Responsibilities:
+                Verantwortlichkeiten:
               </h4>
               <div className="space-y-2">
                 {member.responsibilities.map((responsibility, index) => (

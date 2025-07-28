@@ -20,7 +20,7 @@ export interface SectionProgress {
 export const ENIGMA_SECTIONS: SectionProgress[] = [
   {
     id: "story",
-    title: "Story",
+    title: "Geschichte",
     url: "/learning-path/story",
     icon: "BiPlay",
     isUnlocked: true,
@@ -28,31 +28,37 @@ export const ENIGMA_SECTIONS: SectionProgress[] = [
     quiz: [
       {
         id: "story-1",
-        question: "What was the Enigma machine primarily used for?",
+        question: "Was war die Hauptanwendung der Enigma-Maschine?",
         options: [
-          "Sending emails",
-          "Encrypting military messages",
-          "Playing music",
+          "E-Mails versenden",
+          "Militärnachrichten verschlüsseln",
+          "Musik abspielen",
           "Navigation",
         ],
         correctAnswer: 1,
         explanation:
-          "The Enigma machine was used by the German military to encrypt secret communications during WWII.",
+          "Die Enigma-Maschine wurde vom deutschen Militär zur Verschlüsselung geheimer Nachrichten im Zweiten Weltkrieg eingesetzt.",
       },
       {
         id: "story-2",
-        question: "During which war was the Enigma machine most famously used?",
-        options: ["World War I", "World War II", "Cold War", "Vietnam War"],
+        question:
+          "In welchem Krieg wurde die Enigma-Maschine am bekanntesten eingesetzt?",
+        options: [
+          "Erster Weltkrieg",
+          "Zweiter Weltkrieg",
+          "Kalter Krieg",
+          "Vietnamkrieg",
+        ],
         correctAnswer: 1,
         explanation:
-          "The Enigma machine was extensively used by Nazi Germany during World War II.",
+          "Die Enigma-Maschine wurde vom deutschen Militär im Zweiten Weltkrieg intensiv eingesetzt.",
       },
     ],
     requiredScore: 80,
   },
   {
     id: "history",
-    title: "History",
+    title: "Historisches",
     url: "/learning-path/history",
     icon: "BiHistory",
     isUnlocked: false,
@@ -60,7 +66,7 @@ export const ENIGMA_SECTIONS: SectionProgress[] = [
     quiz: [
       {
         id: "history-1",
-        question: "Who invented the Enigma machine?",
+        question: "Wer hat die Enigma-Maschine erfunden?",
         options: [
           "Alan Turing",
           "Arthur Scherbius",
@@ -69,22 +75,48 @@ export const ENIGMA_SECTIONS: SectionProgress[] = [
         ],
         correctAnswer: 1,
         explanation:
-          "Arthur Scherbius, a German engineer, invented the Enigma machine at the end of World War I.",
+          "Arthur Scherbius, ein deutscher Ingenieur, erfand die Enigma-Maschine am Ende des Ersten Weltkriegs.",
       },
       {
         id: "history-2",
-        question: "In what year was the Enigma machine invented?",
+        question: "In welchem Jahr wurde die Enigma-Maschine erfunden?",
         options: ["1915", "1918", "1920", "1925"],
         correctAnswer: 1,
         explanation:
-          "The Enigma machine was invented in 1918 by Arthur Scherbius.",
+          "Die Enigma-Maschine wurde 1918 von Arthur Scherbius erfunden.",
+      },
+      {
+        id: "history-3",
+        question:
+          "Wer verschlüsselte im deutschen Militär typischerweise eine Nachricht mit der Enigma?",
+        options: [
+          "Der Funker, bevor er sie sendete",
+          "Der Offizier, bevor er sie an den Funker weitergab",
+          "C) Der Funker, auf Anweisung des Offiziers",
+        ],
+        correctAnswer: 1,
+        explanation:
+          "Die Enigma-Maschine wurde typischerweise vom Offizier bedient, der die Nachricht an den Funker weitergab, der sie dann sendete.",
+      },
+      {
+        id: "history-4",
+        question:
+          "Was enthielt eine typische Zeile eines Enigma-Schlüsselblattes NICHT?",
+        options: [
+          "Die jeweilige Kenngruppe",
+          "Der täglich variierende Code, der zu beginn jeder Nachricht gesendet werden musste",
+          "Die Auswahl und Reihenfolge der Rotoren",
+        ],
+        correctAnswer: 1,
+        explanation:
+          "Eine typische Zeile eines Enigma-Schlüsselblattes enthielt nicht den täglich variierenden Code, der zu Beginn jeder Nachricht gesendet werden musste.",
       },
     ],
     requiredScore: 80,
   },
   {
     id: "design",
-    title: "Design",
+    title: "Aufbau",
     url: "/learning-path/design",
     icon: "BiLayer",
     isUnlocked: false,
@@ -92,18 +124,79 @@ export const ENIGMA_SECTIONS: SectionProgress[] = [
     quiz: [
       {
         id: "design-1",
-        question: "How many rotors did a typical military Enigma machine have?",
-        options: ["2", "3", "4", "5"],
+        question:
+          "Welche Komponente der Enigma war fest montiert und veränderte sich nicht bei jedem Tastendruck?",
+        options: [
+          "Die Eintrittswalze (ETW)",
+          "Die rechte Rotorwalze",
+          "Die linke Rotorwalze",
+          "Die Umkehrwalze (UKW)",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Die Eintrittswalze (ETW) war fest montiert und veränderte sich nicht bei jedem Tastendruck.",
+      },
+      {
+        id: "design-2",
+        question:
+          "Welche Funktion hatte die Eintrittswalze (ETW) in der Enigma?",
+        options: [
+          "Sie diente als feste, unveränderliche Schnittstelle zwischen Tastatur und Rotorblock",
+          "Sie wandelte analoge Tastendrücke in elektrische Impulse um",
+          "Sie sorgte für den Rückfluss des Stroms in das Lampenfeld",
+          "Sie leitete den Strom direkt in die Umkehrwalze (UKW)",
+        ],
+        correctAnswer: 0,
+        explanation:
+          "Die Eintrittswalze (ETW) diente als feste, unveränderliche Schnittstelle zwischen Tastatur und Rotorblock und leitete den Strom in die Rotoren.",
+      },
+      {
+        id: "design-3",
+        question:
+          "Wie genau bewirkte die mechanische Kerbe (Notch) eines Rotors die Bewegung des nächsten Rotors?",
+        options: [
+          "Sie übertrug bei jedem 13. Tastendruck eine Bewegung an den linken Nachbarrotor",
+          "Sie erlaubte bei einer bestimmten Rotorposition das Einrasten einer Mitnehmernase",
+          "Sie unterbrach kurzzeitig den Stromkreis, wodurch die Feder des nächsten Rotors auslöste",
+          "Sie drehte den Rotor um eine halbe Umdrehung, sobald der vorherige Rotor eine volle Umdrehung gemacht hatte",
+        ],
         correctAnswer: 1,
         explanation:
-          "Most military Enigma machines used 3 rotors, though some later versions had 4.",
+          "Die mechanische Kerbe (Notch) eines Rotors erlaubte bei einer bestimmten Rotorposition das Einrasten einer Mitnehmernase.",
+      },
+      {
+        id: "design-4",
+        question:
+          "Was geschieht mit dem Signalfluss, wenn eine Taste gedrückt wird, deren Buchstabe am Steckerbrett nicht gesteckt wurde?",
+        options: [
+          "Das Signal wird abgewiesen und kein Licht leuchtet auf",
+          "Der Buchstabe wird durch das Rotorensystem unverändert weiterverarbeitet",
+          "Dies musste unbedingt vermieden werden, da hierbei ein Kurzschluss erzeugt wurde",
+          "Der Buchstabe wird durch das Steckerbrett auf einen anderen Buchstaben umgeleitet",
+        ],
+        correctAnswer: 1,
+        explanation: "Das Signal wird abgewiesen und kein Licht leuchtet auf.",
+      },
+      {
+        id: "design-5",
+        question:
+          "Warum kann ein Buchstabe bei der Enigma nie auf sich selbst verschlüsselt werden?",
+        options: [
+          "Weil die Rotorenstellung nach jedem Tastendruck einen zufälligen Versatz erzeugt",
+          "Weil das Steckerbrett nie eine Selbstverbindung erlaubt",
+          "Weil der Rückweg durch die Umkehrwalze den Signalpfad zwingend verändert",
+          "Weil die Eintrittswalze (ETW) immer eine feste Verdrahtung hat",
+        ],
+        correctAnswer: 2,
+        explanation:
+          "Der Rückweg durch die Umkehrwalze verändert den Signalpfad und verhindert eine Selbstverschlüsselung.",
       },
     ],
     requiredScore: 80,
   },
   {
     id: "cryptography",
-    title: "Cryptography",
+    title: "Kryptographie",
     url: "/learning-path/cryptography",
     icon: "BiShield",
     isUnlocked: false,
@@ -111,23 +204,61 @@ export const ENIGMA_SECTIONS: SectionProgress[] = [
     quiz: [
       {
         id: "crypto-1",
-        question: "What made Enigma's encryption so complex?",
+        question:
+          "Wie viele verschiedene Rotor-Positionen sind bei einer klassischen Enigma-Maschine mit 3 Walzen möglich?",
+        options: ["256", "17.576", "100.000", "128"],
+        correctAnswer: 1,
+        explanation:
+          "Die Kombination aus 3 Rotoren, die jeweils 26 Positionen haben, ergibt 26^3 = 17.576 mögliche Rotorstellungen.",
+      },
+      {
+        id: "crypto-2",
+        question:
+          "Wofür wurde das Steckerbrett bei der Enigma-Maschine genutzt?",
         options: [
-          "Only the rotors",
-          "Only the plugboard",
-          "Combination of rotors, plugboard, and reflector",
-          "Only the reflector",
+          "Zum Stromanschluss der Maschine",
+          "Zur Verdopplung der Nachrichten",
+          "Zum Vertauschen von Buchstabenpaaren vor und nach der Rotor-Verschlüsselung",
+          "Zur Speicherung der Schlüssel",
         ],
         correctAnswer: 2,
         explanation:
-          "The combination of rotors, plugboard, and reflector created Enigma's complex encryption.",
+          "Das Steckerbrett wurde verwendet, um Buchstabenpaare vor und nach der Rotor-Verschlüsselung zu vertauschen.",
+      },
+      {
+        id: "crypto-3",
+        question:
+          "Welche Komponente der Enigma sorgte dafür, dass jeder Tastendruck zu einer neuen Verschlüsselung führte?",
+        options: [
+          " Die Umkehrwalze (Reflektor)",
+          "Das Lampenfeld",
+          "Die drehbaren Rotoren",
+          "Die Batterie",
+        ],
+        correctAnswer: 2,
+        explanation:
+          "Die drehbaren Rotoren veränderten bei jedem Tastendruck ihre Position, was zu einer neuen Verschlüsselung führte.",
+      },
+      {
+        id: "crypto-4",
+        question:
+          "Warum war die Enigma trotz ihrer Komplexität letztlich nicht vollkommen sicher?",
+        options: [
+          "Weil sie nur wenige Rotoren hatte",
+          "Wegen systematischer Schwachstellen im Rotor-Mechanismus und Bedienungsfehlern",
+          "Weil alle Soldaten das Passwort kannten",
+          "Weil sie mit Solarenergie betrieben wurde",
+        ],
+        correctAnswer: 1,
+        explanation:
+          "Die Enigma hatte systematische Schwachstellen, die von Codebreakern wie Alan Turing ausgenutzt wurden, und Bedienungsfehler trugen ebenfalls zur Entschlüsselung bei.",
       },
     ],
     requiredScore: 80,
   },
   {
     id: "codebreaking",
-    title: "Code Breaking",
+    title: "Codeknacken",
     url: "/learning-path/codebreaking",
     icon: "BiCode",
     isUnlocked: false,
@@ -146,7 +277,7 @@ export const ENIGMA_SECTIONS: SectionProgress[] = [
   },
   {
     id: "legacy",
-    title: "Legacy",
+    title: "Vermächtnis",
     url: "/learning-path/legacy",
     icon: "BiBook",
     isUnlocked: false,
@@ -220,4 +351,24 @@ export const unlockNextSection = (currentSectionId: string, score: number) => {
 export const calculateTotalProgress = (progress: SectionProgress[]): number => {
   const completedSections = progress.filter((s) => s.isCompleted).length;
   return Math.round((completedSections / progress.length) * 100);
+};
+
+// Function to clear cached progress and reload with German translations
+export const clearProgress = () => {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("enigma-progress");
+  }
+};
+
+// Function to get the next section URL after completing current section
+export const getNextSectionUrl = (currentSectionId: string): string | null => {
+  const currentIndex = ENIGMA_SECTIONS.findIndex(
+    (s) => s.id === currentSectionId
+  );
+
+  if (currentIndex === -1 || currentIndex >= ENIGMA_SECTIONS.length - 1) {
+    return null; // No next section or section not found
+  }
+
+  return ENIGMA_SECTIONS[currentIndex + 1].url;
 };

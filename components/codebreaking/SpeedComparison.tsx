@@ -20,58 +20,58 @@ export const SpeedComparison = () => {
 
   const methods: BreakingMethod[] = [
     {
-      name: "Manual Testing",
-      description: "Human operators testing configurations by hand",
+      name: "Manuelles Testen",
+      description: "Menschliche Operateure testen Konfigurationen von Hand",
       keysPerSecond: 0.1,
       color: "from-red-500 to-red-600",
       icon: <BiTimeFive />,
       year: 1939,
-      hardware: "Human operators",
+      hardware: "Menschliche Operateure",
     },
     {
-      name: "Mechanical Bombe",
-      description: "Turing's electromechanical breaking machine",
+      name: "Mechanische Bombe",
+      description: "Turings elektromechanische Entschlüsselungsmaschine",
       keysPerSecond: 100,
       color: "from-orange-500 to-orange-600",
       icon: <BiChip />,
       year: 1940,
-      hardware: "Electromechanical relays",
+      hardware: "Elektromechanische Relais",
     },
     {
-      name: "Electronic Bombe",
-      description: "Improved electronic version",
+      name: "Elektronische Bombe",
+      description: "Verbesserte elektronische Version",
       keysPerSecond: 1000,
       color: "from-yellow-500 to-yellow-600",
       icon: <BiChip />,
       year: 1943,
-      hardware: "Vacuum tubes",
+      hardware: "Elektronenröhren",
     },
     {
-      name: "1970s Computer",
-      description: "Early computer brute force attempt",
+      name: "1970er Computer",
+      description: "Früher Computer Brute-Force Versuch",
       keysPerSecond: 10000,
       color: "from-green-500 to-green-600",
       icon: <BiChip />,
       year: 1975,
-      hardware: "Mainframe computer",
+      hardware: "Großrechner",
     },
     {
-      name: "Modern CPU",
-      description: "Single-threaded modern processor",
+      name: "Moderne CPU",
+      description: "Single-threaded moderner Prozessor",
       keysPerSecond: 1000000,
       color: "from-blue-500 to-blue-600",
       icon: <BiChip />,
       year: 2020,
-      hardware: "Intel i9 processor",
+      hardware: "Intel i9 Prozessor",
     },
     {
       name: "GPU Cluster",
-      description: "Parallel processing on graphics cards",
+      description: "Parallele Verarbeitung auf Grafikkarten",
       keysPerSecond: 1000000000,
       color: "from-purple-500 to-purple-600",
       icon: <BiChip />,
       year: 2024,
-      hardware: "RTX 4090 cluster",
+      hardware: "RTX 4090 Cluster",
     },
   ];
 
@@ -130,15 +130,16 @@ export const SpeedComparison = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Breaking{" "}
+            Entschlüsselungs{" "}
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Speed
+              Geschwindigkeit
             </span>{" "}
-            Analysis
+            Analyse
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Compare the evolution of codebreaking technology and understand why
-            some methods succeeded where brute force failed
+            Vergleichen Sie die Entwicklung der Codeknacker-Technologie und
+            verstehen Sie, warum manche Methoden dort erfolgreich waren, wo
+            Brute-Force scheiterte
           </p>
         </motion.div>
 

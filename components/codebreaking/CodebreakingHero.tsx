@@ -220,9 +220,9 @@ export const CodebreakingHero = ({
               >
                 1943
               </motion.div>
-              <div className="text-gray-300">First Break</div>
+              <div className="text-gray-300">Erster Durchbruch</div>
               <div className="text-sm text-gray-400 mt-2">
-                Bletchley Park Success
+                Bletchley Park Erfolg
               </div>
             </div>
 
@@ -244,9 +244,9 @@ export const CodebreakingHero = ({
               >
                 3,000
               </motion.div>
-              <div className="text-gray-300">Messages/Day</div>
+              <div className="text-gray-300">Nachrichten/Tag</div>
               <div className="text-sm text-gray-400 mt-2">
-                At Peak Operation
+                Zur Hochzeit des Betriebs
               </div>
             </div>
 
@@ -268,9 +268,9 @@ export const CodebreakingHero = ({
               >
                 2+
               </motion.div>
-              <div className="text-gray-300">Years Shorter</div>
+              <div className="text-gray-300">Jahre kürzer</div>
               <div className="text-sm text-gray-400 mt-2">
-                War Duration Estimate
+                Kriegsdauer Schätzung
               </div>
             </div>
           </motion.div>
@@ -284,11 +284,11 @@ export const CodebreakingHero = ({
           >
             <div className="bg-gradient-to-br from-gray-900/70 to-gray-800/40 p-6 rounded-2xl border border-gray-600/50">
               <h3 className="text-xl font-bold text-red-400 mb-3">
-                🤖 The Bombe
+                🤖 Die Bombe
               </h3>
               <p className="text-gray-300">
-                Electromechanical computer designed by Alan Turing to
-                systematically test Enigma configurations
+                Elektromechanischer Computer von Alan Turing entwickelt, um
+                systematisch Enigma-Konfigurationen zu testen
               </p>
             </div>
             <div className="bg-gradient-to-br from-gray-900/70 to-gray-800/40 p-6 rounded-2xl border border-gray-600/50">
@@ -296,8 +296,8 @@ export const CodebreakingHero = ({
                 📝 Cribs
               </h3>
               <p className="text-gray-300">
-                Known plaintext patterns used as starting points for
-                cryptanalysis attacks
+                Bekannte Klartextmuster, die als Ausgangspunkte für
+                kryptoanalytische Angriffe verwendet wurden
               </p>
             </div>
           </motion.div>
@@ -371,7 +371,7 @@ export const CodebreakingHero = ({
               }}
             />
           </div>
-          <div className="text-sm text-red-400 font-mono">DECRYPT</div>
+          <div className="text-sm text-red-400 font-mono">ENTSCHLÜSSELN</div>
         </div>
       </motion.div>
     </section>

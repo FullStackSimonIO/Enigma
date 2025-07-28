@@ -15,8 +15,8 @@ const HistoryPage = () => {
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
       <HistoryHero
-        title="History of Enigma"
-        description="Discover the fascinating journey of the Enigma machine, from its commercial origins to becoming the backbone of German military communications during World War II."
+        title="Die Geschichte der Enigma"
+        description="Entdecke die faszinierende Reise der Enigma-Maschine, von ihren kommerziellen Ursprüngen bis hin zu ihrer Rolle als Rückgrat der deutschen Militärkommunikation im Zweiten Weltkrieg."
         backgroundImage="/enigma-background.jpg"
       />
 
@@ -34,12 +34,13 @@ const HistoryPage = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Test Your <span className="text-red-500">Knowledge</span>
+              Teste dein <span className="text-red-500">Wissen</span>
             </h2>
             <div className="p-6 bg-red-900/20 border border-red-500/30 rounded-lg">
               <p className="text-gray-300">
-                Complete the quiz below to unlock the next section and continue
-                your journey through the Enigma timeline.
+                Beantworte die Fragen unten, um den nächsten Abschnitt
+                freizuschalten und deine Reise durch die Enigma-Zeitlinie
+                fortzusetzen.
               </p>
             </div>
           </div>

@@ -19,21 +19,9 @@ import {
   getProgress,
   saveProgress,
   calculateTotalProgress,
+  clearProgress,
   type SectionProgress,
 } from "@/lib/progress";
-
-const footerItems = [
-  {
-    title: "Support",
-    url: "#",
-    icon: BiHelpCircle,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: BiCog,
-  },
-];
 
 const iconMap = {
   BiPlay,
@@ -51,7 +39,25 @@ export const Sidebar9 = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     setMounted(true);
-    setProgress(getProgress());
+    const currentProgress = getProgress();
+
+    // Check if we have old English titles cached and clear if needed
+    const hasEnglishTitles = currentProgress.some(
+      (section) =>
+        section.title === "Story" ||
+        section.title === "History" ||
+        section.title === "Design" ||
+        section.title === "Cryptography" ||
+        section.title === "Code Breaking" ||
+        section.title === "Legacy"
+    );
+
+    if (hasEnglishTitles) {
+      clearProgress();
+      setProgress(getProgress());
+    } else {
+      setProgress(currentProgress);
+    }
   }, []);
 
   const totalProgress = mounted ? calculateTotalProgress(progress) : 0;
@@ -62,8 +68,8 @@ export const Sidebar9 = ({ children }: { children: React.ReactNode }) => {
       <div className="flex min-h-screen w-full bg-black">
         <div className="w-64 bg-gray-900 border-r border-gray-800">
           <div className="p-6">
-            <h2 className="text-xl font-bold text-red-500">Enigma Journey</h2>
-            <p className="text-base text-gray-400">Learn the secrets</p>
+            <h2 className="text-xl font-bold text-red-500">Enigma Reise</h2>
+            <p className="text-base text-gray-400">Erlerne die Geheimnisse</p>
           </div>
         </div>
         <main className="flex-1">
@@ -95,13 +101,13 @@ export const Sidebar9 = ({ children }: { children: React.ReactNode }) => {
           {/* Header - Fixed size */}
           <div className="flex-shrink-0 flex items-center justify-between p-6 border-b border-gray-800 min-h-[100px]">
             <div>
-              <h2 className="text-xl font-bold text-red-500">Enigma Journey</h2>
-              <p className="text-base text-gray-400">Learn the secrets</p>
+              <h2 className="text-xl font-bold text-red-500">Die Enigma</h2>
+              <p className="text-base text-gray-400">Erlerne die Geheimnisse</p>
               {/* Progress Bar */}
               <div className="mt-2">
                 <div className="flex items-center gap-2 text-xs text-gray-500">
                   <BiTrophy className="text-yellow-500" />
-                  <span>{totalProgress}% Complete</span>
+                  <span>{totalProgress}% Fortschritt</span>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-1 mt-1">
                   <div
@@ -167,7 +173,7 @@ export const Sidebar9 = ({ children }: { children: React.ReactNode }) => {
                     )}
                     {index === 0 && !section.isCompleted && (
                       <span className="px-3 py-1 rounded-md bg-red-500/10 text-red-400 border border-red-500/20 flex-shrink-0 font-medium text-sm">
-                        Start
+                        Beginnen
                       </span>
                     )}
                   </a>
@@ -175,24 +181,6 @@ export const Sidebar9 = ({ children }: { children: React.ReactNode }) => {
               })}
             </div>
           </nav>
-
-          {/* Footer - Fixed size but scalable */}
-          <div className="flex-shrink-0 p-6 border-t border-gray-800 space-y-3 mt-auto">
-            {footerItems.map((item, index) => (
-              <a
-                key={index}
-                href={item.url}
-                className="flex items-center gap-4 px-4 py-3 rounded-md text-gray-400 hover:bg-gray-800 hover:text-white transition-colors min-h-[50px]"
-                style={{
-                  fontSize: "16px",
-                  padding: "12px 16px",
-                }}
-              >
-                <item.icon className="flex-shrink-0 w-5 h-5" />
-                <span className="font-medium">{item.title}</span>
-              </a>
-            ))}
-          </div>
         </div>
       </div>
 
@@ -206,7 +194,7 @@ export const Sidebar9 = ({ children }: { children: React.ReactNode }) => {
           >
             <BiMenu className="h-5 w-5" />
           </button>
-          <h1 className="text-lg font-semibold text-white">Enigma Journey</h1>
+          <h1 className="text-lg font-semibold text-white">Enigma Reise</h1>
           <div className="w-9" /> {/* Spacer for centering */}
         </header>
 

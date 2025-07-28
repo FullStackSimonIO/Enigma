@@ -10,82 +10,88 @@ export default function CodebreakingPage() {
     {
       id: "1",
       question:
-        "What was the primary reason brute force attacks failed against Enigma?",
+        "Was war der Hauptgrund, warum Brute-Force-Angriffe gegen Enigma scheiterten?",
       options: [
-        "Insufficient computational power in the 1940s",
-        "The mathematical keyspace was too large",
-        "Daily key changes made it impractical",
-        "All of the above",
+        "Unzureichende Rechenleistung in den 1940er Jahren",
+        "Der mathematische Schlüsselraum war zu groß",
+        "Tägliche Schlüsseländerungen machten es unpraktikabel",
+        "Alle der oben genannten",
       ],
       correctAnswer: 3,
       explanation:
-        "All factors contributed: 1.59×10²³ possible keys, limited 1940s technology, and daily key changes requiring solutions within 24 hours made brute force impossible.",
+        "Alle Faktoren trugen bei: 1,59×10²³ mögliche Schlüssel, begrenzte 1940er-Technologie und tägliche Schlüsseländerungen erforderten Lösungen innerhalb von 24 Stunden, was Brute-Force unmöglich machte.",
     },
     {
       id: "2",
       question:
-        "What was the most effective codebreaking method used at Bletchley Park?",
+        "Was war die effektivste Codeknacking-Methode in Bletchley Park?",
       options: [
-        "Frequency analysis",
-        "Crib-based attacks with the Bombe",
-        "Pure mathematical cryptanalysis",
-        "Intercepting German codebooks",
+        "Häufigkeitsanalyse",
+        "Crib-basierte Angriffe mit der Bombe",
+        "Reine mathematische Kryptoanalyse",
+        "Abfangen deutscher Codebücher",
       ],
       correctAnswer: 1,
       explanation:
-        "Crib-based attacks using known plaintext fragments (like weather reports) combined with the Bombe machine were the most successful, typically breaking codes in 20 minutes to 2 hours.",
+        "Crib-basierte Angriffe mit bekannten Klartextfragmenten (wie Wetterberichte) kombiniert mit der Bombe-Maschine waren am erfolgreichsten und knackten Codes typischerweise in 20 Minuten bis 2 Stunden.",
     },
     {
       id: "3",
       question:
-        "How long would it take modern computers to brute force an Enigma key?",
+        "Wie lange würden moderne Computer für einen Brute-Force-Angriff auf einen Enigma-Schlüssel benötigen?",
       options: [
-        "A few days",
-        "Several months",
-        "Thousands of years",
-        "Millions of years",
+        "Ein paar Tage",
+        "Mehrere Monate",
+        "Tausende von Jahren",
+        "Millionen von Jahren",
       ],
       correctAnswer: 3,
       explanation:
-        "Even with modern GPU clusters testing billions of keys per second, brute forcing the full Enigma keyspace would still take millions of years due to the astronomical number of possibilities.",
+        "Selbst mit modernen GPU-Clustern, die Milliarden von Schlüsseln pro Sekunde testen, würde das Brute-Force des vollständigen Enigma-Schlüsselraums aufgrund der astronomischen Anzahl von Möglichkeiten noch Millionen von Jahren dauern.",
     },
     {
       id: "4",
-      question: "What made operator mistakes so valuable to codebreakers?",
+      question: "Was machte Bedienerfehler so wertvoll für Codeknacker?",
       options: [
-        "They revealed the rotor wiring",
-        "They provided known plaintext fragments",
-        "They reduced the effective keyspace",
-        "They exposed the plugboard settings",
+        "Sie enthüllten die Rotor-Verdrahtung",
+        "Sie lieferten bekannte Klartextfragmente",
+        "Sie reduzierten den effektiven Schlüsselraum",
+        "Sie legten die Steckerbrett-Einstellungen offen",
       ],
       correctAnswer: 2,
       explanation:
-        "Operator mistakes like reusing settings, weak message keys, or procedural errors effectively reduced the keyspace that needed to be searched, making breaking much faster.",
+        "Bedienerfehler wie die Wiederverwendung von Einstellungen, schwache Nachrichtenschlüssel oder Verfahrensfehler reduzierten effektiv den Schlüsselraum, der durchsucht werden musste, was das Knacken viel schneller machte.",
     },
     {
       id: "5",
       question:
-        "Why was the plugboard the most complex part of Enigma to crack?",
+        "Warum war das Steckerbrett der komplexeste Teil der Enigma zum Knacken?",
       options: [
-        "It had the most possible configurations",
-        "It changed the rotor stepping",
-        "It was encrypted differently",
-        "It required physical access",
+        "Es hatte die meisten möglichen Konfigurationen",
+        "Es veränderte die Rotor-Schaltung",
+        "Es wurde anders verschlüsselt",
+        "Es erforderte physischen Zugang",
       ],
       correctAnswer: 0,
       explanation:
-        "The plugboard with 10 pairs had approximately 150 trillion possible configurations, far more than rotor positions (17,576) or selections (60), making it the largest component of the keyspace.",
+        "Das Steckerbrett mit 10 Paaren hatte etwa 150 Billionen mögliche Konfigurationen, weit mehr als Rotorpositionen (17.576) oder Auswahlen (60), was es zur größten Komponente des Schlüsselraums machte.",
     },
   ];
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-900 via-red-950 to-gray-900">
       <CodebreakingHero
-        title="Breaking the Unbreakable"
-        description="Discover how brilliant minds cracked the Enigma code through mathematics, ingenuity, and exploitation of human error"
+        title="Knacken des Enigma-Codes"
+        description="Das Knacken der Enigma zählt zu den größten Errungenschaften der Kryptographiegeschichte. Die enorme Komplexität der Maschine, die durch Millionen von Einstellungsmöglichkeiten praktisch unknackbar schien, stellte jahrzehntelang selbst erfahrene Kryptoanalytiker vor große Herausforderungen. Doch mit Beharrlichkeit, mathematischem Genie und technischer Innovation gelang es, diese scheinbar unüberwindbare Verschlüsselung zu brechen – zuerst mit klassischen Methoden, später mithilfe moderner Computer.
+
+In den frühen Tagen des Zweiten Weltkriegs stützten sich die Codebreaker zunächst auf traditionelle Techniken: Sie sammelten und analysierten abgefangene Funksprüche, suchten nach wiederkehrenden Mustern und nutzten menschliche Fehler bei der Bedienung der Enigma aus. Polnische Mathematiker wie Marian Rejewski legten mit der Analyse der frühen Enigma-Modelle den Grundstein für den späteren Erfolg der Alliierten. Eine der wichtigsten Entwicklungen war die sogenannte „Bombe“, eine elektromechanische Maschine, die von Alan Turing und seinem Team in Bletchley Park weiterentwickelt wurde. Die Bombe automatisierte die Suche nach dem richtigen Enigma-Schlüssel und beschleunigte das Knacken der Codes entscheidend – eine detaillierte Beschreibung folgt später.
+
+Heutzutage sind Enigma-Verschlüsselungen mit modernen Computern und Algorithmen vergleichsweise leicht zu knacken. Was früher Tage oder Wochen dauern konnte, ist nun oft eine Sache von Sekunden. Die enorme Rechenleistung ermöglicht es, alle möglichen Kombinationen systematisch zu überprüfen und so den Schlüssel zu finden.
+
+Das Knacken der Enigma steht somit exemplarisch für den Fortschritt in der Kryptographie: von mühsamer Handarbeit über frühe Rechenmaschinen bis hin zu hochmodernen Computern, die selbst die komplexesten Codes entschlüsseln können.
+"
       />
       <KeyspaceCalculator />
-      <SpeedComparison />
       <BruteForceFormula />
       <TacticsResume />
       <QuizComponent

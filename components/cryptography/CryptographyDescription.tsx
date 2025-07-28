@@ -1,11 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { BiLock, BiRefresh, BiCog } from "react-icons/bi";
+import { BiLock, BiRefresh, BiCog, BiChevronDown } from "react-icons/bi";
 
 export const CryptographyDescription = () => {
   const [isClient, setIsClient] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -14,50 +15,53 @@ export const CryptographyDescription = () => {
   const steps = [
     {
       id: 1,
-      title: "Keyboard Input",
-      description: "Operator presses a key, starting the encryption process",
+      title: "Tastatureingabe",
+      description:
+        "Bediener drückt eine Taste und startet den Verschlüsselungsprozess",
       icon: "⌨️",
       color: "from-blue-500 to-cyan-500",
     },
     {
       id: 2,
-      title: "Plugboard",
-      description: "First substitution - swaps letter pairs before rotors",
+      title: "Steckerbrett",
+      description:
+        "Erste Substitution - vertauscht Buchstabenpaare vor den Rotoren",
       icon: "🔌",
       color: "from-green-500 to-emerald-500",
     },
     {
       id: 3,
-      title: "Rotor Entry",
-      description: "Signal passes through rotors from right to left",
+      title: "Rotor Eingang",
+      description: "Signal durchläuft Rotoren von rechts nach links",
       icon: "⚙️",
       color: "from-purple-500 to-violet-500",
     },
     {
       id: 4,
-      title: "Reflector",
-      description: "Signal bounces back, ensuring encryption ≠ decryption",
+      title: "Reflektor",
+      description:
+        "Signal wird reflektiert, stellt sicher dass Verschlüsselung ≠ Entschlüsselung",
       icon: "🪞",
       color: "from-orange-500 to-red-500",
     },
     {
       id: 5,
-      title: "Rotor Return",
-      description: "Signal travels back through rotors (left to right)",
+      title: "Rotor Rückweg",
+      description: "Signal läuft zurück durch Rotoren (links nach rechts)",
       icon: "↩️",
       color: "from-pink-500 to-rose-500",
     },
     {
       id: 6,
-      title: "Plugboard Exit",
-      description: "Final substitution through plugboard",
+      title: "Steckerbrett Ausgang",
+      description: "Finale Substitution durch das Steckerbrett",
       icon: "🔌",
       color: "from-indigo-500 to-blue-500",
     },
     {
       id: 7,
-      title: "Lamp Output",
-      description: "Encrypted letter illuminates on the lampboard",
+      title: "Lampenausgabe",
+      description: "Verschlüsselter Buchstabe leuchtet auf dem Lampenfeld auf",
       icon: "💡",
       color: "from-yellow-500 to-amber-500",
     },
@@ -85,16 +89,68 @@ export const CryptographyDescription = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            How{" "}
+            Wie{" "}
             <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
               Enigma
             </span>{" "}
-            Encrypts
+            verschlüsselt
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Discover the mathematical elegance behind the most famous cipher
-            machine in history
-          </p>
+          <div className="max-w-3xl mx-auto">
+            <p
+              className={`text-xl text-gray-300 transition-all duration-300 ${
+                !isExpanded
+                  ? "line-clamp-3 [display:-webkit-box] [-webkit-box-orient:vertical] overflow-hidden"
+                  : ""
+              }`}
+            >
+              Die Enigma-Maschine verschlüsselte Nachrichten in einem komplexen
+              mehrstufigen Prozess, bei dem ein elektrisches Signal durch
+              mehrere Komponenten geleitet wurde. Alles begann mit der Eingabe
+              über die Tastatur: Sobald der Bediener eine Taste drückte, floss
+              ein elektrisches Signal in die Maschine. Im nächsten Schritt
+              erreichte es das sogenannte Steckerbrett, auf dem zuvor definierte
+              Buchstabenpaare vertauscht wurden. Dies war die erste von mehreren
+              Substitutionen im Verschlüsselungsprozess. Nach dieser
+              Vorvertauschung gelangte das Signal in die Rotoren (Walzen). Diese
+              bestanden aus mehreren hintereinander geschalteten, drehbaren
+              Scheiben mit interner Verdrahtung. Das Signal passierte die
+              Rotoren von rechts nach links, wobei jeder Rotor das Signal erneut
+              veränderte. Am Ende der Rotoren befand sich der Reflektor, eine
+              Umkehrwalze. Diese leitete das Signal auf einem anderen Weg zurück
+              durch die Rotoren – diesmal von links nach rechts. Durch diese
+              doppelte Passage wurden weitere Substitutionen vorgenommen, was
+              für zusätzliche Sicherheit sorgte und gleichzeitig eine praktische
+              Eigenschaft ermöglichte: Verschlüsselung und Entschlüsselung
+              verwendeten dieselben Einstellungen. Nachdem das Signal erneut
+              durch alle Rotoren geleitet wurde, erreichte es wieder das
+              Steckerbrett für eine abschließende Substitution. Erst dann wurde
+              der endgültige verschlüsselte Buchstabe sichtbar: Eine kleine
+              Lampe leuchtete auf und zeigte dem Bediener den codierten
+              Buchstaben an. Diese komplexe Abfolge von Eingabe, mehrfacher
+              Substitution (Steckerbrett), Rotorverschlüsselung, Reflektion und
+              erneuter Substitution erzeugte astronomisch viele mögliche
+              Schlüssel und machte die Enigma lange Zeit nahezu
+              unentschlüsselbar. Erst durch intelligente Analyse ihrer Muster
+              gelang es, diese scheinbar perfekte Verschlüsselung zu brechen.
+              ChatGPT fragen
+            </p>
+            <motion.button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="mt-4 flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors duration-200 mx-auto"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="text-sm font-medium">
+                {isExpanded ? "Weniger anzeigen" : "Mehr anzeigen"}
+              </span>
+              <motion.div
+                animate={{ rotate: isExpanded ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <BiChevronDown className="w-4 h-4" />
+              </motion.div>
+            </motion.button>
+          </div>
         </motion.div>
 
         {/* Key Principles */}
@@ -111,9 +167,9 @@ export const CryptographyDescription = () => {
               <h3 className="text-2xl font-bold text-white">Substitution</h3>
             </div>
             <p className="text-gray-300 leading-relaxed">
-              Each letter is replaced by another through multiple layers of
-              substitution, creating an incredibly complex cipher that changes
-              with every keypress.
+              Jeder Buchstabe wird durch einen anderen ersetzt, über mehrere
+              Substitutionsebenen hinweg. Dies erzeugt eine unglaublich komplexe
+              Chiffre, die sich bei jedem Tastendruck ändert.
             </p>
           </motion.div>
 
@@ -129,8 +185,9 @@ export const CryptographyDescription = () => {
               <h3 className="text-2xl font-bold text-white">Rotation</h3>
             </div>
             <p className="text-gray-300 leading-relaxed">
-              Rotors advance mechanically, ensuring the cipher alphabet changes
-              continuously, making frequency analysis nearly impossible.
+              Rotoren drehen sich mechanisch weiter und stellen sicher, dass
+              sich das Chiffrieralphabet kontinuierlich ändert. Dadurch wird
+              eine Häufigkeitsanalyse nahezu unmöglich.
             </p>
           </motion.div>
 
@@ -143,11 +200,12 @@ export const CryptographyDescription = () => {
           >
             <div className="flex items-center mb-4">
               <BiRefresh className="text-indigo-400 text-3xl mr-4" />
-              <h3 className="text-2xl font-bold text-white">Reciprocity</h3>
+              <h3 className="text-2xl font-bold text-white">Reziprozität</h3>
             </div>
             <p className="text-gray-300 leading-relaxed">
-              The reflector ensures that encryption and decryption use the same
-              settings, while preventing any letter from encrypting to itself.
+              Der Reflektor stellt sicher, dass Verschlüsselung und
+              Entschlüsselung dieselben Einstellungen verwenden, während er
+              verhindert, dass sich ein Buchstabe in sich selbst verschlüsselt.
             </p>
           </motion.div>
         </div>
@@ -161,7 +219,7 @@ export const CryptographyDescription = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <h3 className="text-3xl font-bold text-white text-center mb-12">
-            Encryption Process
+            Verschlüsselungsprozess
           </h3>
 
           {/* Step Flow */}
@@ -236,14 +294,14 @@ export const CryptographyDescription = () => {
             transition={{ delay: 1 }}
           >
             <h4 className="text-xl font-bold text-white mb-4 text-center">
-              Mathematical Model
+              Mathematisches Modell
             </h4>
             <div className="text-center space-y-4">
               <div className="text-lg font-mono text-cyan-400">
                 E(x) = P⁻¹(R₃⁻¹(R₂⁻¹(R₁⁻¹(R(R₁(R₂(R₃(P(x)))))))))
               </div>
               <div className="text-sm text-gray-400">
-                Where P = Plugboard, R₁,R₂,R₃ = Rotors, R = Reflector
+                Wobei P = Steckerbrett, R₁,R₂,R₃ = Rotoren, R = Reflektor
               </div>
             </div>
           </motion.div>
@@ -252,19 +310,19 @@ export const CryptographyDescription = () => {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
             <div className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 p-4 rounded-xl text-center">
               <div className="text-2xl font-bold text-purple-400">26³</div>
-              <div className="text-sm text-gray-300">Rotor Settings</div>
+              <div className="text-sm text-gray-300">Rotor Einstellungen</div>
             </div>
             <div className="bg-gradient-to-br from-cyan-900/50 to-cyan-800/30 p-4 rounded-xl text-center">
               <div className="text-2xl font-bold text-cyan-400">6!</div>
-              <div className="text-sm text-gray-300">Rotor Orders</div>
+              <div className="text-sm text-gray-300">Rotor Reihenfolgen</div>
             </div>
             <div className="bg-gradient-to-br from-green-900/50 to-green-800/30 p-4 rounded-xl text-center">
               <div className="text-2xl font-bold text-green-400">10¹⁰</div>
-              <div className="text-sm text-gray-300">Plugboard</div>
+              <div className="text-sm text-gray-300">Steckerbrett</div>
             </div>
             <div className="bg-gradient-to-br from-red-900/50 to-red-800/30 p-4 rounded-xl text-center">
               <div className="text-2xl font-bold text-red-400">150T</div>
-              <div className="text-sm text-gray-300">Total Keys</div>
+              <div className="text-sm text-gray-300">Gesamt Schlüssel</div>
             </div>
           </div>
         </motion.div>

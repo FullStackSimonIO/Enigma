@@ -22,17 +22,45 @@ export const AlgorithmVisualization = () => {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   const steps = [
-    { name: "Input", description: "Letter enters the machine", color: "blue" },
-    { name: "Plugboard", description: "First substitution", color: "green" },
-    { name: "Rotor III", description: "Right rotor encoding", color: "purple" },
-    { name: "Rotor II", description: "Middle rotor encoding", color: "indigo" },
-    { name: "Rotor I", description: "Left rotor encoding", color: "violet" },
-    { name: "Reflector", description: "Signal reflection", color: "red" },
-    { name: "Rotor I⁻¹", description: "Left rotor return", color: "violet" },
-    { name: "Rotor II⁻¹", description: "Middle rotor return", color: "indigo" },
-    { name: "Rotor III⁻¹", description: "Right rotor return", color: "purple" },
-    { name: "Plugboard⁻¹", description: "Final substitution", color: "green" },
-    { name: "Output", description: "Encrypted letter", color: "yellow" },
+    {
+      name: "Eingabe",
+      description: "Buchstabe tritt in die Maschine ein",
+      color: "blue",
+    },
+    { name: "Steckerbrett", description: "Erste Substitution", color: "green" },
+    {
+      name: "Rotor III",
+      description: "Rechter Rotor Kodierung",
+      color: "purple",
+    },
+    {
+      name: "Rotor II",
+      description: "Mittlerer Rotor Kodierung",
+      color: "indigo",
+    },
+    { name: "Rotor I", description: "Linker Rotor Kodierung", color: "violet" },
+    { name: "Reflektor", description: "Signal Reflektion", color: "red" },
+    { name: "Rotor I⁻¹", description: "Linker Rotor Rückweg", color: "violet" },
+    {
+      name: "Rotor II⁻¹",
+      description: "Mittlerer Rotor Rückweg",
+      color: "indigo",
+    },
+    {
+      name: "Rotor III⁻¹",
+      description: "Rechter Rotor Rückweg",
+      color: "purple",
+    },
+    {
+      name: "Steckerbrett⁻¹",
+      description: "Finale Substitution",
+      color: "green",
+    },
+    {
+      name: "Ausgabe",
+      description: "Verschlüsselter Buchstabe",
+      color: "yellow",
+    },
   ];
 
   const simulateStep = (letter: string, step: number) => {
@@ -115,21 +143,23 @@ export const AlgorithmVisualization = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Algorithm{" "}
+            Algorithmus{" "}
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Visualization
+              Visualisierung
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Watch how a letter transforms through the Enigma&apos;s encryption
-            process
+            Beobachten Sie, wie sich ein Buchstabe durch den
+            Enigma-Verschlüsselungsprozess transformiert
           </p>
         </motion.div>
 
         {/* Controls */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
           <div className="flex items-center space-x-4">
-            <label className="text-white font-semibold">Input Letter:</label>
+            <label className="text-white font-semibold">
+              Eingabe-Buchstabe:
+            </label>
             <select
               value={inputLetter}
               onChange={(e) => {
@@ -160,10 +190,10 @@ export const AlgorithmVisualization = () => {
               )}
               <span>
                 {isPlaying
-                  ? "Pause"
+                  ? "Pausieren"
                   : currentStep >= steps.length - 1
-                    ? "Restart"
-                    : "Play"}
+                    ? "Neustarten"
+                    : "Abspielen"}
               </span>
             </motion.button>
 
@@ -174,12 +204,12 @@ export const AlgorithmVisualization = () => {
               whileTap={{ scale: 0.95 }}
             >
               <BiRefresh className="text-xl" />
-              <span>Reset</span>
+              <span>Zurücksetzen</span>
             </motion.button>
           </div>
 
           <div className="flex items-center space-x-4">
-            <label className="text-white font-semibold">Mode:</label>
+            <label className="text-white font-semibold">Modus:</label>
             <button
               onClick={() => setIsEncrypting(!isEncrypting)}
               className={`px-4 py-2 rounded-lg font-semibold transition-all ${
@@ -188,7 +218,7 @@ export const AlgorithmVisualization = () => {
                   : "bg-red-600 text-white"
               }`}
             >
-              {isEncrypting ? "Encrypt" : "Decrypt"}
+              {isEncrypting ? "Verschlüsseln" : "Entschlüsseln"}
             </button>
           </div>
         </div>
@@ -211,7 +241,7 @@ export const AlgorithmVisualization = () => {
               </div>
             </motion.div>
             <p className="text-gray-300 text-lg">
-              Step {currentStep + 1} of {steps.length}:{" "}
+              Schritt {currentStep + 1} von {steps.length}:{" "}
               <span className="text-purple-400 font-semibold">
                 {steps[currentStep]?.name}
               </span>
@@ -316,12 +346,12 @@ export const AlgorithmVisualization = () => {
                 className="bg-gray-800 rounded-xl p-6"
               >
                 <h4 className="text-xl font-bold text-white mb-4">
-                  Transformation Details
+                  Transformations-Details
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="text-center">
                     <div className="text-sm text-gray-400 mb-2">
-                      Previous Step
+                      Vorheriger Schritt
                     </div>
                     <div className="text-2xl font-bold text-blue-400">
                       {currentStep > 0
@@ -331,14 +361,14 @@ export const AlgorithmVisualization = () => {
                   </div>
                   <div className="text-center">
                     <div className="text-sm text-gray-400 mb-2">
-                      Current Process
+                      Aktueller Prozess
                     </div>
                     <div className="text-lg text-purple-400 font-semibold">
                       {steps[currentStep]?.name}
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-sm text-gray-400 mb-2">Result</div>
+                    <div className="text-sm text-gray-400 mb-2">Ergebnis</div>
                     <div className="text-2xl font-bold text-green-400">
                       {getCurrentLetter()}
                     </div>

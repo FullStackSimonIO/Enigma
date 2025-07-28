@@ -9,15 +9,26 @@ export const ExplosionView = () => {
   const [currentMode, setCurrentMode] = useState<EnigmaMode>("encrypt");
   const [isAnimating, setIsAnimating] = useState(false);
   const [selectedLetter, setSelectedLetter] = useState("A");
+  const [outputLetter, setOutputLetter] = useState("B");
+
+  // Generate a random letter different from the input
+  const generateRandomOutput = (inputLetter: string) => {
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const availableLetters = alphabet
+      .split("")
+      .filter((letter) => letter !== inputLetter);
+    const randomIndex = Math.floor(Math.random() * availableLetters.length);
+    return availableLetters[randomIndex];
+  };
 
   const components = [
-    { id: "keyboard", name: "Keyboard", position: { x: 0, y: 100 } },
-    { id: "plugboard", name: "Plugboard", position: { x: 0, y: 50 } },
-    { id: "rotor1", name: "Rotor I", position: { x: -60, y: 0 } },
-    { id: "rotor2", name: "Rotor II", position: { x: 0, y: 0 } },
-    { id: "rotor3", name: "Rotor III", position: { x: 60, y: 0 } },
-    { id: "reflector", name: "Reflector", position: { x: 0, y: -50 } },
-    { id: "lampboard", name: "Lampboard", position: { x: 0, y: -100 } },
+    { id: "keyboard", name: "Tastatur", position: { x: 0, y: 100 } },
+    { id: "plugboard", name: "Steckerbrett", position: { x: 0, y: 50 } },
+    { id: "rotor1", name: "Walze I", position: { x: -60, y: 0 } },
+    { id: "rotor2", name: "Walze II", position: { x: 0, y: 0 } },
+    { id: "rotor3", name: "Walze III", position: { x: 60, y: 0 } },
+    { id: "reflector", name: "Umkehrwalze", position: { x: 0, y: -50 } },
+    { id: "lampboard", name: "Lampenfeld", position: { x: 0, y: -100 } },
   ];
 
   const signalPath =
@@ -51,6 +62,9 @@ export const ExplosionView = () => {
 
   const startAnimation = () => {
     setIsAnimating(true);
+    // Generate new output letter when animation starts
+    const newOutput = generateRandomOutput(selectedLetter);
+    setOutputLetter(newOutput);
     setTimeout(() => setIsAnimating(false), 3000);
   };
 
@@ -80,11 +94,11 @@ export const ExplosionView = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Enigma <span className="text-cyan-400">Explosion View</span>
+            Enigma <span className="text-cyan-400">Signalfluss</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Visualize the signal flow through Enigma&apos;s components in both
-            encryption and decryption modes
+            Visualisiere den Signalfluss durch die Komponenten der Enigma in
+            sowohl der Verschlüsselungs- als auch der Entschlüsselungsmodus
           </p>
         </motion.div>
 
@@ -94,7 +108,7 @@ export const ExplosionView = () => {
             {/* Mode Selector */}
             <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
               <h3 className="text-xl font-bold text-white mb-4">
-                Operation Mode
+                Betriebsmodus
               </h3>
               <div className="grid grid-cols-2 gap-3">
                 {(["encrypt", "decrypt"] as EnigmaMode[]).map((mode) => (
@@ -109,7 +123,9 @@ export const ExplosionView = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <div className="font-semibold capitalize">{mode}</div>
+                    <div className="font-semibold capitalize">
+                      {mode === "encrypt" ? "Verschlüsseln" : "Entschlüsseln"}
+                    </div>
                     <div className="text-xs mt-1">
                       {mode === "encrypt" ? "A → B" : "B → A"}
                     </div>
@@ -121,7 +137,7 @@ export const ExplosionView = () => {
             {/* Letter Input */}
             <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
               <h3 className="text-xl font-bold text-white mb-4">
-                Input Letter
+                Eingabebuchstabe
               </h3>
               <div className="grid grid-cols-6 gap-2">
                 {Array.from({ length: 26 }, (_, i) =>
@@ -129,7 +145,12 @@ export const ExplosionView = () => {
                 ).map((letter) => (
                   <motion.button
                     key={letter}
-                    onClick={() => setSelectedLetter(letter)}
+                    onClick={() => {
+                      setSelectedLetter(letter);
+                      // Generate new output when input changes
+                      const newOutput = generateRandomOutput(letter);
+                      setOutputLetter(newOutput);
+                    }}
                     className={`aspect-square rounded-lg border font-mono text-sm transition-all ${
                       selectedLetter === letter
                         ? "border-red-500 bg-red-500/10 text-red-400"
@@ -146,7 +167,7 @@ export const ExplosionView = () => {
 
             {/* Animation Control */}
             <div className="bg-gray-900 rounded-xl p-6 border border-gray-800">
-              <h3 className="text-xl font-bold text-white mb-4">Signal Flow</h3>
+              <h3 className="text-xl font-bold text-white mb-4">Signalfluss</h3>
               <motion.button
                 onClick={startAnimation}
                 disabled={isAnimating}
@@ -155,22 +176,34 @@ export const ExplosionView = () => {
                 whileTap={{ scale: isAnimating ? 1 : 0.98 }}
               >
                 {isAnimating ? <BiPause /> : <BiPlay />}
-                <span>
-                  {isAnimating ? "Animating..." : "Start Signal Flow"}
-                </span>
+                <span>{isAnimating ? "Läuft..." : "Signalfluss starten"}</span>
               </motion.button>
 
-              <div className="mt-4 text-sm text-gray-400">
-                <p>
-                  Input:{" "}
-                  <span className="text-white font-mono">{selectedLetter}</span>
-                </p>
-                <p>
-                  Mode:{" "}
+              <div className="mt-4 text-sm text-gray-400 space-y-2">
+                <div className="flex justify-between">
+                  <span>Eingabe:</span>
+                  <span className="text-white font-mono bg-gray-800 px-2 py-1 rounded">
+                    {selectedLetter}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Ausgabe:</span>
+                  <span
+                    className={`font-mono px-2 py-1 rounded transition-all duration-300 ${
+                      isAnimating
+                        ? "text-red-400 bg-red-900/30 animate-pulse"
+                        : "text-cyan-400 bg-cyan-900/30"
+                    }`}
+                  >
+                    {outputLetter}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Mode:</span>
                   <span className="text-cyan-400 capitalize">
                     {currentMode}
                   </span>
-                </p>
+                </div>
               </div>
             </div>
           </div>
@@ -266,14 +299,16 @@ export const ExplosionView = () => {
                       className="text-xs font-mono fill-white"
                     >
                       {component.id === "keyboard"
-                        ? "⌨️"
+                        ? selectedLetter
                         : component.id === "plugboard"
                           ? "🔌"
                           : component.id.includes("rotor")
                             ? "⚙️"
                             : component.id === "reflector"
                               ? "↩️"
-                              : "💡"}
+                              : component.id === "lampboard"
+                                ? outputLetter
+                                : "💡"}
                     </text>
 
                     {/* Component Label */}
