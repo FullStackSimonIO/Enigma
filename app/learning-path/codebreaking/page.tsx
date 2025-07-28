@@ -1,6 +1,6 @@
+"use client";
 import { CodebreakingHero } from "@/components/codebreaking/CodebreakingHero";
 import { KeyspaceCalculator } from "@/components/codebreaking/KeyspaceCalculator";
-import { SpeedComparison } from "@/components/codebreaking/SpeedComparison";
 import { BruteForceFormula } from "@/components/codebreaking/BruteForceFormula";
 import { TacticsResume } from "@/components/codebreaking/TacticsResume";
 import { QuizComponent } from "@/components/QuizComponent";

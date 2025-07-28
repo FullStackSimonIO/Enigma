@@ -42,27 +42,28 @@ export const CodebreakingHero = ({
       {/* Futuristic Animated Background */}
       <div className="absolute inset-0">
         {/* Matrix-style falling code */}
-        {Array.from({ length: 50 }).map((_, i) => (
-          <motion.div
-            key={`code-${i}`}
-            className="absolute text-blue-400/20 font-mono text-xs"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${-10 + Math.random() * 10}%`,
-            }}
-            animate={{
-              y: [0, window?.innerHeight || 1000],
-              opacity: [0, 0.5, 0],
-            }}
-            transition={{
-              duration: 8 + Math.random() * 4,
-              repeat: Infinity,
-              delay: Math.random() * 10,
-            }}
-          >
-            {Math.random().toString(36).substring(2, 8)}
-          </motion.div>
-        ))}
+        {isClient &&
+          Array.from({ length: 50 }).map((_, i) => (
+            <motion.div
+              key={`code-${i}`}
+              className="absolute text-blue-400/20 font-mono text-xs"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${-10 + Math.random() * 10}%`,
+              }}
+              animate={{
+                y: [0, window?.innerHeight || 1000],
+                opacity: [0, 0.5, 0],
+              }}
+              transition={{
+                duration: 8 + Math.random() * 4,
+                repeat: Infinity,
+                delay: Math.random() * 10,
+              }}
+            >
+              {Math.random().toString(36).substring(2, 8)}
+            </motion.div>
+          ))}
 
         {/* Scanning grid */}
         <div className="absolute inset-0 opacity-10">
@@ -76,24 +77,25 @@ export const CodebreakingHero = ({
               repeat: Infinity,
             }}
           >
-            {Array.from({ length: 400 }).map((_, i) => (
-              <motion.div
-                key={i}
-                className="border border-blue-500/10"
-                animate={{
-                  backgroundColor: [
-                    "rgba(59, 130, 246, 0)",
-                    "rgba(59, 130, 246, 0.1)",
-                    "rgba(59, 130, 246, 0)",
-                  ],
-                }}
-                transition={{
-                  duration: 2,
-                  delay: (i % 20) * 0.1,
-                  repeat: Infinity,
-                }}
-              />
-            ))}
+            {isClient &&
+              Array.from({ length: 400 }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="border border-blue-500/10"
+                  animate={{
+                    backgroundColor: [
+                      "rgba(59, 130, 246, 0)",
+                      "rgba(59, 130, 246, 0.1)",
+                      "rgba(59, 130, 246, 0)",
+                    ],
+                  }}
+                  transition={{
+                    duration: 2,
+                    delay: (i % 20) * 0.1,
+                    repeat: Infinity,
+                  }}
+                />
+              ))}
           </motion.div>
         </div>
 
@@ -178,27 +180,28 @@ export const CodebreakingHero = ({
 
       {/* Scanning Lines */}
       <div className="absolute inset-0 opacity-20">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-red-400 to-transparent"
-            style={{ top: `${i * 16}%` }}
-            animate={
-              isClient
-                ? {
-                    x: ["-100%", "100%"],
-                    opacity: [0, 1, 0],
-                  }
-                : {}
-            }
-            transition={{
-              duration: 4,
-              delay: i * 0.5,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-        ))}
+        {isClient &&
+          Array.from({ length: 6 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-full h-0.5 bg-gradient-to-r from-transparent via-red-400 to-transparent"
+              style={{ top: `${i * 16}%` }}
+              animate={
+                isClient
+                  ? {
+                      x: ["-100%", "100%"],
+                      opacity: [0, 1, 0],
+                    }
+                  : {}
+              }
+              transition={{
+                duration: 4,
+                delay: i * 0.5,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+          ))}
       </div>
 
       {/* Main Content */}
