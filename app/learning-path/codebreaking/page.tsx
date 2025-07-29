@@ -3,6 +3,7 @@ import { CodebreakingHero } from "@/components/codebreaking/CodebreakingHero";
 import { KeyspaceCalculator } from "@/components/codebreaking/KeyspaceCalculator";
 import { BruteForceFormula } from "@/components/codebreaking/BruteForceFormula";
 import { TacticsResume } from "@/components/codebreaking/TacticsResume";
+import { GitHubDownload } from "@/components/codebreaking/GitHubDownload";
 import { QuizComponent } from "@/components/QuizComponent";
 
 export default function CodebreakingPage() {
@@ -95,6 +96,12 @@ Heutzutage sind Enigma-Verschlüsselungen mit modernen Computern vergleichsweise
       <KeyspaceCalculator />
       <BruteForceFormula />
       <TacticsResume />
+      <GitHubDownload
+        repoUrl="https://github.com/Petitoto/Enigma-Cracker"
+        repoName="Enigma Cracker"
+        description="Dieses Python-Script implementiert verschiedene Angriffsmethoden gegen die Enigma-Maschine. Von Brute-Force-Ansätzen bis hin zu ausgeklügelten Crib-basierten Attacken - erlebe selbst, wie die Codebreaker von Bletchley Park die 'unknackbare' Verschlüsselung überwunden haben."
+        fileName="enigma_cracker.py"
+      />
       <QuizComponent
         sectionId="codebreaking"
         questions={quizQuestions}
