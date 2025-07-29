@@ -140,14 +140,13 @@ export const EnigmaGallery = () => {
           </h2>
           <div>
             <p
-              className={`text-gray-400 text-lg max-w-2xl mx-auto transition-all duration-300 ${
+              className={`text-gray-300 text-justify leading-relaxed ${
                 !isDescriptionExpanded ? "line-clamp-3 overflow-hidden" : ""
               }`}
               style={{
-                display: "-webkit-box",
+                display: !isDescriptionExpanded ? "-webkit-box" : "block",
                 WebkitLineClamp: !isDescriptionExpanded ? 3 : "unset",
-                WebkitBoxOrient: "vertical" as const,
-                overflow: !isDescriptionExpanded ? "hidden" : "visible",
+                WebkitBoxOrient: "vertical",
               }}
             >
               Die Enigma-Maschine wurde in mehreren Varianten entwickelt, die

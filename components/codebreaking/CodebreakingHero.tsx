@@ -276,7 +276,7 @@ export const CodebreakingHero = ({
               {description.split("\n\n").map((paragraph, index) => (
                 <p
                   key={index}
-                  className="text-sm text-gray-300 mb-3 leading-relaxed"
+                  className="text-sm text-gray-300 text-justify mb-3 leading-relaxed"
                 >
                   {paragraph.trim()}
                 </p>

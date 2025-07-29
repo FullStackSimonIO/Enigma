@@ -146,7 +146,7 @@ export const BruteForceFormula = () => {
             Mathematische Analyse der Brute-Force Komplexität
           </h3>
           <div
-            className={`text-sm text-gray-300 leading-relaxed transition-all duration-300 ${
+            className={`text-sm text-gray-300 text-justify leading-relaxed transition-all duration-300 ${
               isExpanded ? "" : "line-clamp-3"
             }`}
             style={{

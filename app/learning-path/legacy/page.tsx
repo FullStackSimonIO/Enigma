@@ -21,7 +21,7 @@ const ExpandableText = () => {
   return (
     <div className="mb-6">
       <div
-        className={`text-lg text-gray-300 leading-relaxed transition-all duration-300 ${
+        className={`text-lg text-gray-300 text-justify leading-relaxed transition-all duration-300 ${
           isExpanded ? "" : "line-clamp-3"
         }`}
       >

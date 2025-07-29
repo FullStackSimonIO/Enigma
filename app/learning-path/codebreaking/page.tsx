@@ -3,6 +3,7 @@ import { CodebreakingHero } from "@/components/codebreaking/CodebreakingHero";
 import { KeyspaceCalculator } from "@/components/codebreaking/KeyspaceCalculator";
 import { BruteForceFormula } from "@/components/codebreaking/BruteForceFormula";
 import { TacticsResume } from "@/components/codebreaking/TacticsResume";
+import { TuringBombExplanation } from "@/components/codebreaking/TuringBombExplanation";
 import { GitHubDownload } from "@/components/codebreaking/GitHubDownload";
 import { QuizComponent } from "@/components/QuizComponent";
 
@@ -96,6 +97,7 @@ Heutzutage sind Enigma-Verschlüsselungen mit modernen Computern vergleichsweise
       <KeyspaceCalculator />
       <BruteForceFormula />
       <TacticsResume />
+      <TuringBombExplanation />
       <GitHubDownload
         repoUrl="https://github.com/Petitoto/Enigma-Cracker"
         repoName="Enigma Cracker"

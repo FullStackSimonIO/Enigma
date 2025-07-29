@@ -144,7 +144,7 @@ export const CryptographyHero = ({
             className="max-w-3xl mx-auto"
           >
             <p
-              className={`text-xl sm:text-2xl text-gray-300 mb-4 leading-relaxed transition-all duration-300 ${
+              className={`text-xl sm:text-2xl text-gray-300 text-justify mb-4 leading-relaxed transition-all duration-300 ${
                 !isDescriptionExpanded ? "line-clamp-3 overflow-hidden" : ""
               }`}
               style={{

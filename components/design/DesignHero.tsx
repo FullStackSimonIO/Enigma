@@ -176,43 +176,6 @@ export const DesignHero = ({ title, description }: DesignHeroProps) => {
                 </motion.span>
               </span>
             </motion.h1>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-              className="max-w-3xl mx-auto"
-            >
-              <motion.div
-                className={`text-lg sm:text-xl text-gray-300 leading-relaxed transition-all duration-300 ${
-                  !isDescriptionExpanded ? "line-clamp-3" : ""
-                }`}
-                style={{
-                  display: "-webkit-box",
-                  WebkitLineClamp: !isDescriptionExpanded ? 3 : "none",
-                  WebkitBoxOrient: "vertical",
-                  overflow: !isDescriptionExpanded ? "hidden" : "visible",
-                }}
-              >
-                {description}
-              </motion.div>
-              <motion.button
-                onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
-                className="mt-3 text-cyan-400 hover:text-cyan-300 font-medium flex items-center space-x-1 transition-colors duration-200 mx-auto"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span>
-                  {isDescriptionExpanded ? "Weniger anzeigen" : "Mehr anzeigen"}
-                </span>
-                <motion.div
-                  animate={{ rotate: isDescriptionExpanded ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <BiChevronDown className="text-sm" />
-                </motion.div>
-              </motion.button>
-            </motion.div>
           </motion.div>
 
           {/* Futuristic Status Indicators */}

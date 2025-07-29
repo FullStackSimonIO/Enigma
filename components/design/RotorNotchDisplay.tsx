@@ -146,82 +146,59 @@ export const RotorNotchDisplay = () => {
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Walzen <span className="text-cyan-400">Mechanismus</span>
           </h2>
-          <div>
+          <div className="max-w-4xl mx-auto">
             <p
-              className={`text-gray-400 text-lg max-w-2xl mx-auto transition-all duration-300 ${
+              className={`text-gray-300 text-justify leading-relaxed ${
                 !isDescriptionExpanded ? "line-clamp-3 overflow-hidden" : ""
               }`}
               style={{
-                display: "-webkit-box",
+                display: !isDescriptionExpanded ? "-webkit-box" : "block",
                 WebkitLineClamp: !isDescriptionExpanded ? 3 : "unset",
-                WebkitBoxOrient: "vertical" as const,
-                overflow: !isDescriptionExpanded ? "hidden" : "visible",
+                WebkitBoxOrient: "vertical",
               }}
             >
-              Die täglichen Einstellungen der Enigma-Maschine wurden durch
-              spezielle Schlüsselblätter geregelt, die in der Praxis als
-              zentrale Komponente der Verschlüsselung dienten. Diese sogenannten
-              Schlüsselhefte oder Schlüsselzettel wurden meist monatlich im
-              Voraus ausgegeben und enthielten für jeden Kalendertag eine
-              vollständige Übersicht über die für diesen Tag gültigen
-              Enigma-Einstellungen. Sie waren streng geheim, wurden nur in
-              versiegelter Form weitergegeben und durften ausschließlich von
-              autorisiertem Personal – meist Offizieren – eingesehen und
-              verwendet werden. Ein typisches Blatt eines solchen Schlüsselhefts
-              war in mehrere Zeilen unterteilt, wobei jede Zeile die
-              vollständige Schlüsselkonfiguration für einen bestimmten Tag
-              enthielt. Dazu zählten unter anderem die Auswahl und Reihenfolge
-              der Rotoren, die Anfangsstellung (Grundstellung) der Walzen, die
-              Steckerverbindungen auf dem Steckerbrett sowie gegebenenfalls
-              Sonderinformationen wie die verwendete Umkehrwalze (UKW). Diese
-              Parameter mussten exakt mit den Einstellungen auf der Enigma
-              übereinstimmen, um eine korrekte Ver- und Entschlüsselung der
-              Nachrichten zu ermöglichen. Jeden Morgen, meist zu einem
-              festgelegten Zeitpunkt, wurde die jeweils unterste Zeile des
-              Blattes – also die Einstellung für den aktuellen Tag – verwendet.
-              Um die Verwechslungsgefahr mit vorherigen Tagen zu minimieren und
-              gleichzeitig die Geheimhaltung zu erhöhen, wurde die benutzte
-              Zeile nach dem Eintragen in die Maschine sofort abgetrennt. Dies
-              erfolgte oft buchstäblich mit einem Lineal oder Messer, sodass der
-              Abschnitt für den aktuellen Tag vom restlichen Schlüsselblatt
-              getrennt und anschließend vernichtet werden konnte. Diese Praxis
-              sollte sicherstellen, dass bei einer Gefangennahme oder einem
-              Verlust der Unterlagen möglichst wenig kompromittiert wurde –
-              idealerweise nur der Schlüssel eines einzelnen Tages. Die Blätter
-              selbst waren meist im Voraus für einen Monat vorbereitet. Sie
-              wurden versiegelt und durften jeweils erst zum Monatsbeginn
-              geöffnet werden. In besonders sicherheitsrelevanten Bereichen, wie
-              etwa auf U-Booten der Kriegsmarine, war die Handhabung noch
-              strikter: Dort wurden die Schlüsselhefte meist doppelt geführt –
-              einmal für die normalen Tagesmeldungen und zusätzlich für
-              Kurzsignale wie Wetterberichte oder Angriffspositionen. Auch die
-              Gültigkeit einzelner Schlüssel konnte bei Bedarf kurzfristig
-              geändert werden, etwa wenn ein Verdacht auf Kompromittierung
-              bestand. Diese Schlüsselblätter waren das eigentliche Herzstück
-              der Enigma-Verschlüsselung: Ohne die exakte Kenntnis der
-              jeweiligen Tagesparameter war die Maschine praktisch nutzlos.
-              Deshalb waren sie auch militärisch betrachtet von höchstem Wert –
-              und ihr Verlust galt als extrem sicherheitsgefährdend. Der
-              legendäre Erfolg der Alliierten beim Knacken der Enigma beruhte
-              daher nicht nur auf der Analyse der Maschine selbst, sondern auch
-              auf der gelegentlichen Eroberung solcher Schlüsselunterlagen, etwa
-              durch die Kaperung deutscher U-Boote oder Versorgungsschiffe.
+              Beim Drücken einer Taste wird der elektrische Stromkreis zunächst
+              durch das Steckerbrett geleitet, wo manuell gesteckte Kabelbuchsen
+              eine erste Buchstabenvertauschung erzwingen (beispielsweise A →
+              J). Das so transformierte Signal passiert anschließend die
+              feststehende Eintrittswalze (ETW), die als Eingangstor zu den
+              Rotoren dient. Nun durchläuft der Strom das eigentliche
+              kryptographische Herzstück der Maschine – die Rotoren. Jeder
+              dieser individuell verdrahteten Walzen besitzt 26 Kontakte und
+              dreht sich nach jedem Tastenanschlag durch einen präzisen
+              Mechanismus weiter: Eine mechanische Kerbe (Notch) löst dabei die
+              Rotorvorrückung aus, sodass sich der nächste Rotor bewegt, sobald
+              der vorherige eine bestimmte Position erreicht. Diese
+              kontinuierliche Positionsänderung verändert den
+              Verschlüsselungspfad für jeden Buchstaben dynamisch.
+              <br />
+              <br />
+              Nach Passieren der Rotoren trifft der Strom auf die Umkehrwalze
+              (UKW), die ihn auf einem veränderten Pfad durch die Walzen
+              zurückleitet. Dieser bidirektionale Stromfluss – Hinweg durch die
+              Rotorenfolge, Rückweg in umgekehrter Reihenfolge – erklärt das
+              fundamentale Prinzip, warum ein Buchstabe niemals auf sich selbst
+              verschlüsselt werden kann: Der Rückweg folgt stets einem anderen
+              Kontaktpfad als der Hinweg. Das rücklaufende Signal passiert
+              erneut die Eintrittswalze und durchläuft abschließend ein zweites
+              Mal das Steckerbrett, wo erneut eine Vertauschung stattfindet
+              (beispielsweise G → S). Erst dann leuchtet die entsprechende Lampe
+              im Lampenfeld auf.
             </p>
             <motion.button
               onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
-              className="mt-4 flex items-center justify-center space-x-2 text-cyan-400 hover:text-cyan-300 transition-colors mx-auto"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="mt-3 text-cyan-400 hover:text-cyan-300 font-medium flex items-center space-x-1 transition-colors duration-200 mx-auto"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span className="text-sm">
+              <span>
                 {isDescriptionExpanded ? "Weniger anzeigen" : "Mehr anzeigen"}
               </span>
-              <motion.div
-                animate={{ rotate: isDescriptionExpanded ? 180 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <BiChevronDown />
-              </motion.div>
+              <BiChevronDown
+                className={`transform transition-transform duration-200 ${
+                  isDescriptionExpanded ? "rotate-180" : ""
+                }`}
+              />
             </motion.button>
           </div>
         </motion.div>

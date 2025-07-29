@@ -196,8 +196,8 @@ export const TacticsResume = () => {
           <h3 className="text-2xl font-bold text-white mb-6">
             Kryptoanalytische Methoden und Schwachstellen
           </h3>
-          <div
-            className={`text-sm text-gray-300 leading-relaxed transition-all duration-300 ${
+          <motion.div
+            className={`text-gray-300 text-justify leading-relaxed transition-all duration-300 ${
               isExpanded ? "" : "line-clamp-3"
             }`}
             style={{
@@ -305,7 +305,7 @@ export const TacticsResume = () => {
                 Schwachstelle ausnutzt.
               </p>
             </div>
-          </div>
+          </motion.div>
           <button
             onClick={() => setIsExpanded(!isExpanded)}
             className="mt-4 text-indigo-400 hover:text-indigo-300 transition-colors font-medium"

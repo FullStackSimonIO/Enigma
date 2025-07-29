@@ -88,7 +88,7 @@ export const ChainOfCommand = () => {
           </h2>
           <div className="max-w-2xl mx-auto">
             <motion.div
-              className={`text-gray-400 text-lg transition-all duration-300 ${
+              className={`text-gray-400 text-justify text-lg transition-all duration-300 ${
                 !isDescriptionExpanded ? "line-clamp-3" : ""
               }`}
               style={{

@@ -95,62 +95,6 @@ export const CryptographyDescription = () => {
             </span>{" "}
             verschlüsselt
           </h2>
-          <div className="max-w-3xl mx-auto">
-            <p
-              className={`text-xl text-gray-300 transition-all duration-300 ${
-                !isExpanded
-                  ? "line-clamp-3 [display:-webkit-box] [-webkit-box-orient:vertical] overflow-hidden"
-                  : ""
-              }`}
-            >
-              Die Enigma-Maschine verschlüsselte Nachrichten in einem komplexen
-              mehrstufigen Prozess, bei dem ein elektrisches Signal durch
-              mehrere Komponenten geleitet wurde. Alles begann mit der Eingabe
-              über die Tastatur: Sobald der Bediener eine Taste drückte, floss
-              ein elektrisches Signal in die Maschine. Im nächsten Schritt
-              erreichte es das sogenannte Steckerbrett, auf dem zuvor definierte
-              Buchstabenpaare vertauscht wurden. Dies war die erste von mehreren
-              Substitutionen im Verschlüsselungsprozess. Nach dieser
-              Vorvertauschung gelangte das Signal in die Rotoren (Walzen). Diese
-              bestanden aus mehreren hintereinander geschalteten, drehbaren
-              Scheiben mit interner Verdrahtung. Das Signal passierte die
-              Rotoren von rechts nach links, wobei jeder Rotor das Signal erneut
-              veränderte. Am Ende der Rotoren befand sich der Reflektor, eine
-              Umkehrwalze. Diese leitete das Signal auf einem anderen Weg zurück
-              durch die Rotoren – diesmal von links nach rechts. Durch diese
-              doppelte Passage wurden weitere Substitutionen vorgenommen, was
-              für zusätzliche Sicherheit sorgte und gleichzeitig eine praktische
-              Eigenschaft ermöglichte: Verschlüsselung und Entschlüsselung
-              verwendeten dieselben Einstellungen. Nachdem das Signal erneut
-              durch alle Rotoren geleitet wurde, erreichte es wieder das
-              Steckerbrett für eine abschließende Substitution. Erst dann wurde
-              der endgültige verschlüsselte Buchstabe sichtbar: Eine kleine
-              Lampe leuchtete auf und zeigte dem Bediener den codierten
-              Buchstaben an. Diese komplexe Abfolge von Eingabe, mehrfacher
-              Substitution (Steckerbrett), Rotorverschlüsselung, Reflektion und
-              erneuter Substitution erzeugte astronomisch viele mögliche
-              Schlüssel und machte die Enigma lange Zeit nahezu
-              unentschlüsselbar. Erst durch intelligente Analyse ihrer Muster
-              gelang es, diese scheinbar perfekte Verschlüsselung zu brechen.
-              ChatGPT fragen
-            </p>
-            <motion.button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="mt-4 flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors duration-200 mx-auto"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="text-sm font-medium">
-                {isExpanded ? "Weniger anzeigen" : "Mehr anzeigen"}
-              </span>
-              <motion.div
-                animate={{ rotate: isExpanded ? 180 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <BiChevronDown className="w-4 h-4" />
-              </motion.div>
-            </motion.button>
-          </div>
         </motion.div>
 
         {/* Key Principles */}

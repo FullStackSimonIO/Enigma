@@ -105,15 +105,15 @@ export const ArtifactViewer = () => {
             Tägliche <span className="text-[#145dfb]">Einstellungen</span>
           </h2>
           <div className="max-w-2xl mx-auto">
-            <motion.div
-              className={`text-gray-400 text-lg transition-all duration-300 ${
+            <p
+              className={`text-gray-300 text-justify leading-relaxed ${
                 !isDescriptionExpanded ? "line-clamp-3" : ""
               }`}
               style={{
-                display: "-webkit-box",
+                display: !isDescriptionExpanded ? "-webkit-box" : "block",
                 WebkitLineClamp: !isDescriptionExpanded ? 3 : "none",
                 WebkitBoxOrient: "vertical",
-                overflow: !isDescriptionExpanded ? "hidden" : "visible",
+                overflow: "hidden",
               }}
             >
               Die täglichen Einstellungen der Enigma-Maschine wurden durch
@@ -164,7 +164,7 @@ export const ArtifactViewer = () => {
               daher nicht nur auf der Analyse der Maschine selbst, sondern auch
               auf der gelegentlichen Eroberung solcher Schlüsselunterlagen, etwa
               durch die Kaperung deutscher U-Boote oder Versorgungsschiffe.
-            </motion.div>
+            </p>
             <motion.button
               onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
               className="mt-3 text-[#145dfb] hover:text-blue-300 font-medium flex items-center space-x-1 transition-colors duration-200"

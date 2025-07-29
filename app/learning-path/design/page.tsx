@@ -17,12 +17,7 @@ const DesignPage = () => {
   return (
     <div className="min-h-screen bg-[#101828] text-white">
       {/* Futuristic Hero Section */}
-      <DesignHero
-        title="Der Aufbau der Enigma"
-        description="Beim Drücken einer Taste wird der elektrische Stromkreis zunächst durch das Steckerbrett geleitet, wo manuell gesteckte Kabelbuchsen eine erste Buchstabenvertauschung erzwingen (beispielsweise A → J). Das so transformierte Signal passiert anschließend die feststehende Eintrittswalze (ETW), die als Eingangstor zu den Rotoren dient. Nun durchläuft der Strom das eigentliche kryptographische Herzstück der Maschine – die Rotoren. Jeder dieser individuell verdrahteten Walzen besitzt 26 Kontakte und dreht sich nach jedem Tastenanschlag durch einen präzisen Mechanismus weiter: Eine mechanische Kerbe (Notch) löst dabei die Rotorvorrückung aus, sodass sich der nächste Rotor bewegt, sobald der vorherige eine bestimmte Position erreicht. Diese kontinuierliche Positionsänderung verändert den Verschlüsselungspfad für jeden Buchstaben dynamisch.
-
-Nach Passieren der Rotoren trifft der Strom auf die Umkehrwalze (UKW), die ihn auf einem veränderten Pfad durch die Walzen zurückleitet. Dieser bidirektionale Stromfluss – Hinweg durch die Rotorenfolge, Rückweg in umgekehrter Reihenfolge – erklärt das fundamentale Prinzip, warum ein Buchstabe niemals auf sich selbst verschlüsselt werden kann: Der Rückweg folgt stets einem anderen Kontaktpfad als der Hinweg. Das rücklaufende Signal passiert erneut die Eintrittswalze und durchläuft abschließend ein zweites Mal das Steckerbrett, wo erneut eine Vertauschung stattfindet (beispielsweise G → S). Erst dann leuchtet die entsprechende Lampe im Lampenfeld auf."
-      />
+      <DesignHero title="Der Aufbau der Enigma" description="" />
 
       {/* Explosion View - Signal Flow Visualization */}
       <ExplosionView />
