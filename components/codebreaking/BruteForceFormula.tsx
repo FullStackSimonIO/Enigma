@@ -1,20 +1,9 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { BiMath, BiTime, BiChip, BiCalculator } from "react-icons/bi";
-
-interface FormulaStep {
-  title: string;
-  formula: string;
-  explanation: string;
-  calculation: string;
-  result: string;
-  color: string;
-}
+import { BiMath, BiChip, BiCalculator } from "react-icons/bi";
 
 export const BruteForceFormula = () => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [variables, setVariables] = useState({
     rotors: 3,
@@ -23,93 +12,10 @@ export const BruteForceFormula = () => {
     keysPerSecond: 1000,
   });
 
-  const steps: FormulaStep[] = [
-    {
-      title: "Rotor Konfigurationen",
-      formula: "R = 26^n",
-      explanation:
-        "Jeder Rotor hat 26 Positionen, und Positionen sind unabhängig",
-      calculation: `26^${variables.rotors}`,
-      result: Math.pow(26, variables.rotors).toLocaleString(),
-      color: "from-red-400 to-red-600",
-    },
-    {
-      title: "Rotor Auswahl",
-      formula: "S = n! × C(5,n)",
-      explanation:
-        "Reihenfolge ist wichtig und wir wählen aus verfügbaren Rotoren",
-      calculation: "3! × C(5,3) = 6 × 10",
-      result: "60",
-      color: "from-orange-400 to-orange-600",
-    },
-    {
-      title: "Steckerbrett Komplexität",
-      formula: "P = 26!/(2^p × p! × (26-2p)!)",
-      explanation: "Buchstaben paaren mit Reihenfolge-Unabhängigkeit",
-      calculation: `p = ${variables.plugboardPairs}`,
-      result: "150,738,274,937,250",
-      color: "from-yellow-400 to-yellow-600",
-    },
-    {
-      title: "Gesamt Schlüsselraum",
-      formula: "K = R × S × P",
-      explanation: "Alle unabhängigen Konfigurationsräume multiplizieren",
-      calculation: `${Math.pow(26, variables.rotors).toLocaleString()} × 60 × 150T`,
-      result: "1.59 × 10²³",
-      color: "from-green-400 to-green-600",
-    },
-    {
-      title: "Durchschnittliche Suchzeit",
-      formula: "T = K/(2 × rate)",
-      explanation: "Im Durchschnitt finden wir den Schlüssel auf halbem Weg",
-      calculation: `1.59×10²³ / (2 × ${variables.keysPerSecond.toLocaleString()})`,
-      result: calculateSearchTime(variables.keysPerSecond),
-      color: "from-blue-400 to-blue-600",
-    },
-    {
-      title: "Schlimmster Fall Zeit",
-      formula: "T_worst = K/rate",
-      explanation: "Maximale Zeit wenn Schlüssel als letzter getestet wird",
-      calculation: `1.59×10²³ / ${variables.keysPerSecond.toLocaleString()}`,
-      result: calculateWorstTime(variables.keysPerSecond),
-      color: "from-purple-400 to-purple-600",
-    },
-  ];
-
-  function calculateSearchTime(rate: number): string {
-    const keyspace = 1.59e23;
-    const seconds = keyspace / (2 * rate);
-    const years = seconds / (365.25 * 24 * 3600);
-
-    if (years >= 1e15) return `${(years / 1e15).toFixed(1)} Billiarden Jahre`;
-    if (years >= 1e12) return `${(years / 1e12).toFixed(1)} Billionen Jahre`;
-    if (years >= 1e9) return `${(years / 1e9).toFixed(1)} Milliarden Jahre`;
-    if (years >= 1e6) return `${(years / 1e6).toFixed(1)} Millionen Jahre`;
-    return `${years.toFixed(1)} Jahre`;
-  }
-
-  function calculateWorstTime(rate: number): string {
-    const keyspace = 1.59e23;
-    const seconds = keyspace / rate;
-    const years = seconds / (365.25 * 24 * 3600);
-
-    if (years >= 1e15) return `${(years / 1e15).toFixed(1)} Billiarden Jahre`;
-    if (years >= 1e12) return `${(years / 1e12).toFixed(1)} Billionen Jahre`;
-    if (years >= 1e9) return `${(years / 1e9).toFixed(1)} Milliarden Jahre`;
-    if (years >= 1e6) return `${(years / 1e6).toFixed(1)} Millionen Jahre`;
-    return `${years.toFixed(1)} Jahre`;
-  }
-
-  useEffect(() => {
-    if (isAutoPlaying) {
-      const interval = setInterval(() => {
-        setCurrentStep((prev) => (prev + 1) % steps.length);
-      }, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [isAutoPlaying, steps.length]);
-
-  const currentStepData = steps[currentStep];
+  // Helper function for consistent number formatting
+  const formatNumber = (num: number): string => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#101828]">
@@ -129,8 +35,7 @@ export const BruteForceFormula = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Verstehen Sie die mathematische Unmöglichkeit von
-            Brute-Force-Angriffen gegen die Enigma-Maschine
+            Sogar moderne Computer scheitern am Bruteforcen der Enigma
           </p>
         </motion.div>
 
@@ -176,7 +81,7 @@ export const BruteForceFormula = () => {
                 26 verschiedenen Startpositionen
               </span>{" "}
               stehen, was{" "}
-              <span className="text-red-400 font-medium">26³ = 17.576</span>{" "}
+              <span className="text-red-400 font-medium">17.576</span>{" "}
               Stellungsvarianten pro Rotorkombination liefert.
             </p>
             <p className="mb-3">
@@ -191,7 +96,7 @@ export const BruteForceFormula = () => {
               bleiben. Die Anzahl der möglichen Steckerverbindungen wird durch
               die folgende kombinatorische Formel bestimmt:{" "}
               <span className="text-red-400 font-bold">
-                26! / (6! × 10! × 2¹⁰) = 150.738.274.937.250
+                26! / (10! × 2¹⁰) = 150.738.274.937.250
               </span>
             </p>
             <div className="ml-4 mb-3">
@@ -203,11 +108,6 @@ export const BruteForceFormula = () => {
                   <span className="text-red-400 font-medium">26!</span>, wie die
                   26 Buchstaben des Alphabetes miteinander kombiniert werden
                   können,
-                </li>
-                <li>
-                  <span className="text-red-400 font-medium">6!</span>, dass die
-                  Reihenfolge der Auswahl der sechs ungesteckten Buchstaben
-                  irrelevant ist,
                 </li>
                 <li>
                   <span className="text-red-400 font-medium">10!</span>, dass
@@ -256,225 +156,14 @@ export const BruteForceFormula = () => {
           </button>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Interactive Controls */}
-          <motion.div
-            className="bg-gray-900/50 rounded-3xl p-8 border border-gray-700"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
-              <BiCalculator className="mr-3 text-blue-400" />
-              Formel Parameter
-            </h3>
-
-            <div className="space-y-8">
-              <div>
-                <label className="block text-white font-medium mb-3">
-                  Anzahl der Rotoren:{" "}
-                  <span className="text-blue-400">{variables.rotors}</span>
-                </label>
-                <input
-                  type="range"
-                  min="1"
-                  max="4"
-                  value={variables.rotors}
-                  onChange={(e) =>
-                    setVariables((prev) => ({
-                      ...prev,
-                      rotors: parseInt(e.target.value),
-                    }))
-                  }
-                  className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
-                />
-              </div>
-
-              <div>
-                <label className="block text-white font-medium mb-3">
-                  Steckerbrett Paare:{" "}
-                  <span className="text-blue-400">
-                    {variables.plugboardPairs}
-                  </span>
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="13"
-                  value={variables.plugboardPairs}
-                  onChange={(e) =>
-                    setVariables((prev) => ({
-                      ...prev,
-                      plugboardPairs: parseInt(e.target.value),
-                    }))
-                  }
-                  className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
-                />
-              </div>
-
-              <div>
-                <label className="block text-white font-medium mb-3">
-                  Schlüssel/Sekunde:{" "}
-                  <span className="text-blue-400">
-                    {variables.keysPerSecond.toLocaleString()}
-                  </span>
-                </label>
-                <input
-                  type="range"
-                  min="1"
-                  max="1000000"
-                  step="1000"
-                  value={variables.keysPerSecond}
-                  onChange={(e) =>
-                    setVariables((prev) => ({
-                      ...prev,
-                      keysPerSecond: parseInt(e.target.value),
-                    }))
-                  }
-                  className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
-                />
-                <div className="flex justify-between text-sm text-gray-400 mt-1">
-                  <span>1940er: ~100</span>
-                  <span>Modern: 1M+</span>
-                </div>
-              </div>
-
-              {/* Auto-play controls */}
-              <div className="flex items-center justify-between pt-6 border-t border-gray-700">
-                <span className="text-white font-medium">Formel Schritte:</span>
-                <button
-                  onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                    isAutoPlaying
-                      ? "bg-red-600 text-white"
-                      : "bg-gray-700 text-gray-300 hover:bg-gray-600"
-                  }`}
-                >
-                  {isAutoPlaying ? "Pause" : "Auto Abspielen"}
-                </button>
-              </div>
-
-              {/* Step Navigation */}
-              <div className="grid grid-cols-3 gap-2">
-                {steps.map((step, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentStep(index)}
-                    className={`p-3 rounded-lg text-sm font-medium transition-all ${
-                      currentStep === index
-                        ? "bg-blue-600 text-white"
-                        : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-                    }`}
-                  >
-                    {index + 1}. {step.title.split(" ")[0]}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Formula Display */}
-          <motion.div
-            className="bg-gray-900/50 rounded-3xl p-8 border border-gray-700"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
-              <BiMath className="mr-3 text-cyan-400" />
-              Mathematische Aufschlüsselung
-            </h3>
-
-            <motion.div
-              key={currentStep}
-              className="space-y-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              {/* Current Step */}
-              <div
-                className={`bg-gradient-to-r ${currentStepData.color} bg-clip-text text-transparent`}
-              >
-                <h4 className="text-3xl font-bold mb-4">
-                  {currentStepData.title}
-                </h4>
-              </div>
-
-              {/* Formula */}
-              <div className="bg-black/30 rounded-xl p-6 border border-gray-600">
-                <div className="text-center space-y-4">
-                  <div className="text-3xl font-mono text-cyan-400">
-                    {currentStepData.formula}
-                  </div>
-                  <div className="text-lg font-mono text-yellow-400">
-                    {currentStepData.calculation}
-                  </div>
-                  <div
-                    className={`text-2xl font-bold bg-gradient-to-r ${currentStepData.color} bg-clip-text text-transparent`}
-                  >
-                    = {currentStepData.result}
-                  </div>
-                </div>
-              </div>
-
-              {/* Explanation */}
-              <div className="bg-gray-800/50 rounded-xl p-6">
-                <p className="text-gray-300 text-lg leading-relaxed">
-                  {currentStepData.explanation}
-                </p>
-              </div>
-
-              {/* Visual Progress */}
-              <div className="space-y-3">
-                <div className="flex justify-between text-sm text-gray-400">
-                  <span>
-                    Step {currentStep + 1} of {steps.length}
-                  </span>
-                  <span>
-                    {Math.round(((currentStep + 1) / steps.length) * 100)}%
-                    Complete
-                  </span>
-                </div>
-                <div className="w-full bg-gray-700 rounded-full h-2">
-                  <motion.div
-                    className={`h-2 rounded-full bg-gradient-to-r ${currentStepData.color}`}
-                    initial={{ width: 0 }}
-                    animate={{
-                      width: `${((currentStep + 1) / steps.length) * 100}%`,
-                    }}
-                    transition={{ duration: 0.5 }}
-                  />
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-
         {/* Summary Cards */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <div className="bg-gradient-to-br from-slate-800/40 to-slate-700/20 rounded-2xl p-6 border border-slate-500/20">
-            <BiTime className="text-3xl text-blue-400 mb-4" />
-            <h4 className="text-xl font-bold text-white mb-2">
-              Zeit Komplexität
-            </h4>
-            <p className="text-gray-300 text-sm">
-              Selbst mit modernen Computern würde Brute-Force länger dauern als
-              das Alter des Universums
-            </p>
-            <div className="text-2xl font-bold text-red-400 mt-4">
-              O(26^n × n! × P!)
-            </div>
-          </div>
-
           <div className="bg-gradient-to-br from-slate-800/40 to-slate-700/20 rounded-2xl p-6 border border-slate-500/20">
             <BiChip className="text-3xl text-blue-400 mb-4" />
             <h4 className="text-xl font-bold text-white mb-2">
@@ -485,7 +174,7 @@ export const BruteForceFormula = () => {
               und Steckerbrett-Paar
             </p>
             <div className="text-2xl font-bold text-red-400 mt-4">
-              1.59 × 10²³ keys
+              1,59 × 10²⁰ keys
             </div>
           </div>
 
@@ -536,7 +225,7 @@ export const BruteForceFormula = () => {
                     Brute Force (1940er)
                   </td>
                   <td className="py-4 px-6 text-gray-300">
-                    Milliarden von Jahren
+                    Millionen von Jahren
                   </td>
                   <td className="py-4 px-6 text-gray-300">Elektromechanisch</td>
                   <td className="py-4 px-6 text-red-400">0% (Unmöglich)</td>
@@ -545,9 +234,7 @@ export const BruteForceFormula = () => {
                   <td className="py-4 px-6 text-orange-400 font-medium">
                     Brute Force (Modern)
                   </td>
-                  <td className="py-4 px-6 text-gray-300">
-                    Millionen von Jahren
-                  </td>
+                  <td className="py-4 px-6 text-gray-300">2500 Jahre</td>
                   <td className="py-4 px-6 text-gray-300">GPU Cluster</td>
                   <td className="py-4 px-6 text-orange-400">Irgendwann</td>
                 </tr>

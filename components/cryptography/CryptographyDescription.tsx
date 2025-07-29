@@ -230,42 +230,20 @@ export const CryptographyDescription = () => {
             ))}
           </div>
 
-          {/* Mathematical Representation */}
-          <motion.div
-            className="bg-gray-800 rounded-2xl p-6 mt-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          >
-            <h4 className="text-xl font-bold text-white mb-4 text-center">
-              Mathematisches Modell
-            </h4>
-            <div className="text-center space-y-4">
-              <div className="text-lg font-mono text-cyan-400">
-                E(x) = P⁻¹(R₃⁻¹(R₂⁻¹(R₁⁻¹(R(R₁(R₂(R₃(P(x)))))))))
-              </div>
-              <div className="text-sm text-gray-400">
-                Wobei P = Steckerbrett, R₁,R₂,R₃ = Rotoren, R = Reflektor
-              </div>
-            </div>
-          </motion.div>
-
           {/* Complexity Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
             <div className="bg-gradient-to-br from-purple-900/50 to-purple-800/30 p-4 rounded-xl text-center">
-              <div className="text-2xl font-bold text-purple-400">26³</div>
+              <div className="text-2xl font-bold text-purple-400">17.576</div>
               <div className="text-sm text-gray-300">Rotor Einstellungen</div>
-            </div>
-            <div className="bg-gradient-to-br from-cyan-900/50 to-cyan-800/30 p-4 rounded-xl text-center">
-              <div className="text-2xl font-bold text-cyan-400">6!</div>
-              <div className="text-sm text-gray-300">Rotor Reihenfolgen</div>
             </div>
             <div className="bg-gradient-to-br from-green-900/50 to-green-800/30 p-4 rounded-xl text-center">
               <div className="text-2xl font-bold text-green-400">10¹⁰</div>
               <div className="text-sm text-gray-300">Steckerbrett</div>
             </div>
             <div className="bg-gradient-to-br from-blue-900/50 to-blue-800/30 p-4 rounded-xl text-center">
-              <div className="text-2xl font-bold text-[#145dfb]">150T</div>
+              <div className="text-2xl font-bold text-[#145dfb]">
+                1,59 × 10²⁰
+              </div>
               <div className="text-sm text-gray-300">Gesamt Schlüssel</div>
             </div>
           </div>

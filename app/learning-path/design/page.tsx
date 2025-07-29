@@ -20,6 +20,7 @@ const DesignPage = () => {
       <DesignHero title="Der Aufbau der Enigma" description="" />
 
       {/* Explosion View - Signal Flow Visualization */}
+
       <ExplosionView />
       {/* Rotor and Notch Display */}
       <RotorNotchDisplay />
@@ -27,7 +28,6 @@ const DesignPage = () => {
       {/* Cryptography Section */}
       <CryptographyDescription />
       <AlgorithmVisualization />
-      <InteractiveEncryption />
 
       {/* Quiz Section */}
       <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">

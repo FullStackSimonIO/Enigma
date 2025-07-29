@@ -26,43 +26,38 @@ export default function CodebreakingPage() {
     {
       id: "2",
       question:
-        "Was war die effektivste Codeknacking-Methode in Bletchley Park?",
-      options: [
-        "Häufigkeitsanalyse",
-        "Crib-basierte Angriffe mit der Bombe",
-        "Reine mathematische Kryptoanalyse",
-        "Abfangen deutscher Codebücher",
-      ],
+        "Wie lange braucht ein moderner Computer um die Enigma mittels Brute-Force zu knacken?",
+      options: ["Eine Million Jahre", "2500 Jahre", "40 Sekunden", "2 Tage"],
       correctAnswer: 1,
       explanation:
-        "Crib-basierte Angriffe mit bekannten Klartextfragmenten (wie Wetterberichte) kombiniert mit der Bombe-Maschine waren am erfolgreichsten und knackten Codes typischerweise in 20 Minuten bis 2 Stunden.",
+        "Das Knacken der Enigma dauerte mit modernen Methoden in etwa 2500 Jahre.",
     },
     {
       id: "3",
       question:
-        "Wie lange würden moderne Computer für einen Brute-Force-Angriff auf einen Enigma-Schlüssel benötigen?",
+        "Auf welche Grundlage basiert die Turing-Bombe zur Enigma-Knackung?",
       options: [
-        "Ein paar Tage",
-        "Mehrere Monate",
-        "Tausende von Jahren",
-        "Millionen von Jahren",
+        "N-Gramme",
+        "Index of Coincidence",
+        "Known Plaintext Attacks",
+        "Alle der oben genannten",
       ],
       correctAnswer: 3,
       explanation:
-        "Selbst mit modernen GPU-Clustern, die Milliarden von Schlüsseln pro Sekunde testen, würde das Brute-Force des vollständigen Enigma-Schlüsselraums aufgrund der astronomischen Anzahl von Möglichkeiten noch Millionen von Jahren dauern.",
+        "Die Turing-Bombe nutzte bekannte Klartextfragmente (Cribs) und mathematische Muster (wie N-Gramme) zur effizienten Suche nach Enigma-Schlüsseln, indem sie die Rotor-Einstellungen automatisierte.",
     },
     {
       id: "4",
-      question: "Was machte Bedienerfehler so wertvoll für Codeknacker?",
+      question: "Was der genannten Optionen ist ein N-Gramm?",
       options: [
-        "Sie enthüllten die Rotor-Verdrahtung",
-        "Sie lieferten bekannte Klartextfragmente",
-        "Sie reduzierten den effektiven Schlüsselraum",
-        "Sie legten die Steckerbrett-Einstellungen offen",
+        "Reiberknödel (das ö)",
+        "Flaschenhals (das große F)",
+        "Suppe (das doppel-P)",
+        "Schließlich (das sch)",
       ],
-      correctAnswer: 2,
+      correctAnswer: 3,
       explanation:
-        "Bedienerfehler wie die Wiederverwendung von Einstellungen, schwache Nachrichtenschlüssel oder Verfahrensfehler reduzierten effektiv den Schlüsselraum, der durchsucht werden musste, was das Knacken viel schneller machte.",
+        "N-Gramme sind wiederkehrende Buchstabenkombinationen, die in der Enigma-Kryptographie verwendet werden, um Muster zu erkennen und Angriffe zu erleichtern.",
     },
     {
       id: "5",
@@ -94,7 +89,7 @@ Eine der wichtigsten Entwicklungen war die sogenannte 'Bombe' - eine elektromech
 
 Heutzutage sind Enigma-Verschlüsselungen mit modernen Computern vergleichsweise leicht zu knacken. Was früher Tage oder Wochen dauerte, ist nun oft eine Sache von Sekunden."
       />
-      <KeyspaceCalculator />
+
       <BruteForceFormula />
       <TacticsResume />
       <TuringBombExplanation />

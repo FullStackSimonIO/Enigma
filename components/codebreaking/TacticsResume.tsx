@@ -1,14 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  BiBulb,
-  BiCrosshair,
-  BiTime,
-  BiGroup,
-  BiShield,
-  BiCheck,
-} from "react-icons/bi";
+import { BiBulb, BiCrosshair, BiTime, BiCheck } from "react-icons/bi";
 
 interface Tactic {
   id: string;
@@ -25,106 +18,69 @@ interface Tactic {
 }
 
 export const TacticsResume = () => {
-  const [selectedTactic, setSelectedTactic] = useState("cribs");
+  const [selectedTactic, setSelectedTactic] = useState("index-of-coincidence");
   const [isExpanded, setIsExpanded] = useState(false);
 
   const tactics: Tactic[] = [
     {
-      id: "cribs",
-      name: "Crib-basierter Angriff",
+      id: "index-of-coincidence",
+      name: "Index of Coincidence",
       description:
-        "Verwendung bekannter Klartextfragmente zur Ableitung von Einstellungen",
+        "Statistische Analyse der Buchstabenhäufigkeiten zur Identifikation deutscher Sprachtexte",
       difficulty: "Medium",
+      timeToBreak: "1-4 Stunden",
+      successRate: 65,
+      requirements: [
+        "Ausreichend Geheimtext",
+        "Statistische Analyse",
+        "Sprachkenntnisse",
+      ],
+      explanation:
+        "Der Index of Coincidence misst die Wahrscheinlichkeit, dass zwei zufällig ausgewählte Buchstaben in einem Text identisch sind. Deutsche Texte haben einen charakteristischen IC-Wert von 0,0762, während zufällige Buchstabenfolgen bei 0,0385 liegen. Diese Methode filtert unwahrscheinliche Walzenstellungen heraus.",
+      historicalUse:
+        "Verwendet zur Vorselektion von Walzenstellungen in Bletchley Park. Reduzierte den Suchraum erheblich vor der Anwendung anderer Methoden.",
+      color: "from-blue-400 to-blue-600",
+      icon: <BiBulb />,
+    },
+    {
+      id: "n-gramme",
+      name: "N-Gramm-Analyse",
+      description:
+        "Analyse von Buchstabensequenzen zur Erkennung deutscher Sprachmuster",
+      difficulty: "Medium",
+      timeToBreak: "2-6 Stunden",
+      successRate: 70,
+      requirements: [
+        "N-Gramm-Referenztabellen",
+        "Mustererkennung",
+        "Statistische Auswertung",
+      ],
+      explanation:
+        "N-Gramme sind Sequenzen von aufeinanderfolgenden Zeichen. Deutsche Bigramme wie 'EN', 'ER' oder 'CH' und Trigramme wie 'SCH', 'EIN' oder 'ICH' treten mit charakteristischer Häufigkeit auf. Durch Vergleich mit Referenzwerten konnten Walzenstellungen priorisiert werden.",
+      historicalUse:
+        "Ergänzende Methode zur IC-Analyse. Besonders effektiv bei längeren Nachrichten mit typischen deutschen Sprachmustern.",
+      color: "from-purple-400 to-purple-600",
+      icon: <BiCrosshair />,
+    },
+    {
+      id: "known-plaintext",
+      name: "Known Plaintext Attack",
+      description:
+        "Verwendung bekannter Klartextfragmente zur Ableitung von Steckerverbindungen",
+      difficulty: "Easy",
       timeToBreak: "20 Minuten - 2 Stunden",
       successRate: 85,
       requirements: [
         "Bekannte Klartextfragmente",
-        "Bombe-Maschine",
-        "Mustererkennung",
+        "Turing-Bombe",
+        "Vorhersagbare Nachrichten",
       ],
       explanation:
-        "Codebreaker nutzten vorhersagbare deutsche Nachrichten wie Wetterberichte, militärische Formalitäten und wiederholte Phrasen aus. Durch das Wissen um wahrscheinliche Klartextpositionen konnten sie spezifische Rotoreinstellungen testen anstatt alle Möglichkeiten.",
+        "Diese Methode nutzte vorhersagbare deutsche Nachrichten wie täglich um 6 Uhr versendete Wetterberichte mit dem Wort 'WETTERBERICHT'. Durch systematisches Testen aller möglichen Positionen dieses Fragments im Chiffretext konnten Steckerverbindungen deduziert werden.",
       historicalUse:
-        "Hauptmethode in Bletchley Park verwendet. Am erfolgreichsten gegen routinemäßige militärische Kommunikation.",
+        "Hauptmethode in Bletchley Park. Am erfolgreichsten gegen routinemäßige militärische Kommunikation und Wetterberichte.",
       color: "from-green-400 to-green-600",
-      icon: <BiCrosshair />,
-    },
-    {
-      id: "frequency",
-      name: "Häufigkeitsanalyse",
-      description:
-        "Analyse von Buchstabenhäufigkeitsmustern in verschlüsseltem Text",
-      difficulty: "Hard",
-      timeToBreak: "Tage bis Wochen",
-      successRate: 25,
-      requirements: [
-        "Große Mengen Geheimtext",
-        "Statistische Analyse",
-        "Sprachexpertise",
-      ],
-      explanation:
-        "Traditionelle Kryptoanalyse-Technik, die bei einfachen Substitutionschiffren funktioniert. Begrenzte Wirksamkeit gegen Enigma aufgrund der polyalphabetischen Natur und täglichen Schlüsseländerungen.",
-      historicalUse:
-        "Frühe Versuche vor mechanischen Methoden. Weitgehend aufgegeben für Enigma aufgrund geringer Erfolgsrate.",
-      color: "from-yellow-400 to-yellow-600",
-      icon: <BiBulb />,
-    },
-    {
-      id: "operator-errors",
-      name: "Bedienerfehler",
-      description: "Ausnutzung menschlicher Fehler beim Enigma-Betrieb",
-      difficulty: "Easy",
-      timeToBreak: "Minuten bis Stunden",
-      successRate: 70,
-      requirements: [
-        "Verkehrsanalyse",
-        "Mustererkennung",
-        "Mehrere Abfangungen",
-      ],
-      explanation:
-        "Deutsche Operateure machten oft Verfahrensfehler: Wiederverwendung von Einstellungen, schwache Nachrichtenschlüssel oder das zweimalige Senden derselben Nachricht. Diese Fehler boten entscheidende Einstiegspunkte für Codebreaker.",
-      historicalUse:
-        "Während des gesamten Krieges konstant ausgenutzt. Deutsche Verfahren verbesserten sich mit der Zeit und reduzierten Gelegenheiten.",
-      color: "from-orange-400 to-orange-600",
-      icon: <BiGroup />,
-    },
-    {
-      id: "depth-analysis",
-      name: "Tiefenanalyse",
-      description: "Vergleich mehrerer Nachrichten mit denselben Einstellungen",
-      difficulty: "Medium",
-      timeToBreak: "1-8 Stunden",
-      successRate: 60,
-      requirements: [
-        "Mehrere Nachrichten mit demselben Schlüssel",
-        "Mathematische Analyse",
-        "Zeitkorrelation",
-      ],
-      explanation:
-        "Wenn mehrere Nachrichten mit identischen Rotorpositionen (Tiefe) gesendet wurden, konnten Codebreaker sie vergleichen, um das Substitutionsmuster zu deduzieren und möglicherweise den Klartext zu rekonstruieren.",
-      historicalUse:
-        "Verwendet, wenn Operateure versäumten, Rotoren zwischen Nachrichten zu verstellen oder während verkehrsreicher Zeiten.",
-      color: "from-blue-400 to-blue-600",
       icon: <BiTime />,
-    },
-    {
-      id: "brute-force",
-      name: "Brute-Force-Angriff",
-      description: "Testen jeder möglichen Schlüsselkombination",
-      difficulty: "Impossible",
-      timeToBreak: "Millionen von Jahren",
-      successRate: 0,
-      requirements: [
-        "Unbegrenzte Rechenleistung",
-        "Perfekte Erhaltung des Geheimtexts",
-        "Zeitmaschine",
-      ],
-      explanation:
-        "Systematisches Testen aller 1,59×10²³ möglichen Enigma-Konfigurationen. Selbst mit modernen Supercomputern würde dieser Ansatz länger dauern als das Alter des Universums.",
-      historicalUse:
-        "Niemals ernsthaft versucht aufgrund mathematischer Unmöglichkeit mit verfügbarer Technologie.",
-      color: "from-red-400 to-red-600",
-      icon: <BiShield />,
     },
   ];
 

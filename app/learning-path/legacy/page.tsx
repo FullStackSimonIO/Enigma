@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { QuizComponent } from "@/components/QuizComponent";
-import { getProgress } from "@/lib/progress";
 import {
   BiShield,
   BiCog,
@@ -72,10 +71,98 @@ const ExpandableText = () => {
   );
 };
 
+const ModernInsightsText = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div className="bg-gray-900/30 rounded-2xl p-6 border border-gray-700/50">
+      <div
+        className={`text-sm text-gray-300 text-justify leading-relaxed transition-all duration-300 ${
+          isExpanded ? "" : "line-clamp-3"
+        }`}
+        style={{
+          display: "-webkit-box",
+          WebkitLineClamp: isExpanded ? "none" : "3",
+          WebkitBoxOrient: "vertical",
+          overflow: isExpanded ? "visible" : "hidden",
+        }}
+      >
+        <p className="mb-4">
+          Die Analyse der Enigma-Maschine bietet auch aus heutiger Sicht
+          wertvolle Einsichten für die moderne Kryptologie – weniger in Bezug
+          auf konkrete Algorithmen, sondern vielmehr hinsichtlich grundlegender
+          Prinzipien sicherer Kommunikationssysteme. Besonders relevant sind
+          dabei Erkenntnisse zur Trennung von Verfahren und Schlüsseln, zur
+          operativen Sicherheit (OPSEC), zur menschlichen Faktorproblematik und
+          zur Bedeutung systematischer Schwachstellenanalyse.
+        </p>
+        <p className="mb-4">
+          Ein zentraler Aspekt ist das Scheitern der Enigma trotz formal hoher
+          kombinatorischer Komplexität. Die Maschine selbst bot, insbesondere in
+          ihrer Marinevariante mit vier Rotoren und Steckerbrett, eine enorme
+          Anzahl möglicher Schlüsselzustände. Dennoch wurde sie gebrochen –
+          nicht durch brute-force-Angriffe, sondern durch die Kombination aus
+          systematischen Schwächen im Protokolldesign, Nachlässigkeiten im
+          operativen Umgang und durch exzellente gegnerische Kryptoanalyse. Dies
+          unterstreicht einen wesentlichen Grundsatz moderner Kryptologie: Die
+          Stärke eines kryptografischen Systems bemisst sich nicht allein an der
+          Komplexität des Algorithmus, sondern an der Widerstandsfähigkeit des
+          Gesamtsystems – einschließlich Implementierung, Schlüsselmanagement
+          und Benutzungsverhalten.
+        </p>
+        <p className="mb-4">
+          Ein weiteres zentrales Lernfeld ist die Trennung von Schlüssel und
+          Verfahren. Die Enigma-Maschine selbst war ein festes, standardisiertes
+          Verfahren – die tatsächliche Sicherheit beruhte auf dem täglich
+          wechselnden Schlüsselmaterial. Dieses Prinzip entspricht modernen
+          Ansätzen wie dem Kerckhoffs&apos;schen Prinzip: Ein Verfahren muss
+          auch dann sicher bleiben, wenn es vollständig öffentlich bekannt ist –
+          allein der Schlüssel schützt die Vertraulichkeit. Die Tatsache, dass
+          die Alliierten durch den Besitz von Schlüsselheften unmittelbaren
+          Zugriff auf die Kommunikation erhielten, belegt die Bedeutung robuster
+          Schlüsselverwaltung. Gleichzeitig offenbart die Praxis des manuellen
+          Schlüsselhandlings – etwa das Abtrennen von Tageszeilen – die
+          inhärente Verletzlichkeit menschlicher Prozesse, die auch heute bei
+          der Verwaltung digitaler Schlüssel (z. B. in
+          Hardware-Sicherheitsmodulen oder PKI-Systemen) kritisch bleibt.
+        </p>
+        <p>
+          Nicht zuletzt führt die Enigma uns die Notwendigkeit gezielter
+          Kryptoanalyse vor Augen. Der Bruch der Enigma war nur möglich, weil
+          die Alliierten das System nicht als Black Box behandelten, sondern ein
+          tiefes Verständnis für interne Abläufe und Schwächen entwickelten –
+          etwa durch Analyse des Indikatorverfahrens, die statistische
+          Auswertung von Textmustern (&quot;cribs&quot;) und die Ausnutzung
+          struktureller Invarianten (z. B. keine Selbstabbildung). Diese
+          Methodik hat bis heute Bestand: Moderne Kryptologie ist nur dann
+          belastbar, wenn sie systematisch auf bekannte Angriffsmodelle und
+          reale Umgebungsbedingungen getestet wird. Formale Sicherheit allein
+          genügt nicht – sie muss auch unter praktischen Bedingungen bestehen.
+        </p>
+      </div>
+
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="mt-4 flex items-center text-blue-400 hover:text-blue-300 transition-colors duration-200 font-medium"
+      >
+        {isExpanded ? (
+          <>
+            <BiChevronUp className="mr-2" />
+            Weniger anzeigen
+          </>
+        ) : (
+          <>
+            <BiChevronDown className="mr-2" />
+            Mehr lesen
+          </>
+        )}
+      </button>
+    </div>
+  );
+};
+
 const ImprovementsPage = () => {
   const [isClient, setIsClient] = useState(false);
-  const progress = getProgress();
-  const legacySection = progress.find((s) => s.id === "legacy");
 
   useEffect(() => {
     setIsClient(true);
@@ -185,10 +272,20 @@ const ImprovementsPage = () => {
                 Verbesserungen
               </span>
             </h1>
-            <p className="text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
               Wie die Schwächen der Enigma zu revolutionären Verbesserungen
               führten
             </p>
+
+            {/* Modern Insights Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="max-w-4xl mx-auto"
+            >
+              <ModernInsightsText />
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -465,34 +562,6 @@ const ImprovementsPage = () => {
               Rotor-Chiffriergeräte-Ära zugunsten elektronischer Systeme.
             </p>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Quiz Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Teste dein Wissen zu den{" "}
-              <span className="text-green-400">Verbesserungen</span>
-            </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Verstehe die Schwächen der Enigma und wie sie überwunden wurden
-            </p>
-          </motion.div>
-
-          {legacySection && legacySection.quiz && (
-            <QuizComponent
-              sectionId="legacy"
-              questions={legacySection.quiz}
-              requiredScore={legacySection.requiredScore || 80}
-            />
-          )}
         </div>
       </section>
     </div>
