@@ -73,6 +73,64 @@ const StoryPage = () => {
         </div>
       </section>
 
+      {/* Video Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-[#145dfb]">
+              📺 Die Enigma verstehen
+            </h2>
+            <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Schaue dir dieses Video an, um ein tieferes Verständnis für die
+              Funktionsweise und historische Bedeutung der Enigma-Maschine zu
+              entwickeln.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative bg-gradient-to-br from-gray-900/60 to-gray-800/40 backdrop-blur-sm rounded-3xl p-4 sm:p-6 lg:p-8 border border-gray-700/50 shadow-2xl"
+          >
+            {/* Video Container */}
+            <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-lg">
+              <iframe
+                src="https://www.youtube.com/embed/RzWB5jL5RX0?rel=0&modestbranding=1&showinfo=0&color=white&iv_load_policy=3"
+                title="Enigma Machine Explained"
+                className="absolute top-0 left-0 w-full h-full"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+
+            {/* Video Info */}
+            <div className="mt-6 sm:mt-8 text-center">
+              <div className="inline-flex items-center space-x-2 bg-[#145dfb]/10 border border-[#145dfb]/30 rounded-full px-4 py-2 text-sm text-[#145dfb]">
+                <span className="w-2 h-2 bg-[#145dfb] rounded-full animate-pulse"></span>
+                <span>Empfohlenes Einführungsvideo</span>
+              </div>
+              <p className="text-sm text-gray-400 mt-3 max-w-2xl mx-auto">
+                Dieses Video bietet eine hervorragende Einführung in die
+                Enigma-Maschine und bereitet dich optimal auf die folgenden
+                Lernabschnitte vor.
+              </p>
+            </div>
+
+            {/* Decorative Elements */}
+            <div className="absolute -top-1 -left-1 w-8 h-8 bg-gradient-to-br from-[#145dfb]/30 to-transparent rounded-full blur-sm"></div>
+            <div className="absolute -bottom-1 -right-1 w-12 h-12 bg-gradient-to-tl from-blue-600/20 to-transparent rounded-full blur-sm"></div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="max-w-6xl mx-auto">

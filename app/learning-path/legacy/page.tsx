@@ -168,6 +168,65 @@ const ImprovementsPage = () => {
     setIsClient(true);
   }, []);
 
+  const quizQuestions = [
+    {
+      id: "1",
+      question:
+        "Was war der fundamentale Designfehler der ursprünglichen Enigma-Maschine?",
+      options: [
+        "Zu wenige Rotoren im System",
+        "Buchstaben konnten nie auf sich selbst verschlüsselt werden",
+        "Das Steckerbrett war zu kompliziert",
+        "Die Walzenfortschaltung war zu langsam",
+      ],
+      correctAnswer: 1,
+      explanation:
+        "Die Unfähigkeit der Enigma, Buchstaben auf sich selbst zu verschlüsseln, war der kritische Designfehler. Diese Eigenschaft ermöglichte Known-Plaintext-Angriffe und die Entwicklung der Turing-Bombe.",
+    },
+    {
+      id: "2",
+      question:
+        "Welche Verbesserung führte die britische Typex-Maschine ein, um Enigmas Hauptschwäche zu beheben?",
+      options: [
+        "Elektronische statt mechanische Rotoren",
+        "Eine modifizierte Umkehrwalze, die Selbstabbildung erlaubt",
+        "Verdopplung der Steckerbrett-Verbindungen",
+        "Automatische Schlüsselgenerierung",
+      ],
+      correctAnswer: 1,
+      explanation:
+        "Die Typex verwendete eine modifizierte Umkehrwalze, die es erlaubte, dass Buchstaben auf sich selbst verschlüsselt werden konnten, wodurch der fundamentale Designfehler der Enigma behoben wurde.",
+    },
+    {
+      id: "3",
+      question:
+        "Wann wurde die Ära der Rotor-Chiffriergeräte endgültig beendet?",
+      options: [
+        "1945 mit dem Ende des Zweiten Weltkriegs",
+        "1952 mit der Entwicklung der ersten Computer",
+        "1962 mit der Einführung der Combined Cipher Machine (CCM)",
+        "1970 mit der Erfindung des DES-Algorithmus",
+      ],
+      correctAnswer: 2,
+      explanation:
+        "1962 erfolgte der Übergang zur Combined Cipher Machine (CCM), die einen einheitlichen elektronischen Verschlüsselungsstandard etablierte und das endgültige Ende der mechanischen Rotor-Chiffriergeräte markierte.",
+    },
+    {
+      id: "4",
+      question:
+        "Welche modernen kryptographischen Prinzipien lassen sich aus der Enigma-Analyse ableiten?",
+      options: [
+        "Nur die Stärke des Algorithmus bestimmt die Sicherheit",
+        "Mechanische Systeme sind grundsätzlich unsicher",
+        "Die Trennung von Verfahren und Schlüsseln sowie robuste Schlüsselverwaltung",
+        "Komplexe Systeme sind immer sicherer als einfache",
+      ],
+      correctAnswer: 2,
+      explanation:
+        "Die Enigma-Analyse zeigt die Bedeutung des Kerckhoffs'schen Prinzips (Trennung von Verfahren und Schlüssel) und demonstriert, dass die Gesamtsicherheit eines Systems von mehr als nur der algorithmischen Komplexität abhängt - einschließlich Implementierung, Schlüsselmanagement und Benutzungsverhalten.",
+    },
+  ];
+
   const improvements = [
     {
       id: 1,
@@ -562,6 +621,33 @@ const ImprovementsPage = () => {
               Rotor-Chiffriergeräte-Ära zugunsten elektronischer Systeme.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Quiz Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+              Wissenstest{" "}
+              <span className="text-purple-400">Verbesserungen</span>
+            </h2>
+            <p className="text-xl text-gray-300">
+              Teste dein Verständnis über die Enigma-Verbesserungen und deren
+              moderne Relevanz
+            </p>
+          </motion.div>
+
+          <QuizComponent
+            sectionId="legacy"
+            questions={quizQuestions}
+            requiredScore={75}
+          />
         </div>
       </section>
     </div>
