@@ -5,6 +5,7 @@ import { QuizComponent } from "@/components/QuizComponent";
 import { DesignHero } from "@/components/design/DesignHero";
 import { ExplosionView } from "@/components/design/ExplosionView";
 import { RotorNotchDisplay } from "@/components/design/RotorNotchDisplay";
+import { SelfEncryptionChallenge } from "@/components/design/SelfEncryptionChallenge";
 import { CryptographyDescription } from "@/components/cryptography/CryptographyDescription";
 import { AlgorithmVisualization } from "@/components/cryptography/AlgorithmVisualization";
 import { InteractiveEncryption } from "@/components/cryptography/InteractiveEncryption";
@@ -28,6 +29,9 @@ const DesignPage = () => {
       {/* Cryptography Section */}
       <CryptographyDescription />
       <AlgorithmVisualization />
+
+      {/* Self Encryption Challenge */}
+      <SelfEncryptionChallenge />
 
       {/* Quiz Section */}
       <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
