@@ -92,9 +92,9 @@ export const ENIGMA_SECTIONS: SectionProgress[] = [
         options: [
           "Der Funker, bevor er sie sendete",
           "Der Offizier, bevor er sie an den Funker weitergab",
-          "C) Der Funker, auf Anweisung des Offiziers",
+          "Der Funker, auf Anweisung des Offiziers",
         ],
-        correctAnswer: 2,
+        correctAnswer: 1,
         explanation:
           "Die Enigma-Maschine wurde typischerweise vom Offizier bedient, der die Nachricht an den Funker weitergab, der sie dann sendete.",
       },
